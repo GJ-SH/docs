@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126870
 pageID: 5126870
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -17,7 +17,7 @@ plugged in, or automatically unconfigure it when a cable is removed.
 
 Follow the steps below to install and configure the `ifplugd` daemon.
 
-## Install ifplugd</span>
+## Install ifplugd
 
 1.  Update the switch before installing the daemon:
     
@@ -27,7 +27,7 @@ Follow the steps below to install and configure the `ifplugd` daemon.
     
         cumulus@switch:~$ sudo apt-get install ifplugd
 
-## Configure ifplugd</span>
+## Configure ifplugd
 
 Once `ifplugd` is installed, two configuration files must be edited to
 set up `ifplugd`:
@@ -68,10 +68,10 @@ switches in this example.
     saving:
     
     ``` 
-        INTERFACES="peerbond"
-        HOTPLUG_INTERFACES=""
-        ARGS="-q -f -u0 -d1 -w -I"
-        SUSPEND_ACTION="stop"
+      INTERFACES="peerbond"
+      HOTPLUG_INTERFACES=""
+      ARGS="-q -f -u0 -d1 -w -I"
+      SUSPEND_ACTION="stop"
     ```
 
 3.  Open `/etc/ifplugd/action.d/ifupdown` in a text editor.
@@ -82,22 +82,22 @@ switches in this example.
         set -e
         case "$2" in
         up)
-                clagrole=$(clagctl | grep "Our Priority" | awk '{print $8}')
+              clagrole=$(clagctl | grep "Our Priority" | awk '{print $8}')
                 if [ "$clagrole" = "secondary" ]
                 then
-                    #List all the interfaces below to bring up when clag peerbond comes up.
+                  #List all the interfaces below to bring up when clag peerbond comes up.
                     for interface in swp1 bond1 bond3 bond4
-                    do
-                        echo "bringing up : $interface"  
+                  do
+                      echo "bringing up : $interface"  
                         ip link set $interface up
                     done
                 fi
             ;;
         down)
-                clagrole=$(clagctl | grep "Our Priority" | awk '{print $8}')
+              clagrole=$(clagctl | grep "Our Priority" | awk '{print $8}')
                 if [ "$clagrole" = "secondary" ]
                 then
-                    #List all the interfaces below to bring down when clag peerbond goes down.
+                  #List all the interfaces below to bring down when clag peerbond goes down.
                     for interface in swp1 bond1 bond3 bond4
                     do
                         echo "bringing down : $interface"
@@ -113,7 +113,7 @@ switches in this example.
 
 {{%/notice%}}
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
 The default shell for `ifplugd` is `dash` (`/bin/sh`), rather than
 `bash`, as it provides a faster and more nimble shell. However, it

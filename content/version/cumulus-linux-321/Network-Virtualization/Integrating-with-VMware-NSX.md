@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126883
 pageID: 5126883
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -17,7 +17,7 @@ provisioning across virtual and physical server infrastructures.
 
 {{% imgOld 0 %}}
 
-## Getting Started</span>
+## Getting Started
 
 Before you integrate VXLANs with NSX, make sure you have the following
 components:
@@ -39,7 +39,7 @@ Integrating a VXLAN with NSX involves:
 
   - Verifying the VXLAN Configuration
 
-### Caveats and Errata</span>
+### Caveats and Errata
 
   - As mentioned in [Network
     Virtualization](/version/cumulus-linux-321/Network-Virtualization/),
@@ -64,14 +64,14 @@ Integrating a VXLAN with NSX involves:
   - For more information about NSX, see the VMware NSX User Guide,
     version 4.0.0 or later.
 
-## Bootstrapping the NSX Integration</span>
+## Bootstrapping the NSX Integration
 
 Before you start configuring the gateway service and logical switches
 and ports that comprise the VXLAN, you need to complete some steps to
 bootstrap the process. You need to do the bootstrapping just once,
 before you begin the integration.
 
-### Enabling the openvswitch-vtep Package</span>
+### Enabling the openvswitch-vtep Package
 
 Before you start bootstrapping the integration, you need to enable the
 `openvswitch-vtep` package, as it is disabled by default in Cumulus
@@ -97,7 +97,7 @@ Linux.
     
         cumulus@switch$ sudo systemctl start openvswitch-vtep.service
 
-### Using the Bootstrapping Script</span>
+### Using the Bootstrapping Script
 
 A script is available so you can do the bootstrapping automatically. For
 information, read `man vtep-bootstrap`. The output of the script is
@@ -124,7 +124,7 @@ In the above example, the following information was passed to the
 These IP addresses will be used throughout the rest of the examples
 below.
 
-### Manually Bootstrapping the NSX Integration</span>
+### Manually Bootstrapping the NSX Integration
 
 If you don’t use the script, then you must:
 
@@ -136,7 +136,7 @@ If you don’t use the script, then you must:
 
 These steps are described next.
 
-### Generating the Credentials Certificate</span>
+### Generating the Credentials Certificate
 
 First, in Cumulus Linux, you must generate a certificate that the NSX
 controller uses for authentication.
@@ -202,7 +202,7 @@ Once you finish generating the certificate, keep the terminal session
 active, as you need to paste the certificate into NSX Manager when you
 configure the VTEP gateway.
 
-### Configuring the Switch as a VTEP Gateway</span>
+### Configuring the Switch as a VTEP Gateway
 
 After you create a certificate, connect to NSX Manager in a browser to
 configure a Cumulus Linux switch as a VTEP gateway. In this example, the
@@ -267,7 +267,7 @@ connected to the switch, run this command:
     status              : {sec_since_connect="18223", sec_since_disconnect="18225", state=ACTIVE}
     target              : "ssl:192.168.100.17:6632"
 
-## Configuring the Transport Layer</span>
+## Configuring the Transport Layer
 
 After you finish bootstrapping the NSX integration, you need to
 configure the transport layer. For each host-facing switch port that is
@@ -304,13 +304,13 @@ The gateway service shows up as type *VTEP L2* in NSX.
 
 Next, you will configure the logical layer on NSX.
 
-## Configuring the Logical Layer</span>
+## Configuring the Logical Layer
 
 To complete the integration with NSX, you need to configure the logical
 layer, which requires defining a logical switch (the VXLAN instance) and
 all the logical ports needed.
 
-### Defining Logical Switches</span>
+### Defining Logical Switches
 
 To define the logical switch, do the following:
 
@@ -350,7 +350,7 @@ To define the logical switch, do the following:
     
     {{% imgOld 10 %}}
 
-### Defining Logical Switch Ports</span>
+### Defining Logical Switch Ports
 
 As the final step, define the logical switch ports. They can be virtual
 machine VIF interfaces from a registered OVS, or a VTEP gateway service
@@ -390,7 +390,7 @@ To define the logical switch ports, do the following:
     
     {{% imgOld 13 %}}
 
-## Verifying the VXLAN Configuration</span>
+## Verifying the VXLAN Configuration
 
 Once configured, you can verify the VXLAN configuration using these
 Cumulus Linux commands in a terminal connected to the switch:
@@ -410,7 +410,7 @@ or
     44:38:39:00:48:0e dev swp2s1.100 permanent
     44:38:39:00:48:0d dev swp2s0.100 permanent
 
-## Troubleshooting VXLANs in NSX</span>
+## Troubleshooting VXLANs in NSX
 
 Use `ovsdb-client dump` to troubleshoot issues on the switch. It
 verifies that the controller and switch handshake is successful. This

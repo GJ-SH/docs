@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126834
 pageID: 5126834
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -32,7 +32,7 @@ Cumulus Linux uses version 1 of the LAG control protocol (LACP).
 To temporarily bring up a bond even when there is no LACP partner, use
 [LACP Bypass](/version/cumulus-linux-321/Layer-One-and-Two/LACP-Bypass).
 
-## Hash Distribution</span>
+## Hash Distribution
 
 Egress traffic through a bond is distributed to a slave based on a
 packet hash calculation, providing load balancing over the slaves; many
@@ -56,7 +56,7 @@ over available slaves.
 
 {{%/notice%}}
 
-## Creating a Bond</span>
+## Creating a Bond
 
 Bonds can be created and configured using the Network Command Line
 Utility
@@ -82,7 +82,7 @@ The name of the bond must be:
 
 {{%/notice%}}
 
-### Configuration Options</span>
+### Configuration Options
 
 The configuration options, and their default values, are listed in the
 table below.
@@ -160,7 +160,7 @@ configuration values, refer to the Related Information section below.
 </tbody>
 </table>
 
-## Example Configuration: Bonding 4 Slaves</span>
+## Example Configuration: Bonding 4 Slaves
 
 In the following example, the front panel port interfaces swp1-swp4 are
 slaves in bond0, while swp5 and swp6 are not part of bond0.
@@ -239,7 +239,7 @@ address traffic to the bond.
 
 {{%/notice%}}
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - An interface cannot belong to multiple bonds.
 
@@ -250,7 +250,7 @@ address traffic to the bond.
   - Slave ports within a bond should all be set to the same
     speed/duplex, and should match the link partner’s slave ports.
 
-## Related Information</span>
+## Related Information
 
   - [Linux Foundation -
     Bonding](http://www.linuxfoundation.org/collaborate/workgroups/networking/bonding)

@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126769
 pageID: 5126769
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -75,7 +75,7 @@ proxy is set up correctly:
         cumulus@switch:~$ echo $https_proxy
         https://myproxy.domain.com:8080
 
-## Related Information</span>
+## Related Information
 
   - [Setting up an apt package
     cache](https://support.cumulusnetworks.com/hc/en-us/articles/232058388-Setting-up-an-apt-Package-Cache)

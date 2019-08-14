@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5127013
 pageID: 5127013
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -29,7 +29,7 @@ services.
 
 {{%/notice%}}
 
-## Configuring IPv4 DHCP Relays</span>
+## Configuring IPv4 DHCP Relays
 
 Configure `isc-dhcp-relay` using
 [NCLU](/version/cumulus-linux-321/System-Configuration/Network-Command-Line-Utility),
@@ -84,7 +84,7 @@ dhcrelay.service` command:
        CGroup: /system.slice/dhcrelay.service
                └─1997 /usr/sbin/dhcrelay --nl -d -q -i vlan1 -i swp51 -i swp52 172.16.1.102
 
-## Configuring IPv6 DHCP Relays</span>
+## Configuring IPv6 DHCP Relays
 
 If you're configuring IPv6, the `/etc/default/isc-dhcp-relay6` variables
 file has a different format than the `/etc/default/isc-dhcp-relay` file
@@ -120,7 +120,7 @@ dhcrelay6.service` command:
        CGroup: /system.slice/dhcrelay6.service
                └─6152 /usr/sbin/dhcrelay -6 --nl -d -q -l vlan1 -u 2001:db8:100::2 swp51 -u 2001:db8:100::2 swp52
 
-## Configuring the DHCP Relay Service Manually (Advanced)</span>
+## Configuring the DHCP Relay Service Manually (Advanced)
 
 <summary>Configuring the DHCP service manually ... </summary>
 
@@ -156,7 +156,7 @@ bridge](/version/cumulus-linux-321/Layer-One-and-Two/Ethernet-Bridging-VLANs/VLA
 (for example, vlan100), or the bridge name if using traditional bridging
 (for example, br100).
 
-## Troubleshooting the DHCP Relays</span>
+## Troubleshooting the DHCP Relays
 
 If you are experiencing issues with the DHCP relay, you can run the
 following commands to determine whether or not the issue is with
@@ -173,7 +173,7 @@ For example:
 
 See `man dhcrelay` for more information.
 
-### Looking at the Log on Switch where DHCP Relay Is Configured</span>
+### Looking at the Log on Switch where DHCP Relay Is Configured
 
 Use the `journalctl` command to look at the behavior on the Cumulus
 Linux switch that is providing the DHCP relay functionality:

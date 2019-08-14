@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126975
 pageID: 5126975
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -87,11 +87,11 @@ bridging using a hyperloop: </span>
     be provided by leaf switches and so it requires dedicated edge
     gateways to achieve the same, like NAT.
 
-## Exiting a VXLAN with a Hyperloop</span>
+## Exiting a VXLAN with a Hyperloop
 
-### <span id="src-5126975_VXLANHyperloop-hyperloop" class="confluence-anchor-link"></span>VXLAN Hyperloop</span>
+### VXLAN Hyperloop
 
-### </span>
+### 
 
 This limitation means a physical cable must be attached from one port on
 leaf1 to another port on leaf1. One port is an L3 port while the other
@@ -153,11 +153,11 @@ vni-10, you could configure the following on exit01:
         vxlan-local-tunnelip 10.0.0.11
         bridge-access 200
 
-### Packet Flow Diagram</span>
+### Packet Flow Diagram
 
 {{% imgOld 1 %}}
 
-### Trident II and Tomahawk switchd Flag</span>
+### Trident II and Tomahawk switchd Flag
 
 For the Broadcom Trident II and Tomahawk ASICs to be able to have a
 hyperloop work correctly, you must configure a `switchd` flag. This
@@ -186,7 +186,7 @@ limitation on this specific ASIC type.
 
 {{%/notice%}}
 
-## VXLAN Routing and Hyperloop Troubleshooting Matrix</span>
+## VXLAN Routing and Hyperloop Troubleshooting Matrix
 
   - **Are you running an ASIC capable of VXLAN?**  
       

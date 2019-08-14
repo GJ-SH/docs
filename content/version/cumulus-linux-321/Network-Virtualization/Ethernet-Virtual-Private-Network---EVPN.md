@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126939
 pageID: 5126939
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -40,7 +40,7 @@ Linux, with the following functionality:
     that MAC synchronization between the peer switches is done using
     [MLAG](/version/cumulus-linux-321/Layer-One-and-Two/Multi-Chassis-Link-Aggregation-MLAG).
 
-## Installing the EVPN Package</span>
+## Installing the EVPN Package
 
 {{%notice note%}}
 
@@ -62,8 +62,8 @@ To install EVPN on a switch:
 
 2.  Uncomment the early access repo lines and save the file:
     
-        #deb        http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
-        #deb-src    http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
+        #deb      http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
+        #deb-src  http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
     
     {{%notice info%}}
     
@@ -95,7 +95,7 @@ To install EVPN on a switch:
         +++-========================-=================-=================-=====================================================
         ii  quagga                    1.0.0+cl3eau8    amd64             BGP/OSPF/RIP routing daemon
 
-## Enabling Quagga</span>
+## Enabling Quagga
 
 [Quagga](/version/cumulus-linux-321/Layer-Three/Configuring-Quagga/)
 needs to be enabled prior to using EVPN.
@@ -114,9 +114,9 @@ needs to be enabled prior to using EVPN.
         cumulus@switch:~$ sudo systemctl enable quagga.service
         cumulus@switch:~$ sudo systemctl start quagga.service
 
-## Configuring EVPN</span>
+## Configuring EVPN
 
-### Enabling EVPN between BGP Neighbors</span>
+### Enabling EVPN between BGP Neighbors
 
 You enable EVPN between
 [BGP](/version/cumulus-linux-321/Layer-Three/Border-Gateway-Protocol-BGP)
@@ -144,10 +144,10 @@ peer-group must be activated within the EVPN address-family in Quagga:
      address-family evpn
       neighbor swp1 activate
 
-### Enabling EVPN in an iBGP Environment with an OSPF Underlay</span>
+### Enabling EVPN in an iBGP Environment with an OSPF Underlay
 
 EVPN can be deployed with an
-[OSPF](/version/cumulus-linux-321/Layer-Three/Open-Shortest-Path-First-OSPF---Protocol)
+[OSPF](/version/cumulus-linux-321/Layer-Three/Open-Shortest-Path-First-OSPF-Protocol)
 or static route underlay if needed. This is a more complex configuration
 than using eBGP. In this case, iBGP advertises EVPN routes directly
 between VTEPs, and the spines are unaware of EVPN or BGP.
@@ -185,7 +185,7 @@ community.
         Ospf router-id 10.1.1.1
         Passive-interface lo
 
-### Advertising All VNIs</span>
+### Advertising All VNIs
 
 A single configuration variable enables the BGP control plane for all
 VNIs configured on the switch. Set the variable `advertise-all-vni` to
@@ -215,7 +215,7 @@ route is locally known.
 
 {{%/notice%}}
 
-### Enabling EVPN with Route Distinguishers (RDs) and Route Targets (RTs)</span>
+### Enabling EVPN with Route Distinguishers (RDs) and Route Targets (RTs)
 
 EVPN can be provisioned with RDs and RTs either by automatically
 configuring them, or by manually defining them. In each case, the
@@ -235,7 +235,7 @@ import RT is actually treated as "\*:VNI" for determining which received
 routes are applicable to a particular VNI. This only applies when the
 import RT is auto-derived and not configured.
 
-#### Enabling EVPN with Automatic RDs and RTs</span>
+#### Enabling EVPN with Automatic RDs and RTs
 
 The `advertise-all-vni` option is sufficient for provisioning EVPN with
 RDs and RTs:
@@ -245,7 +245,7 @@ RDs and RTs:
       neighbor swp1 activate
       advertise-all-vni
 
-#### Enabling EVPN with User-defined RDs and RTs for Some VNIs</span>
+#### Enabling EVPN with User-defined RDs and RTs for Some VNIs
 
 To manually define RDs and RTs, use the `vni` option to configure the
 switch:
@@ -272,7 +272,7 @@ default value.
 
 {{%/notice%}}
 
-### Disabling Data Plane MAC Learning over VXLAN Tunnels</span>
+### Disabling Data Plane MAC Learning over VXLAN Tunnels
 
 When EVPN is provisioned, data plane MAC learning should be disabled for
 VxLAN interfaces to avoid race conditions between control plane learning
@@ -286,17 +286,17 @@ configure the `bridge-learning` value to *off*:
         bridge-learning off
         bridge-access 200
 
-## Handling BUM Traffic</span>
+## Handling BUM Traffic
 
 With EVPN, the only method of handling BUM traffic is [Head End
 Replication
-(HER)](Lightweight-Network-Virtualization---LNV-Overview.html#src-5126910_LightweightNetworkVirtualization-LNVOverview-head-end).
+(HER)](/version/cumulus-linux-321/Network-Virtualization/Lightweight-Network-Virtualization-LNV-Overview/).
 HER is enabled by default, as it is when [Lightweight Network
 Virtualization
 (LNV)](/display/CL321/Lightweight+Network+Virtualization+-+LNV+Overview)
 is used.
 
-## EVPN and VXLAN Active-Active Mode</span>
+## EVPN and VXLAN Active-Active Mode
 
 There is no specific configuration to enable EVPN to work with VXLAN
 active-active mode. Both switches in the MLAG pair establish EVPN
@@ -309,7 +309,7 @@ MLAG syncs information between the two switches in the MLAG pair, EVPN
 does not synchronize. Therefore, Cumulus Networks recommends you do not
 configure EVPN peering between the MLAG switches over the peerlink.
 
-## Example Configuration</span>
+## Example Configuration
 
 The following configurations are used throughout this chapter. You can
 find the flat-file configurations for the network devices in the Cumulus
@@ -320,7 +320,7 @@ for leaf03, leaf04, server03, server04). Here is the topology diagram:
 
 {{% imgOld 0 %}}
 
-### leaf01 and leaf02 Configurations</span>
+### leaf01 and leaf02 Configurations
 
 <table>
 <colgroup>
@@ -553,7 +553,7 @@ end</code></pre>
 </tbody>
 </table>
 
-### spine01 and spine02 Configurations</span>
+### spine01 and spine02 Configurations
 
 <table>
 <colgroup>
@@ -714,7 +714,7 @@ end</code></pre>
 </tbody>
 </table>
 
-### server01 and server02 Configurations</span>
+### server01 and server02 Configurations
 
 <table>
 <colgroup>
@@ -762,7 +762,7 @@ iface eth2.200
 </tbody>
 </table>
 
-## Testing Connectivity between Servers</span>
+## Testing Connectivity between Servers
 
 SSH to server01 and ping the VLAN1 IP address on server02:
 
@@ -784,7 +784,7 @@ connectivity across the L3 fabric:
 | VLAN100 | 172.16.100.101 | 172.16.100.102 | 172.16.100.103 | 172.16.100.104 |
 | VLAN200 | 172.16.200.101 | 172.16.200.102 | 172.16.200.103 | 172.16.200.104 |
 
-## Cumulus Linux Output Commands</span>
+## Cumulus Linux Output Commands
 
 You can use various `iproute2` commands to examine links, VLAN mappings
 and displaying bridge FDB data:
@@ -832,7 +832,7 @@ reveals information relevant only for a VTEP.
     02:02:00:00:00:02 dev bond0 vlan 1 master bridge 
     00:02:00:00:00:03 dev bond0 vlan 100 master bridge 
 
-## BGP Output Commands</span>
+## BGP Output Commands
 
 The following commands are not unique to EVPN but help troubleshoot
 connectivity and route propagation. You can display the L3 fabric by
@@ -869,13 +869,13 @@ participating in BGP by running the `show ip bgp` command:
     *> 10.0.0.21/32     0.0.0.0                  0          32768 i
     Displayed  5 out of 5 total prefixes
 
-## EVPN Output Commands</span>
+## EVPN Output Commands
 
 The following commands are unique to EVPN address-families and VXLAN.
 Note that just because two network nodes are BGP peers does not mean
 they are EVPN address-family peers or are exchanging VXLAN information.
 
-### Displaying EVPN address-family Peers</span>
+### Displaying EVPN address-family Peers
 
 The network device participating in BGP EVPN address-family can be shown
 using the ` show bgp evpn summary  `command
@@ -901,7 +901,7 @@ You cannot configure EVPN address families within a
 
 {{%/notice%}}
 
-### Displaying VNIs</span>
+### Displaying VNIs
 
 You can display the configured VNIs on a network device participating in
 BGP EVPN by running the `show bgp evpn vni` command. This command works
@@ -957,7 +957,7 @@ EVPN section is shown):
  exit-address-family
 ```
 
-### Displaying EVPN VXLANs</span>
+### Displaying EVPN VXLANs
 
 Run the `show evpn vni [<vni>]` command to list all local configured
 VXLANs and remote VTEPs. This command only works when run on a VTEP.
@@ -990,7 +990,7 @@ To see the EVPN configuration for a single VXLAN:
       10.0.0.5
      Number of MACs (local and remote) known for this VNI: 2
 
-### Examining Local and Remote MAC Addresses for a VNI in Quagga</span>
+### Examining Local and Remote MAC Addresses for a VNI in Quagga
 
 You can examine all local and remote MAC addresses for a VNI by running
 `show evpn mac vni <vni>`.
@@ -1039,7 +1039,7 @@ MAC address. This command only works when run on a VTEP:
     MAC               Type   Intf/Remote VTEP      VLAN 
     00:02:00:00:00:08 remote 80.80.80.2 
 
-### Displaying the Global BGP EVPN Routing Table</span>
+### Displaying the Global BGP EVPN Routing Table
 
 Run the `show bgp evpn route [type <multicast | macip>]` command to
 display all EVPN routes at the same time:
@@ -1090,7 +1090,7 @@ display all EVPN routes at the same time:
      
     Displayed 15 prefixes (26 paths)
 
-#### Output Explained</span>
+#### Output Explained
 
   - The output ` *> [3]:[0]:[32]:[10.0.0.14]  `is explained as follows:
     
@@ -1102,7 +1102,7 @@ display all EVPN routes at the same time:
     | 10.0.0.14 | IPv4 address originating this route |
     
 
-### Displaying EVPN Type-2 (MAC/IP) Routes</span>
+### Displaying EVPN Type-2 (MAC/IP) Routes
 
 To display only EVPN type-2 (MAC/IP) routes, run `show bgp evpn route
 type macip`. The output displays the EVPN route-type fields followed by
@@ -1156,7 +1156,7 @@ type-specific fields:
                         10.0.0.6                               0 65100 65006 i
     Displayed 5 prefixes (8 paths) (of requested type)
 
-### Displaying a Specific EVPN Route</span>
+### Displaying a Specific EVPN Route
 
 To drill down on a specific route for more information, run the `show
 bgp evpn route rd <VTEP:VXLAN>` command. The following example shows
@@ -1231,7 +1231,7 @@ carries the VNI (10100).
 
 {{%/notice%}}
 
-### Displaying the per-VNI EVPN Routing Table</span>
+### Displaying the per-VNI EVPN Routing Table
 
 Received EVPN routes are maintained in the global EVPN routing table
 (described above), even if there are no appropriate local VNIs to
@@ -1264,7 +1264,7 @@ routing table can be examined using `show bgp evpn route vni <vni> [type
      
     Displayed 6 prefixes (10 paths)
 
-### Displaying a Specific MAC or Remote VTEP</span>
+### Displaying a Specific MAC or Remote VTEP
 
 You can examine a specific MAC or IP (remote VTEP):
 
@@ -1340,7 +1340,7 @@ vni all`:
      
     Displayed 6 prefixes (10 paths)
 
-## Troubleshooting EVPN</span>
+## Troubleshooting EVPN
 
 The primary way to troubleshoot EVPN is by enabling Quagga debug logs.
 The relevant debug options are:
@@ -1358,7 +1358,7 @@ The relevant debug options are:
   - `debug bgp zebra` - which traces interactions between BGP and zebra
     for EVPN (and other) routes.
 
-## Caveats</span>
+## Caveats
 
 The following caveat applies to EVPN in Cumulus Linux 3.2.x:
 

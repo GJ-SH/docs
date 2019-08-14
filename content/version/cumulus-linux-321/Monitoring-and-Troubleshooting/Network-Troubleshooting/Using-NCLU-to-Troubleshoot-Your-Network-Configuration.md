@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126781
 pageID: 5126781
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -16,7 +16,7 @@ utility](/version/cumulus-linux-321/System-Configuration/Network-Command-Line-Ut
 (NCLU) can quickly return a lot of information about your network
 configuration.
 
-## Using net show Commands</span>
+## Using net show Commands
 
 Running `net show` and pressing TAB displays all available command line
 arguments usable by `net`. The output looks like this:
@@ -46,7 +46,7 @@ arguments usable by `net`. The output looks like this:
         system         :  System information
         version        :  Version number
 
-## Showing Interfaces</span>
+## Showing Interfaces
 
 To show all available interfaces that are physically UP, run `net show
 interface`:
@@ -103,7 +103,7 @@ system`:
     Build: Cumulus Linux 3.2.0
     Uptime: 8 days, 0:45:29
 
-## Other Useful Features</span>
+## Other Useful Features
 
 NCLU uses the [python
 network-docopt](https://pypi.python.org/pypi/network-docopt) package.
@@ -114,7 +114,7 @@ and running the complete option. For example:
 `net show int` runs `netshow interface`  
 `net show sys` runs `netshow system`
 
-## Installing netshow on a Linux Server</span>
+## Installing netshow on a Linux Server
 
 `netshow` is a tool developed by Cumulus Networks for troubleshooting
 networks. In Cumulus Linux, it's been replaced by NCLU. However, NCLU is

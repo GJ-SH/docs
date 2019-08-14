@@ -7,13 +7,13 @@ aliases:
  - /pages/viewpage.action?pageId=5126936
 pageID: 5126936
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
 Cumulus Linux includes native Linux VXLAN kernel support.
 
-## Requirements</span>
+## Requirements
 
 A VXLAN configuration requires a switch with a Broadcom Tomahawk,
 Trident II+ or Trident II chipset running Cumulus Linux 2.0 or later, or
@@ -33,7 +33,7 @@ For a basic VXLAN configuration, you should ensure that:
     [traditional mode
     bridges](/version/cumulus-linux-321/Layer-One-and-Two/Ethernet-Bridging-VLANs/Traditional-Mode-Bridges).
 
-## Example VXLAN Configuration</span>
+## Example VXLAN Configuration
 
 Consider the following example:
 
@@ -51,7 +51,7 @@ NSX](https://docs.cumulusnetworks.com/pages/viewpage.action?pageId=2722660).
 
 {{%/notice%}}
 
-## Configuring the Static MAC Bindings VXLAN</span>
+## Configuring the Static MAC Bindings VXLAN
 
 To configure the example illustrated above, first create the following
 configuration on switch1:
@@ -109,18 +109,18 @@ These commands create the following configuration in the
         post-up bridge fdb add 00:00:10:00:00:0A dev vtep1000 dst 172.10.1.1 vni 1000
         post-up bridge fdb add 00:00:10:00:00:0B dev vtep1000 dst 172.10.1.1 vni 1000
 
-## Troubleshooting VXLANs in Cumulus Linux</span>
+## Troubleshooting VXLANs in Cumulus Linux
 
 Use the following commands to troubleshoot issues on the switch:
 
   - `brctl show`: Verifies the VXLAN configuration in a bridge:
     
         cumulus@switch:~$ brctl show
-        bridge name bridge id           STP enabled   interfaces
-        bridge      8000.2a179a8cc471   yes           swp1
-                                                      swp2
-                                                      vni-10
-                                                      vni-2000
+        bridge name   bridge id           STP enabled   interfaces
+        bridge        8000.2a179a8cc471   yes           swp1
+                                                    swp2
+                                                    vni-10
+                                                        vni-2000
 
   - `bridge fdb show`: Displays the list of MAC addresses in an FDB:
     

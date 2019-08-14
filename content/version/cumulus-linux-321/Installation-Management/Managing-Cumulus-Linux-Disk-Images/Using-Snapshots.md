@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126828
 pageID: 5126828
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -38,7 +38,7 @@ The primary snapshot components are:
     configurations. You can use NCLU to roll back to earlier snapshots,
     view existing snapshots, or delete one or more snapshots.
 
-## Installing the Snapshot Package</span>
+## Installing the Snapshot Package
 
 If you're upgrading from a version of Cumulus Linux earlier than version
 3.2, you need to install the `cumulus-snapshot` package before you can
@@ -48,7 +48,7 @@ use snapshots.
     cumulus@switch:~$ sudo apt-get install cumulus-snapshot
     cumulus@switch:~$ sudo apt-get upgrade
 
-## Taking and Managing Snapshots</span>
+## Taking and Managing Snapshots
 
 As described above, snapshots are taken automatically:
 
@@ -65,7 +65,7 @@ You can also take snapshots as needed using the `snapper` utility. Run:
 For more information about using `snapper`, run `snapper --help` or `man
 snapper(8)`.
 
-### Viewing Available Snapshots</span>
+### Viewing Available Snapshots
 
 You can use both NCLU and `snapper` to view available snapshots on the
 switch.
@@ -103,13 +103,13 @@ pre    | 31 |       | Fri 02 Dec 2016 12:18:08 AM UTC | root | number  | nclu pr
 post   | 32 | 31    | Fri 02 Dec 2016 12:18:10 AM UTC | root | number  | nclu post 'ACL' (user cumulus)         |            
 ```
 
-### Viewing Differences between Snapshots</span>
+### Viewing Differences between Snapshots
 
 To see a line by line comparison of changes between two snapshots, run:
 
     cumulus@switch:~$ sudo snapper diff 20..21
-    --- /.snapshots/20/snapshot/etc/cumulus/acl/policy.d/50_nclu_acl.rules  2016-11-30 23:00:42.675092103 +0000
-    +++ /.snapshots/21/snapshot/etc/cumulus/acl/policy.d/50_nclu_acl.rules  2016-12-01 01:43:30.029171289 +0000
+    --- /.snapshots/20/snapshot/etc/cumulus/acl/policy.d/50_nclu_acl.rules   2016-11-30 23:00:42.675092103 +0000
+    +++ /.snapshots/21/snapshot/etc/cumulus/acl/policy.d/50_nclu_acl.rules   2016-12-01 01:43:30.029171289 +0000
     @@ -1,7 +0,0 @@
     -[iptables]
     -# control-plane: acl ipv4 EXAMPLE1 inbound
@@ -118,8 +118,8 @@ To see a line by line comparison of changes between two snapshots, run:
     -# swp1: acl ipv4 EXAMPLE1 inbound
     --A FORWARD --in-interface swp1 --out-interface swp2 -j ACCEPT -p tcp -s 10.0.0.11/32 -d 10.0.0.12/32 --dport 110
     -
-    --- /.snapshots/20/snapshot/var/lib/cumulus/nclu/nclu_acl.conf  2016-11-30 23:00:18.030079000 +0000
-    +++ /.snapshots/21/snapshot/var/lib/cumulus/nclu/nclu_acl.conf  2016-12-01 00:23:10.096136000 +0000
+    --- /.snapshots/20/snapshot/var/lib/cumulus/nclu/nclu_acl.conf   2016-11-30 23:00:18.030079000 +0000
+    +++ /.snapshots/21/snapshot/var/lib/cumulus/nclu/nclu_acl.conf   2016-12-01 00:23:10.096136000 +0000
     @@ -1,8 +1,3 @@
     -acl ipv4 EXAMPLE1 priority 10 accept tcp 10.0.0.11/32 10.0.0.12/32 pop3 outbound-interface swp2
      
@@ -133,8 +133,8 @@ You can view the diff for a single file by specifying the name in the
 command:
 
     cumulus@switch:~$ sudo snapper diff 20..21 /var/lib/cumulus/nclu/nclu_acl.conf 
-    --- /.snapshots/20/snapshot/var/lib/cumulus/nclu/nclu_acl.conf  2016-11-30 23:00:18.030079000 +0000
-    +++ /.snapshots/21/snapshot/var/lib/cumulus/nclu/nclu_acl.conf  2016-12-01 00:23:10.096136000 +0000
+    --- /.snapshots/20/snapshot/var/lib/cumulus/nclu/nclu_acl.conf   2016-11-30 23:00:18.030079000 +0000
+    +++ /.snapshots/21/snapshot/var/lib/cumulus/nclu/nclu_acl.conf   2016-12-01 00:23:10.096136000 +0000
     @@ -1,8 +1,3 @@
     -acl ipv4 EXAMPLE1 priority 10 accept tcp 10.0.0.11/32 10.0.0.12/32 pop3 outbound-interface swp2
      
@@ -151,7 +151,7 @@ files only, run:
     c..... /etc/cumulus/acl/policy.d/50_nclu_acl.rules
     c..... /var/lib/cumulus/nclu/nclu_acl.conf
 
-### Deleting Snapshots</span>
+### Deleting Snapshots
 
 You can remove one or more snapshots using both NCLU and snapper.
 
@@ -209,7 +209,7 @@ and running `apt-get upgrade|install|remove|dist-upgrade`. Edit
 
     APT_SNAPSHOT_ENABLE=no
 
-## Rolling Back to Earlier Snapshots</span>
+## Rolling Back to Earlier Snapshots
 
 If you need to restore Cumulus Linux to an earlier state, you can roll
 back to an older snapshot.
@@ -240,7 +240,7 @@ You can also copy the file directly from the snapshot directory:
 
 {{%/notice%}}
 
-## Configuring Automatic Time-based Snapshots</span>
+## Configuring Automatic Time-based Snapshots
 
 You can configure Cumulus Linux to take hourly snapshots. You need to
 enable `TIMELINE_CREATE` in the snapper configuration:
@@ -271,9 +271,9 @@ enable `TIMELINE_CREATE` in the snapper configuration:
     TIMELINE_LIMIT_YEARLY  | 5    
     TIMELINE_MIN_AGE       | 1800 
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
-### root Partition Mounted Multiple Times</span>
+### root Partition Mounted Multiple Times
 
 You may notice that the root partition gets mounted multiple times. This
 is due to the way the `btrfs` file system handles subvolumes, mounting

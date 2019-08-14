@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5127061
 pageID: 5127061
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -24,7 +24,7 @@ Cumulus Linux does not support demand mode in BFD.
 
 {{%/notice%}}
 
-## Using BFD Multihop Routed Paths</span>
+## Using BFD Multihop Routed Paths
 
 BFD multihop sessions are built over arbitrary paths between two
 systems, which results in some complexity that does not exist for single
@@ -44,7 +44,7 @@ hop sessions. Here are some best practices for using multihop paths:
 Multihop BFD sessions are supported for both IPv4 and IPv6 peers. See
 below for more details.
 
-## BFD Parameters</span>
+## BFD Parameters
 
 You can configure the following BFD parameters for both IPv4 and IPv6
 sessions:
@@ -56,7 +56,7 @@ sessions:
 
   - The detection time multiplier.
 
-## Configuring BFD</span>
+## Configuring BFD
 
 You configure BFD one of two ways: by specifying the configuration in
 the [PTM `topology.dot`
@@ -109,7 +109,7 @@ table before BFD can start sending control packets.
 
 {{%/notice%}}
 
-### BFD in BGP</span>
+### BFD in BGP
 
 For Quagga when using **BGP**, neighbors are registered and
 de-registered with
@@ -191,7 +191,7 @@ name (`swp#`).
 
 {{%/notice%}}
 
-### BFD in OSPF</span>
+### BFD in OSPF
 
 For Quagga using **OSFP**, neighbors are registered and de-registered
 dynamically with
@@ -204,7 +204,7 @@ discovered on that interface inherit the configuration.
 
     cumulus@switch:~$ net add interface swp1 ospf6 bfd 5 500 500
 
-### OSPF Show Commands</span>
+### OSPF Show Commands
 
 The BFD lines at the end of each code block shows the corresponding IPv6
 or IPv4 OSPF interface or neighbor information.
@@ -280,7 +280,7 @@ or IPv4 OSPF interface or neighbor information.
           Detect Mul: 5, Min Rx interval: 500, Min Tx interval: 500
           Status: Down, Last update: 0:00:01:29
 
-### Scripts</span>
+### Scripts
 
 `ptmd` executes scripts at `/etc/ptm.d/bfd-sess-down` and
 ` /etc/ptm.d/bfd-sess-up  `for when BFD sessions go down or up, running
@@ -289,7 +289,7 @@ when a BFD session goes up.
 
 You should modify these default scripts as needed.
 
-### Echo Function</span>
+### Echo Function
 
 Cumulus Linux supports the *echo function* for IPv4 single hops only,
 and with the a synchronous operating mode only (Cumulus Linux does not
@@ -313,7 +313,7 @@ are sent out at this required minimum echo Rx interval. This indicates
 to the peer that the local system can loop back the echo packets. Echo
 packets are transmitted if the peer supports receiving echo packets.
 
-#### About the Echo Packet</span>
+#### About the Echo Packet
 
 BFD echo packets are encapsulated into UDP packets over destination and
 source UDP port number 3785. The BFD echo packet format is
@@ -408,7 +408,7 @@ Where:
     receives the packet after being looped back by the receiving system,
     this value uniquely identifies the BFD session.
 
-#### Transmitting and Receiving Echo Packets</span>
+#### Transmitting and Receiving Echo Packets
 
 BFD echo packets are transmitted for a BFD session only when the peer
 has advertised a non-zero value for the required minimum echo Rx
@@ -420,7 +420,7 @@ BFD echo packets are looped back to the originating node for a BFD
 session only if locally the `echoMinRx` and `echoSupport` are configured
 to a non-zero values.
 
-#### Using Echo Function Parameters</span>
+#### Using Echo Function Parameters
 
 You configure the echo function by setting the following parameters in
 the topology file at the global, template and port level:
@@ -438,7 +438,7 @@ the topology file at the global, template and port level:
   - **slowMinTx:** The minimum interval between transmitting BFD control
     packets when the echo packets are being exchanged.
 
-## Troubleshooting BFD</span>
+## Troubleshooting BFD
 
 To troubleshoot BFD, use `ptmctl -b`. For more information, see
 [Prescriptive Topology Manager -

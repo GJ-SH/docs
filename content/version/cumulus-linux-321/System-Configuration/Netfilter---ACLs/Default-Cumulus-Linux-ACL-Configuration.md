@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126767
 pageID: 5126767
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -196,7 +196,7 @@ ACL Configuration link:
      
     Bridge chain: OUTPUT, entries: 0, policy: ACCEPT
 
-## IP Tables</span>
+## IP Tables
 
 <table>
 <colgroup>
@@ -310,7 +310,7 @@ bits.
 
 {{%/notice%}}
 
-## IPv6 Tables</span>
+## IPv6 Tables
 
 <table>
 <colgroup>
@@ -441,7 +441,7 @@ bits.
 
 {{%/notice%}}
 
-## EB Tables</span>
+## EB Tables
 
 <table>
 <colgroup>

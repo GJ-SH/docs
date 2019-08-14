@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5126868
 pageID: 5126868
 product: Cumulus Linux
-version: 3.2.1
+version: '3.2'
 imgData: cumulus-linux-321
 siteSlug: cumulus-linux-321
 ---
@@ -97,9 +97,9 @@ Router Redundancy Protocol (VRRP), as they serve similar purposes.
 
 {{%/notice%}}
 
-## Configuring a VRR-enabled Network</span>
+## Configuring a VRR-enabled Network
 
-### Configuring the Routers</span>
+### Configuring the Routers
 
 The routers implement the layer 2 network interconnecting the hosts and
 the redundant routers. To configure the routers, add a bridge with the
@@ -157,7 +157,7 @@ snippet:
 
 {{%/notice%}}
 
-### Configuring the Hosts</span>
+### Configuring the Hosts
 
 Each host should have two network interfaces. The routers configure the
 interfaces as bonds running LACP; the hosts should also configure its
