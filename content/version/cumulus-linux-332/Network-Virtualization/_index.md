@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869017
 pageID: 5869017
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -59,12 +59,12 @@ destination.
 
 {{%/notice%}}
 
-## Caveats/Errata</span>
+## Caveats/Errata
 
-### Cut-through Mode and Store & Forward Switching</span>
+### Cut-through Mode and Store & Forward Switching
 
 [Cut-through
-mode](Buffer-and-Queue-Management.html#src-5869179_BufferandQueueManagement-cut_through_mode)
+mode](/version/cumulus-linux-332/Interface-Configuration-and-Management/Buffer-and-Queue-Management/)
 is **not** supported for VXLANs in Cumulus Linux on switches using
 Broadcom Tomahawk, Trident II+ and Trident II ASICs. Store and forward
 switching **is** supported on these ASICs however.
@@ -73,15 +73,15 @@ Cut-through mode **is** supported for VXLANs in Cumulus Linux on
 switches using Mellanox Spectrum ASICs. However, store and forward
 switching is **not** supported on Spectrum.
 
-### MTU Size for Virtual Network Interfaces</span>
+### MTU Size for Virtual Network Interfaces
 
 The maximum transmission unit (MTU) size for a virtual network interface
 should by 50 bytes smaller than the MTU for the physical interfaces on
 the switch. For more information on setting MTU, read [Layer 1 and
 Switch Port
-Attributes](Layer-1-and-Switch-Port-Attributes.html#src-5869171_Layer1andSwitchPortAttributes-mtu_vxlan).
+Attributes](/version/cumulus-linux-332/Interface-Configuration-and-Management/Layer-1-and-Switch-Port-Attributes).
 
-## Useful Links</span>
+## Useful Links
 
   - [VXLAN IETF
     draft](http://tools.ietf.org/html/draft-mahalingam-dutt-dcops-vxlan-06)

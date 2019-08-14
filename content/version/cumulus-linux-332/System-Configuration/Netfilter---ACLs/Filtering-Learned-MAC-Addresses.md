@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5868895
 pageID: 5868895
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -128,7 +128,7 @@ These commands create the following configuration in the
         pre-up bridge fdb add 00:00:00:00:00:55 dev swp5 master static vlan 500
         pre-up bridge fdb add 00:00:00:00:00:66 dev swp6 master static vlan 600
 
-## Interactions with EVPN</span>
+## Interactions with EVPN
 
 If you are using
 [EVPN](/version/cumulus-linux-332/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN),

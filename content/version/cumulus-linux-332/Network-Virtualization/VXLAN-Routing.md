@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869077
 pageID: 5869077
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -45,7 +45,7 @@ Because it is an EA feature, it has these limitations:
 
 {{%/notice%}}
 
-## Installing the VXLAN Routing Package</span>
+## Installing the VXLAN Routing Package
 
 To install the VXLAN routing package on a Cumulus Linux switch, [follow
 these
@@ -53,7 +53,7 @@ steps](https://support.cumulusnetworks.com/hc/en-us/articles/202933878),
 using *cumulus-vxlan-routing* as the `EA_PACKAGENAME` in step 3. This
 article also has steps for removing the package.
 
-## Configuring VXLAN Routing</span>
+## Configuring VXLAN Routing
 
 1.  Configure VXLAN routing between two overlay subnets.:
     
@@ -137,7 +137,7 @@ These commands create the following configuration in the
         vxlan-id 11001
         vxlan-local-tunnelip 27.0.0.15
 
-## Viewing VXLAN Routing Information</span>
+## Viewing VXLAN Routing Information
 
 You can use the following commands to display VXLAN routing-related
 information:

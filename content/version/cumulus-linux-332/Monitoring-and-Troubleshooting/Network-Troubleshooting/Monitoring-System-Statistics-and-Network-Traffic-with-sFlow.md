@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5868915
 pageID: 5868915
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -23,14 +23,14 @@ collectors. `hsflowd` is not included in the base Cumulus Linux
 installation. After installation, `hsflowd` will automatically start
 when the switch boots up.
 
-## Installing hsflowd</span>
+## Installing hsflowd
 
 To download and install the `hsflowd` package, use `apt-get`:
 
     cumulus@switch:~$ sudo -E apt-get update
     cumulus@switch:~$ sudo -E apt-get install -y hsflowd
 
-## Configuring sFlow</span>
+## Configuring sFlow
 
 You can configure `hsflowd` to send to the designated collectors via two
 methods:
@@ -39,7 +39,7 @@ methods:
 
   - Manually configuring `/etc/hsflowd.conf`
 
-### Configuring sFlow via DNS-SD</span>
+### Configuring sFlow via DNS-SD
 
 With this method, you need to configure your DNS zone to advertise the
 collectors and polling information to all interested clients. Add the
@@ -79,7 +79,7 @@ running:
 
 No additional configuration is required in `/etc/hsflowd.conf`.
 
-### Manually Configuring /etc/hsflowd.conf</span>
+### Manually Configuring /etc/hsflowd.conf
 
 With this method you will set up the collectors and variables on each
 switch.
@@ -123,13 +123,13 @@ for your collector for more information.
 
 {{%/notice%}}
 
-## Configuring sFlow Visualization Tools</span>
+## Configuring sFlow Visualization Tools
 
 For information on configuring various sFlow visualization tools, read
 this [Help Center
 article](https://support.cumulusnetworks.com/hc/en-us/articles/201787866--WIP-Configuring-and-using-sFlow-visualization-tools).
 
-## Related Information</span>
+## Related Information
 
   - [sFlow Collectors](http://www.sflow.org/products/collectors.php)
 

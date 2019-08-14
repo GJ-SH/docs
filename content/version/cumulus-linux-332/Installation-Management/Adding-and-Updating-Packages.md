@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5868946
 pageID: 5868946
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -45,7 +45,7 @@ can be started again.
 
 {{%/notice%}}
 
-## Updating the Package Cache</span>
+## Updating the Package Cache
 
 To work properly, APT relies on a local cache of the available packages.
 You must populate the cache initially, and then periodically update it
@@ -91,7 +91,7 @@ upgrade your distribution.
 
 {{%/notice%}}
 
-## Listing Available Packages</span>
+## Listing Available Packages
 
 Once the cache is populated, use `apt-cache` to search the cache to find
 the packages you are interested in or to get information about an
@@ -146,7 +146,7 @@ will match on more packages than you would expect.
 
 {{%/notice%}}
 
-## Adding a Package</span>
+## Adding a Package
 
 In order to add a new package, first ensure the package is not already
 installed in the system:
@@ -184,7 +184,7 @@ For example, the following adds the package `tcpreplay` to the system:
     Setting up tcpreplay (4.6.2-5+deb8u1) ...
     cumulus@switch:~$ 
 
-## Listing Installed Packages</span>
+## Listing Installed Packages
 
 The APT cache contains information about all the packages available on
 the repository. To see which packages are actually installed on your
@@ -201,9 +201,9 @@ system that have "tcp" in their package names:
     ii  tcpdump                       4.6.2-5+deb8u1      amd64               command-line network traffic analyzer
     cumulus@switch:~$
 
-## Upgrading to Newer Versions of Installed Packages</span>
+## Upgrading to Newer Versions of Installed Packages
 
-### Upgrading a Single Package</span>
+### Upgrading a Single Package
 
 A single package can be upgraded by simply installing that package again
 with `apt-get install`. You should perform an update first so that the
@@ -213,13 +213,13 @@ To see if a package needs to be upgraded, use `apt-cache show <pkgname>`
 to show the latest version number of the package. Use `dpkg -l
 <pkgname>` to show the version number of the installed package.
 
-### Upgrading All Packages</span>
+### Upgrading All Packages
 
 You can update all packages on the system by running `apt-get update`,
 then `apt-get upgrade`. This upgrades all installed versions with their
 latest versions but will not install any new packages.
 
-## Adding Packages from Another Repository</span>
+## Adding Packages from Another Repository
 
 As shipped, Cumulus Linux searches the Cumulus Linux repository for
 available packages. You can add additional repositories to search by
@@ -313,7 +313,7 @@ To install a new package, please complete the following steps:
         cumulus@switch:~$ sudo -E apt-get install {name of package}
         cumulus@switch:~$ sudo -E apt-get upgrade
 
-## Related Information</span>
+## Related Information
 
   - [Debian GNU/Linux FAQ, Ch 8 Package management
     tools](http://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html)

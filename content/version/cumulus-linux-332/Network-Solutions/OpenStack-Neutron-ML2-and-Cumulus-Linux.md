@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869263
 pageID: 5869263
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -51,7 +51,7 @@ Cumulus Linux switches, you need to install two packages:
 
 {{% imgOld 0 %}}
 
-## Installing and Configuring the REST API</span>
+## Installing and Configuring the REST API
 
 To install the `python-falcon` and `python-cumulus-restapi` packages,
 follow these instructions:
@@ -88,7 +88,7 @@ follow these instructions:
 Additional REST API calls have been added to support the configuration
 of bridge using the bridge name instead of network ID.
 
-## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver</span>
+## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver
 
 You need to install the Cumulus Networks ML2 mechanism driver on your
 Neutron host, which is available upstream:
@@ -134,7 +134,7 @@ You configure them in the
     for the bridge configuration. The default value is *False*, so a
     traditional mode bridge is created.
 
-## Demo</span>
+## Demo
 
 A demo involving OpenStack with Cumulus Linux is available in the
 [Cumulus Networks knowledge

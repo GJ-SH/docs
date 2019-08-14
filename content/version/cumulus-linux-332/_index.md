@@ -1,18 +1,18 @@
 ---
 title: Cumulus Linux User Guide
 author: Cumulus Networks
-weight: -33
+weight: 1
 aliases:
  - /display/CL332/Cumulus+Linux+User+Guide
  - /pages/viewpage.action?pageId=5868850
 pageID: 5868850
 product: Cumulus Linux
-version: 3.3
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 subsection: true
 ---
-## Introducing Cumulus Linux</span>
+## Introducing Cumulus Linux
 
 Cumulus Linux is the networking industry's first full-featured Linux
 operating system. The [Debian
@@ -36,7 +36,7 @@ Read the [release
 notes](https://support.cumulusnetworks.com/hc/en-us/articles/115009424527)
 for new features and known issues in this release.
 
-### What's New in Cumulus Linux 3.3.2</span>
+### What's New in Cumulus Linux 3.3.2
 
 Cumulus Linux 3.3.2 bug fixes only, as well as these [early
 access](https://support.cumulusnetworks.com/hc/en-us/articles/202933878)
@@ -53,7 +53,7 @@ For further information regarding bug fixes and known issues present in
 this release, refer to the [product release
 notes](https://support.cumulusnetworks.com/hc/en-us/articles/115009424527-Cumulus-Linux-3-3-2-Release-Notes).
 
-### Open Source Contributions</span>
+### Open Source Contributions
 
 Cumulus Networks has forked various software projects, like CFEngine,
 `Netdev` and some Puppet Labs packages in order to implement various
@@ -66,7 +66,7 @@ applications as well.
 The list of open source projects is on the [open source
 software](http://oss.cumulusnetworks.com/) page.
 
-### Hardware Compatibility List</span>
+### Hardware Compatibility List
 
 You can find the most up to date hardware compatibility list (HCL)
 [here](http://cumulusnetworks.com/hcl/). Use the HCL to confirm that

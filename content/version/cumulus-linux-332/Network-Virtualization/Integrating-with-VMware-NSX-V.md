@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869131
 pageID: 5869131
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -17,7 +17,7 @@ provisioning across virtual and physical server infrastructures.
 
 {{% imgOld 0 %}}
 
-## Getting Started</span>
+## Getting Started
 
 Before you integrate VXLANs with NSX-V, make sure you have the following
 components:
@@ -39,7 +39,7 @@ Integrating a VXLAN with NSX-V involves:
 
   - Verifying the VXLAN configuration
 
-### Caveats and Errata</span>
+### Caveats and Errata
 
   - As mentioned in [Network
     Virtualization](/version/cumulus-linux-332/Network-Virtualization/),
@@ -66,14 +66,14 @@ Integrating a VXLAN with NSX-V involves:
   - For more information about NSX-V, see the VMware NSX User Guide,
     version 4.0.0 or later.
 
-## Bootstrapping the NSX-V Integration</span>
+## Bootstrapping the NSX-V Integration
 
 Before you start configuring the gateway service and logical switches
 and ports that comprise the VXLAN, you need to complete some steps to
 bootstrap the process. You need to do the bootstrapping just once,
 before you begin the integration.
 
-### Enabling the openvswitch-vtep Package</span>
+### Enabling the openvswitch-vtep Package
 
 Before you start bootstrapping the integration, you need to enable then
 start the `openvswitch-vtep` package, as it is disabled by default in
@@ -82,7 +82,7 @@ Cumulus Linux.
     cumulus@switch$ sudo systemctl enable openvswitch-vtep.service
     cumulus@switch$ sudo systemctl start openvswitch-vtep.service
 
-### Using the Bootstrapping Script</span>
+### Using the Bootstrapping Script
 
 A script is available so you can do the bootstrapping automatically. For
 information, read `man vtep-bootstrap`.
@@ -98,9 +98,9 @@ information, read `man vtep-bootstrap`.
     positional arguments:
       switch_name         Switch name
       tunnel_ip           local VTEP IP address for tunnel termination (data
-                          plane)
+                        plane)
       management_ip       local management interface IP address for OVSDB
-                          conection (control plane)
+                        conection (control plane)
      
      
     optional arguments:
@@ -156,7 +156,7 @@ In the above example, the following information was passed to the
 These IP addresses will be used throughout the rest of the examples
 below.
 
-### Manually Bootstrapping the NSX-V Integration</span>
+### Manually Bootstrapping the NSX-V Integration
 
 If you don’t use the script, then you must:
 
@@ -168,7 +168,7 @@ If you don’t use the script, then you must:
 
 These steps are described next.
 
-### Generating the Credentials Certificate</span>
+### Generating the Credentials Certificate
 
 First, in Cumulus Linux, you must generate a certificate that the NSX
 controller uses for authentication.
@@ -234,7 +234,7 @@ Once you finish generating the certificate, keep the terminal session
 active, as you need to paste the certificate into NSX Manager when you
 configure the VTEP gateway.
 
-### Configuring the Switch as a VTEP Gateway</span>
+### Configuring the Switch as a VTEP Gateway
 
 After you create a certificate, connect to NSX Manager in a browser to
 configure a Cumulus Linux switch as a hardware VTEP gateway. In this
@@ -286,7 +286,7 @@ connected to the switch, run this command:
     status              : {sec_since_connect="557", state=ACTIVE}
     target              : "ssl:192.168.110.110:6640"
 
-## Configuring the Transport Zone and Segment ID</span>
+## Configuring the Transport Zone and Segment ID
 
 After you finish bootstrapping the NSX-V integration, you need to
 configure the transport zone and segment ID.
@@ -317,13 +317,13 @@ configure the transport zone and segment ID.
 
 Next, you will configure the logical layer on NSX-V.
 
-## Configuring the Logical Layer</span>
+## Configuring the Logical Layer
 
 To complete the integration with NSX-V, you need to configure the
 logical layer, which requires defining a logical switch (the VXLAN
 instance) and all the logical ports needed.
 
-### Defining Logical Switches</span>
+### Defining Logical Switches
 
 To define the logical switch, do the following:
 
@@ -345,7 +345,7 @@ To define the logical switch, do the following:
     
     {{% imgOld 9 %}}
 
-### Configuring the Replication Cluster</span>
+### Configuring the Replication Cluster
 
 1.  Select the **Service Definitions** category, then click the
     **Hardware Devices** tab. Next to the **Replication Cluster** field,
@@ -362,7 +362,7 @@ To define the logical switch, do the following:
 
 3.  Click **OK** to save the replication node configuration.
 
-### Defining Logical Switch Ports</span>
+### Defining Logical Switch Ports
 
 As the final step, define the logical switch ports. A VLAN-to-VNI
 binding can be defined for each switch port associated with a particular
@@ -392,7 +392,7 @@ To define the logical switch ports, do the following:
     
     {{% imgOld 14 %}}
 
-## Verifying the VXLAN Configuration</span>
+## Verifying the VXLAN Configuration
 
 Once configured, you can verify the VXLAN configuration using either or
 both of these Cumulus Linux commands in a terminal connected to the

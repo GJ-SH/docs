@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869181
 pageID: 5869181
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -60,7 +60,7 @@ switch with the above mentioned ASICs, as hardware-based DDOS protection
 is disabled by default. Although Cumulus recommends enabling all of the
 above criteria, they can be individually enabled if desired.
 
-## Configure Persistent DDOS Protection</span>
+## Configure Persistent DDOS Protection
 
 1.  Open the `/etc/cumulus/datapath/traffic.conf` file in a text editor.
 

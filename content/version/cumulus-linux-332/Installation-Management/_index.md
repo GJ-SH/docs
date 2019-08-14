@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5868945
 pageID: 5868945
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---

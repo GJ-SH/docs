@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869009
 pageID: 5869009
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -35,7 +35,7 @@ traffic destined to that group.
 
 {{% imgOld 0 %}}
 
-## Configuring IGMP/MLD Querier</span>
+## Configuring IGMP/MLD Querier
 
 If no multicast router is sending queries to configure IGMP/MLD querier
 on the switch, you can add a configuration similar to the following in
@@ -87,7 +87,7 @@ use a configuration like the following:
       bridge-mcquerier 1
       bridge-mcqifaddr 1
 
-## Disable IGMP and MLD Snooping</span>
+## Disable IGMP and MLD Snooping
 
 <span id="src-5869009_IGMPandMLDSnooping-igmp_disable"></span>To disable
 IGMP and MLD snooping:
@@ -119,7 +119,7 @@ example bridge in `/etc/network/interfaces`:
 
 {{%/notice%}}
 
-## Debugging IGMP/MLD Snooping</span>
+## Debugging IGMP/MLD Snooping
 
 To get the IGMP/MLD snooping bridge state, run `brctl showstp <bridge>`:
 
@@ -181,7 +181,7 @@ command. To display router ports and group information use the `bridge
      dev br0 port swp2 grp ff1a::9 permanent 0.00
      router ports on br0: swp3
 
-## Related Information</span>
+## Related Information
 
   - [www.linuxfoundation.org/collaborate/workgroups/networking/bridge\#Snooping](http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge#Snooping)
 

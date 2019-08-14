@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5869127
 pageID: 5869127
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -45,7 +45,7 @@ In Cumulus Linux, you map QinQ packets to VXLANs through:
   - *Double tag translation*, where you map a customer and service to a
     VNI.
 
-## Installing the QinQ Metapackage</span>
+## Installing the QinQ Metapackage
 
 To install the QinQ metapackage on a switch:
 
@@ -53,8 +53,8 @@ To install the QinQ metapackage on a switch:
 
 2.  Uncomment the early access repo lines and save the file:
     
-        #deb        http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
-        #deb-src    http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
+        #deb      http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
+        #deb-src  http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
 
 3.  Run the following commands to install the QinQ metapackage in
     Cumulus Linux:
@@ -75,7 +75,7 @@ If you need to remove the QinQ packages, read the [early access
 feature](https://support.cumulusnetworks.com/hc/en-us/articles/202933878)
 article.
 
-## Configuring Single Tag Translation</span>
+## Configuring Single Tag Translation
 
 Single tag translation adheres to traditional QinQ service model. The
 customer-facing interface is a QinQ access port with the outer S-tag
@@ -103,7 +103,7 @@ All edges need to support QinQ with VXLANs to correctly interoperate.
 
 {{%/notice%}}
 
-### Configuring the Public Cloud-facing Switch</span>
+### Configuring the Public Cloud-facing Switch
 
 For the switch facing the public cloud:
 
@@ -141,18 +141,18 @@ These commands create the following configuration in the
      
     auto vni-3000
     iface vni-3000
-        address 10.0.0.3/24
-        bridge-access 200
+      address 10.0.0.3/24
+      bridge-access 200
         vlan-id 3000
      
     auto bridge
     iface bridge
-        bridge-ports swp3 vni-1000 vni-3000
-        bridge-vids 100, 200
-        bridge-vlan-aware yes
-        bridge-vlan-protocol 802.1ad
+      bridge-ports swp3 vni-1000 vni-3000
+      bridge-vids 100, 200
+      bridge-vlan-aware yes
+      bridge-vlan-protocol 802.1ad
 
-### Configuring the Customer-facing Edge Switch</span>
+### Configuring the Customer-facing Edge Switch
 
 For the switch facing the customer:
 
@@ -185,30 +185,30 @@ These commands create the following configuration in the
 
     auto vni-1000
     iface vni-1000
-        address 10.0.0.1
-        bridge-access 100
+      address 10.0.0.1
+      bridge-access 100
         vxlan-id 1000
      
     auto vni-3000
     iface vni-3000
-        address 10.0.0.3
-        bridge-access 200
+      address 10.0.0.3
+      bridge-access 200
         vxlan-id 3000
     auto swp3
     iface swp3
-        bridge-access 100
+      bridge-access 100
      
     auto swp4
     iface swp4
-        bridge-access 200
+      bridge-access 200
      
     auto bridge
     iface bridge
-        bridge-ports swp3 swp4 vni-1000 vni-3000
-        bridge-vlan-aware yes
-        bridge-vlan-protocol 802.1ad
+      bridge-ports swp3 swp4 vni-1000 vni-3000
+      bridge-vlan-aware yes
+      bridge-vlan-protocol 802.1ad
 
-### Viewing the Configuration</span>
+### Viewing the Configuration
 
 In the output below, customer A is on VLAN 100 (S-TAG) and customer B is
 on VLAN 200 (S-TAG).
@@ -249,7 +249,7 @@ bridge` and look for *vlan\_protocol 802.1ad* in the output:
         link/ether 06:a2:ae:de:e3:43 brd ff:ff:ff:ff:ff:ff promiscuity 0 
         bridge forward_delay 1500 hello_time 200 max_age 2000 ageing_time 30000 stp_state 2 priority 32768 vlan_filtering 1 vlan_protocol 802.1ad bridge_id 8000.6:a2:ae:de:e3:43 designated_root 8000.6:a2:ae:de:e3:43 root_port 0 root_path_cost 0 topology_change 0 topology_change_detected 0 hello_timer    0.00 tcn_timer    0.00 topology_change_timer    0.00 gc_timer   64.29 vlan_default_pvid 1 vlan_stats_enabled 1 group_fwd_mask 0 group_address 01:80:c2:00:00:08 mcast_snooping 0 mcast_router 1 mcast_query_use_ifaddr 0 mcast_querier 0 mcast_hash_elasticity 4096 mcast_hash_max 4096 mcast_last_member_count 2 mcast_startup_query_count 2 mcast_last_member_interval 100 mcast_membership_interval 26000 mcast_querier_interval 25500 mcast_query_interval 12500 mcast_query_response_interval 1000 mcast_startup_query_interval 3125 mcast_stats_enabled 1 mcast_igmp_version 2 mcast_mld_version 1 nf_call_iptables 0 nf_call_ip6tables 0 nf_call_arptables 0 addrgenmode eui64 
 
-## Configuring Double Tag Translation</span>
+## Configuring Double Tag Translation
 
 Double tag translation involves a bridge with double-tagged member
 interfaces, where a combination of the C-tag and S-tag map to a VNI. You
@@ -290,7 +290,7 @@ An example configuration could look like the following:
 
 {{% imgOld 1 %}}
 
-### Configuring the Switch</span>
+### Configuring the Switch
 
 To configure the switch for double tag translation using the above
 example, edit the `/etc/network/interfaces` file in a text editor and
@@ -302,20 +302,20 @@ add the following:
      
     auto swp3.100.10
     iface swp3.100.10
-        mstpctl-portbpdufilter yes
-        mstpctl-bpduguard yes
+      mstpctl-portbpdufilter yes
+      mstpctl-bpduguard yes
      
     auto vni1000
     iface vni1000
-        address 10.0.0.1
-        mstpctl-portbpdufilter yes
-        mstpctl-bpduguard yes
-        vxlan-id 1000
+      address 10.0.0.1
+      mstpctl-portbpdufilter yes
+      mstpctl-bpduguard yes
+      vxlan-id 1000
      
     auto custA-10-azr
     iface custA-10-azr
-        bridge-ports swp3.100.10, vni1000
-        bridge-vlan-aware no
+      bridge-ports swp3.100.10, vni1000
+      bridge-vlan-aware no
 
 You can check the configuration with the `brctl show` command:
 
@@ -333,21 +333,21 @@ configuration would look something like this:
 
     auto swp5.100.10
     iface swp5.100.10
-        mstpctl-portbpdufilter yes
-        mstpctl-bpduguard yes
+      mstpctl-portbpdufilter yes
+      mstpctl-bpduguard yes
      
     auto br10
     iface br10
-        bridge-ports swp3.10  swp4  swp5.100.10
-        bridge-vlan-aware no
+      bridge-ports swp3.10  swp4  swp5.100.10
+      bridge-vlan-aware no
 
 {{% imgOld 2 %}}
 
 {{%/notice%}}
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
-### EA Feature Limitations</span>
+### EA Feature Limitations
 
   - QinQ is available only on Broadcom Tomahawk, Trident II+ and Trident
     II switches; support for Mellanox switches will be available in a
@@ -371,7 +371,7 @@ configuration would look something like this:
   - Mixing 802.1Q and 802.1ad subinterfaces on the same switch port is
     not supported.
 
-### Long Interface Names</span>
+### Long Interface Names
 
 The Linux kernel limits interface names to 15 characters in length. For
 QinQ interfaces, this limit can be reached fairly easily.

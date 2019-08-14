@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5868877
 pageID: 5868877
 product: Cumulus Linux
-version: 3.3.2
+version: '3.3'
 imgData: cumulus-linux-332
 siteSlug: cumulus-linux-332
 ---
@@ -53,7 +53,7 @@ To access the switch without any password requires [booting into a
 single shell/user
 mode](/version/cumulus-linux-332/Monitoring-and-Troubleshooting/Single-User-Mode-Boot-Recovery).
 
-## Enabling Remote Access for the root User</span>
+## Enabling Remote Access for the root User
 
 As mentioned above, the root user does not have a password set for it,
 and it cannot log in to a switch via SSH. This default account behavior
@@ -64,7 +64,7 @@ root account, you can do one of two things for the account:
 
   - Set a password
 
-### <span id="src-5868877_UserAccounts-ssh_key" class="confluence-anchor-link"></span>Generating an SSH Key for the root Account</span>
+### Generating an SSH Key for the root Account
 
 1.  First, in a terminal on your host system (not the switch), check to
     see if a key already exists:
@@ -95,7 +95,7 @@ root account, you can do one of two things for the account:
         cumulus@switch:~$ sudo mkdir -p /root/.ssh
         cumulus@switch:~$ echo <SSH public key string> | sudo tee -a /root/.ssh/authorized_keys
 
-### <span id="src-5868877_UserAccounts-root_passwd" class="confluence-anchor-link"></span>Setting the root User Password</span>
+### Setting the root User Password
 
 1.  Run:
     
