@@ -3,11 +3,11 @@ title: Default Cumulus Linux ACL Configuration
 author: Cumulus Networks
 weight: 285
 aliases:
- - /display/CL34/Default+Cumulus+Linux+ACL+Configuration
+ - /display/CL343/Default+Cumulus+Linux+ACL+Configuration
  - /pages/viewpage.action?pageId=7112332
 pageID: 7112332
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -15,7 +15,7 @@ siteSlug: cumulus-linux-343
 
 The Cumulus Linux default ACL configuration is split into three parts,
 as outlined in the [netfilter ACL
-documentation](/display/CL34/Netfilter+-+ACLs): IP tables, IPv6 tables,
+documentation](/display/CL343/Netfilter+-+ACLs): IP tables, IPv6 tables,
 and EB tables. The sections below cover the default configurations for
 each part, while the default file can be seen by clicking the Default
 ACL Configuration link:
@@ -196,7 +196,7 @@ ACL Configuration link:
      
     Bridge chain: OUTPUT, entries: 0, policy: ACCEPT
 
-## IP Tables</span>
+## IP Tables
 
 <table>
 <colgroup>
@@ -310,7 +310,7 @@ bits.
 
 {{%/notice%}}
 
-## IPv6 Tables</span>
+## IPv6 Tables
 
 <table>
 <colgroup>
@@ -441,7 +441,7 @@ bits.
 
 {{%/notice%}}
 
-## EB Tables</span>
+## EB Tables
 
 <table>
 <colgroup>

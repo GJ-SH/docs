@@ -3,11 +3,11 @@ title: Static VXLAN Tunnels
 author: Cumulus Networks
 weight: 157
 aliases:
- - /display/CL34/Static+VXLAN+Tunnels
+ - /display/CL343/Static+VXLAN+Tunnels
  - /pages/viewpage.action?pageId=7112568
 pageID: 7112568
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -15,7 +15,7 @@ In VXLAN-based networks, there are a range of complexities and
 challenges in determining the destination *virtual tunnel endpoints*
 (VTEPs) for any given VXLAN. At scale, various solutions, including
 [Lightweight Network
-Virtualization](/version/cumulus-linux-343/Network-Virtualization/Lightweight-Network-Virtualization---LNV-Overview/)
+Virtualization](/version/cumulus-linux-343/Network-Virtualization/Lightweight-Network-Virtualization-LNV-Overview/)
 (LNV), controller-based options like [Midokura
 MidoNet](/version/cumulus-linux-343/Network-Virtualization/Integrating-Hardware-VTEPs-with-Midokura-MidoNet-and-OpenStack)
 or [VMware
@@ -33,7 +33,7 @@ configuration, since you are simply mapping which VTEPs are in a
 particular VNI, so you can avoid the tedious process of defining
 connections to every VLAN on every other VTEP on every other rack.
 
-## Requirements</span>
+## Requirements
 
 While they should be interoperable with other vendors, Cumulus Networks
 supports static VXLAN tunnels only on switches in the [Cumulus Linux
@@ -58,14 +58,14 @@ For a basic VXLAN configuration, you should ensure that:
     
         cumulus@switch:~ sudo systemctl stop vxrd.service
 
-## Example Configuration</span>
+## Example Configuration
 
 The following topology is used in this chapter. Each IP address
 corresponds to the switch's loopback address:
 
 {{% imgOld 0 %}}
 
-## Configuring Static VXLAN Tunnels</span>
+## Configuring Static VXLAN Tunnels
 
 To configure static VXLAN tunnels, for each leaf you need to do the
 following:
@@ -273,7 +273,7 @@ iface vni-10
 </tbody>
 </table>
 
-## Verifying the Configuration</span>
+## Verifying the Configuration
 
 Once you configure all the leaf switches, check for replication entries:
 

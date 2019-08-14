@@ -3,11 +3,11 @@ title: Segment Routing
 author: Cumulus Networks
 weight: 199
 aliases:
- - /display/CL34/Segment+Routing
+ - /display/CL343/Segment+Routing
  - /pages/viewpage.action?pageId=7112697
 pageID: 7112697
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -33,7 +33,7 @@ switches](https://cumulusnetworks.com/products/hardware-compatibility-list/?Bran
 
 {{%/notice%}}
 
-## Features</span>
+## Features
 
 Segment routing is MPLS for the data plane **only**. In this EA release,
 Cumulus Linux does not impose the labels, the host does. The MTUs should
@@ -58,7 +58,7 @@ Segment routing supports the following features:
   - FRR support for BGP/MPLS segment routing based on
     [draft-ietf-idr-bgp-prefix-sid-06](https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-prefix-sid/).
 
-## Example Configuration</span>
+## Example Configuration
 
 Consider the following topology. Typically, host1 sends traffic to host2
 via r1, r2 and r3. However, you can use segment routing to route traffic
@@ -93,7 +93,7 @@ an IP packet, and route it as usual.
 Switches r1 through r5 announce their loopbacks (the 10.1.1.\* addresses
 above) in BGP with a *label-index*.
 
-## Configuring Segment Routing</span>
+## Configuring Segment Routing
 
 To configure the segment routing example above, use the `label-index`
 option in
@@ -134,7 +134,7 @@ plus the label-index.
     !
     mpls label global-block 100 200
 
-## Viewing the Configuration</span>
+## Viewing the Configuration
 
 You can see the label-index when you show the BGP configuration on a
 router.
@@ -199,8 +199,8 @@ well:
     103 as to 103 via inet6 fe80::202:ff:fe00:6 dev swp2  proto zebra 
     104 via inet6 fe80::202:ff:fe00:c dev swp3  proto zebra 
     105  proto zebra 
-        nexthop as to 105  via inet6 fe80::202:ff:fe00:6  dev swp2
-        nexthop as to 105  via inet6 fe80::202:ff:fe00:c  dev swp3
+      nexthop as to 105  via inet6 fe80::202:ff:fe00:6  dev swp2
+      nexthop as to 105  via inet6 fe80::202:ff:fe00:c  dev swp3
     106 via inet6 fe80::202:ff:fe00:1 dev swp1  proto zebra 
     107 as to 107 via inet6 fe80::202:ff:fe00:6 dev swp2  proto zebra  
     cumulus@r1:~$ 

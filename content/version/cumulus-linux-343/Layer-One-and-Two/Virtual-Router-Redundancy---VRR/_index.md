@@ -3,11 +3,11 @@ title: Virtual Router Redundancy - VRR
 author: Cumulus Networks
 weight: 125
 aliases:
- - /display/CL34/Virtual+Router+Redundancy+++VRR
+ - /display/CL343/Virtual+Router+Redundancy+++VRR
  - /pages/viewpage.action?pageId=7112443
 pageID: 7112443
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -97,9 +97,9 @@ Router Redundancy Protocol (VRRP), as they serve similar purposes.
 
 {{%/notice%}}
 
-## Configuring a VRR-enabled Network</span>
+## Configuring a VRR-enabled Network
 
-### Configuring the Routers</span>
+### Configuring the Routers
 
 The routers implement the layer 2 network interconnecting the hosts and
 the redundant routers. To configure the routers, add a bridge with the
@@ -166,7 +166,7 @@ snippet:
 
 {{%/notice%}}
 
-### Configuring the Hosts</span>
+### Configuring the Hosts
 
 Each host should have two network interfaces. The routers configure the
 interfaces as bonds running LACP; the hosts should also configure its
@@ -178,7 +178,7 @@ router; this default gateway address never changes.
 Configure the links between the hosts and the routers in *active-active*
 mode for First Hop Redundancy Protocol.
 
-## Example VRR Configuration with MLAG</span>
+## Example VRR Configuration with MLAG
 
 To create an
 [MLAG](/version/cumulus-linux-343/Layer-One-and-Two/Multi-Chassis-Link-Aggregation-MLAG)

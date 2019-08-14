@@ -3,18 +3,18 @@ title: Resource Diagnostics Using cl-resource-query
 author: Cumulus Networks
 weight: 213
 aliases:
- - /display/CL34/Resource+Diagnostics+Using+cl+resource+query
+ - /display/CL343/Resource+Diagnostics+Using+cl+resource+query
  - /pages/viewpage.action?pageId=7112350
 pageID: 7112350
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
 You can use `cl-resource-query` to retrieve information about host
 entries, MAC entries, L2 and L3 routes, and ECMPs (equal-cost multi-path
 routes, see [Load
-Balancing](Network-Topology.html#src-7112654_NetworkTopology-load_balancing))
+Balancing](/version/cumulus-linux-343/Layer-Three/Network-Topology))
 that are in use. This is especially useful because Cumulus Linux syncs
 routes between the kernel and the switching silicon. If the required
 resource pools in hardware fill up, new kernel routes can cause existing

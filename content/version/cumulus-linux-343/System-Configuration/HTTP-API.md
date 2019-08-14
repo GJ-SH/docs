@@ -3,11 +3,11 @@ title: HTTP API
 author: Cumulus Networks
 weight: 79
 aliases:
- - /display/CL34/HTTP+API
+ - /display/CL343/HTTP+API
  - /pages/viewpage.action?pageId=7112348
 pageID: 7112348
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -29,7 +29,7 @@ The service is not enabled by default on non-chassis hardware.
 
 {{%/notice%}}
 
-### Getting Started</span>
+### Getting Started
 
 {{%notice note%}}
 
@@ -58,7 +58,7 @@ Each service runs as a background daemon once started.
 
 {{%/notice%}}
 
-### Configuration</span>
+### Configuration
 
 There are two configuration files associated with the HTTP API services:
 
@@ -73,7 +73,7 @@ Generally, only the configuration file relevant to your hardware needs
 to be edited, as the associated services determine the appropriate
 configuration file to use at run time.
 
-#### Enable External Traffic on a Chassis</span>
+#### Enable External Traffic on a Chassis
 
 The HTTP API services are configured to listen on port 8080 for chassis
 hardware by default. However, only HTTP traffic originating from
@@ -103,7 +103,7 @@ services to also accept HTTP requests originating from external sources:
     
         cumulus@switch:~$ sudo systemctl restart restserver
 
-#### IP and Port Settings</span>
+#### IP and Port Settings
 
 The IP:port combinations that services listen to can be modified by
 changing the parameters of the `listen` directive(s). By default,
@@ -128,9 +128,9 @@ traffic.
 
 {{%/notice%}}
 
-### <span id="src-7112348_HTTPAPI-security" class="confluence-anchor-link"></span>Security</span>
+### Security
 
-#### Authentication</span>
+#### Authentication
 
 The default configuration requires all HTTP requests from external
 sources (not internal switch traffic) to set the HTTP Basic
@@ -138,7 +138,7 @@ Authentication header.
 
 The user and password should correspond to a user on the host switch.
 
-#### Transport Layer Security</span>
+#### Transport Layer Security
 
 All traffic must be secured in transport using TLSv1.2 by default.
 Cumulus Linux contains a self-signed certificate and private key used
@@ -159,7 +159,7 @@ values in the configuration file for your hardware.
 
 {{%/notice%}}
 
-### cURL Examples</span>
+### cURL Examples
 
 This section contains several example cURL commands for sending HTTP
 requests to a non-chassis host. The following settings are used for

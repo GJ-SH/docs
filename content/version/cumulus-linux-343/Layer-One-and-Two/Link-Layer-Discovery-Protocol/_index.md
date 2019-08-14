@@ -3,11 +3,11 @@ title: Link Layer Discovery Protocol
 author: Cumulus Networks
 weight: 113
 aliases:
- - /display/CL34/Link+Layer+Discovery+Protocol
+ - /display/CL343/Link+Layer+Discovery+Protocol
  - /pages/viewpage.action?pageId=7112404
 pageID: 7112404
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -30,7 +30,7 @@ by default into `/var/log/daemon.log` with an `lldpd` prefix.
 statistics and other running configuration information. See `man
 lldpcli(8)` for details.
 
-## Configuring LLDP</span>
+## Configuring LLDP
 
 You configure `lldpd` settings in `/etc/lldpd.conf` or `/etc/lldpd.d/`.
 
@@ -49,7 +49,7 @@ Here is an example persistent configuration:
     Aug  7 17:26:17 switch lldpcli[1711]: lldpd should resume operations
     Aug  7 17:26:32 switch lldpd[1805]: NET-SNMP version 5.4.3 AgentX subagent connected
 
-## Example lldpcli Commands</span>
+## Example lldpcli Commands
 
 To see all neighbors on all ports/interfaces:
 
@@ -261,7 +261,7 @@ To reset any interface list to none:
 
     cumulus@switch:~$ sudo lldpcli configure system interface pattern ""
 
-## <span id="src-7112404_LinkLayerDiscoveryProtocol-snmp" class="confluence-anchor-link"></span>Enabling the SNMP Subagent in LLDP</span>
+## Enabling the SNMP Subagent in LLDP
 
 LLDP does not enable the SNMP subagent by default. You need to edit
 `/etc/default/lldpd` and enable the `-x` option.
@@ -273,11 +273,11 @@ LLDP does not enable the SNMP subagent by default. You need to edit
     # Enable CDP by default
     DAEMON_ARGS="-c"
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - Annex E (and hence Annex D) of IEEE802.1AB (lldp) is not supported.
 
-## Related Information</span>
+## Related Information
 
   - [GitHub - lldpd project](http://vincentbernat.github.io/lldpd/)
 

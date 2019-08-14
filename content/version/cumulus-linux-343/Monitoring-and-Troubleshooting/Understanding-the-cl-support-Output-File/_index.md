@@ -3,11 +3,11 @@ title: Understanding the cl-support Output File
 author: Cumulus Networks
 weight: 221
 aliases:
- - /display/CL34/Understanding+the+cl+support+Output+File
+ - /display/CL343/Understanding+the+cl+support+Output+File
  - /pages/viewpage.action?pageId=7112357
 pageID: 7112357
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---

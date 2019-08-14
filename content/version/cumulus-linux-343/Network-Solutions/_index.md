@@ -3,11 +3,11 @@ title: Network Solutions
 author: Cumulus Networks
 weight: 27
 aliases:
- - /display/CL34/Network+Solutions
+ - /display/CL343/Network+Solutions
  - /pages/viewpage.action?pageId=7112701
 pageID: 7112701
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---

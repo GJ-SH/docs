@@ -3,11 +3,11 @@ title: Redistribute Neighbor
 author: Cumulus Networks
 weight: 191
 aliases:
- - /display/CL34/Redistribute+Neighbor
+ - /display/CL343/Redistribute+Neighbor
  - /pages/viewpage.action?pageId=7112694
 pageID: 7112694
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -37,11 +37,11 @@ contains all the layer 3 information that's needed. This is where
 redistribute neighbor comes in, as it is a mechanism of formatting and
 syncing this table into the routing protocol.
 
-## Availability</span>
+## Availability
 
 Redistribute neighbor is distributed as `python-rdnbrd`.
 
-## Target Use Cases and Best Practices</span>
+## Target Use Cases and Best Practices
 
 Redistribute neighbor was created with these use cases in mind:
 
@@ -75,7 +75,7 @@ neighbor:
     operating systems may work, but Cumulus Networks has not actively
     tested any at this stage.
 
-## How It Works</span>
+## How It Works
 
 Redistribute neighbor works as follows:
 
@@ -99,7 +99,7 @@ Redistribute neighbor works as follows:
 7.  BGP, OSPF and so forth are then configured to redistribute the table
     10 routes.
 
-## Configuration Steps</span>
+## Configuration Steps
 
 The following configuration steps are based on the [reference
 topology](https://github.com/cumulusnetworks/cldemo-vagrant) set forth
@@ -107,7 +107,7 @@ by Cumulus Networks. Here is a diagram of the topology:
 
 {{% imgOld 0 %}}
 
-### Configuring the Leaf(s)</span>
+### Configuring the Leaf(s)
 
 The following steps demonstrate how to configure leaf01, but the same
 steps can be applied to any of the leafs.
@@ -205,7 +205,7 @@ This configuration uses OSPF as the routing protocol.
     line vty
     !
 
-### Configuring the Host(s)</span>
+### Configuring the Host(s)
 
 There are a few possible host configurations that range in complexity.
 This document only covers the basic use case: dual-connected Linux hosts
@@ -214,7 +214,7 @@ with static IP addresses assigned.
 Additional host configurations will be covered in future separate
 knowledge base articles.
 
-#### Configuring a Dual-connected Host</span>
+#### Configuring a Dual-connected Host
 
 Configure a host with the same /32 IP address on its loopback (lo) and
 uplinks (in this example, eth1 and eth2). This is done so both leaf
@@ -262,7 +262,7 @@ via eth2. You should note:
           post-up for i in {1..3}; do arping -q -c 1 -w 0 -i eth2 10.0.0.12; sleep 1; done
           post-up ip route add 0.0.0.0/0 nexthop via 10.0.0.11 dev eth1 onlink nexthop via 10.0.0.12 dev eth2 onlink || true
 
-#### Installing ifplugd</span>
+#### Installing ifplugd
 
 Additionally, install and use
 [ifplugd](/version/cumulus-linux-343/Layer-One-and-Two/Virtual-Router-Redundancy-VRR/ifplugd).
@@ -284,9 +284,9 @@ connect to the leaves.
 For full instructions on installing `ifplugd` on Ubuntu, [follow this
 guide](https://support.cumulusnetworks.com/hc/en-us/articles/204473717).
 
-## Known Limitations</span>
+## Known Limitations
 
-### TCAM Route Scale</span>
+### TCAM Route Scale
 
 This feature adds each ARP entry as a /32 host route into the routing
 table of all switches within a summarization domain. Take care to keep
@@ -297,28 +297,28 @@ limits of your chosen hardware platforms. If in doubt, contact Cumulus
 Networks support or your Cumulus Networks CSE; they will be happy to
 help.
 
-### Possible Uneven Traffic Distribution</span>
+### Possible Uneven Traffic Distribution
 
 Linux uses *source* L3 addresses only to do load balancing on most older
 distributions.
 
-### Silent Hosts Never Receive Traffic</span>
+### Silent Hosts Never Receive Traffic
 
 Freshly provisioned hosts that have never sent traffic may not ARP for
 their default gateways. The post-up ARPing in `/etc/network/interfaces`
 on the host should take care of this. If the host does not ARP, then
 `rdnbrd` on the leaf cannot learn about the host.
 
-### Support for IPv4 Only</span>
+### Support for IPv4 Only
 
 This release of redistribute neighbor supports IPv4 only.
 
-### VRFs Are not Supported</span>
+### VRFs Are not Supported
 
 This release of redistribute neighbor does not support
 [VRFs](/version/cumulus-linux-343/Layer-Three/Virtual-Routing-and-Forwarding-VRF).
 
-## Troubleshooting</span>
+## Troubleshooting
 
   - **How do I determine if `rdnbrd` (the redistribute neighbor daemon)
     is running?**
@@ -414,7 +414,7 @@ This release of redistribute neighbor does not support
          
         Total number of prefixes 4
 
-### Verification</span>
+### Verification
 
 The following workflow can be used to verify that the kernel routing
 table is being correctly populated, and that routes are being correctly

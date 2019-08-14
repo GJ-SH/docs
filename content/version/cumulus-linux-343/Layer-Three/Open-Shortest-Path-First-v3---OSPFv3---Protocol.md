@@ -3,17 +3,17 @@ title: Open Shortest Path First v3 - OSPFv3 - Protocol
 author: Cumulus Networks
 weight: 183
 aliases:
- - /display/CL34/Open+Shortest+Path+First+v3+++OSPFv3+++Protocol
+ - /display/CL343/Open+Shortest+Path+First+v3+++OSPFv3+++Protocol
  - /pages/viewpage.action?pageId=7112663
 pageID: 7112663
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
 OSPFv3 is a revised version of OSPFv2 to support the IPv6 address
 family. Refer to [Open Shortest Path First (OSPF)
-Protocol](/version/cumulus-linux-343/Layer-Three/Open-Shortest-Path-First-OSPF---Protocol)
+Protocol](/version/cumulus-linux-343/Layer-Three/Open-Shortest-Path-First-OSPF-Protocol)
 for a discussion on the basic concepts, which remain the same between
 the two versions.
 
@@ -34,7 +34,7 @@ not support it yet.
 
 {{%/notice%}}
 
-## Configuring OSPFv3</span>
+## Configuring OSPFv3
 
 Configuring OSPFv3 involves the following tasks:
 
@@ -65,17 +65,17 @@ Configuring OSPFv3 involves the following tasks:
 
 The OSPFv3 configuration is saved in `/etc/frr/ospf6d.conf`.
 
-## Unnumbered Interfaces</span>
+## Unnumbered Interfaces
 
 Unlike OSPFv2, OSPFv3 intrinsically supports unnumbered interfaces.
 Forwarding to the next hop router is done entirely using IPv6 link local
 addresses. Therefore, you are not required to configure any global IPv6
 address to interfaces between routers.
 
-## Debugging OSPF</span>
+## Debugging OSPF
 
 See [Debugging
-OSPF](Open-Shortest-Path-First-OSPF---Protocol.html#src-7112661_OpenShortestPathFirst-OSPF-Protocol-ospf_debug)
+OSPF](/version/cumulus-linux-343/Layer-Three/Open-Shortest-Path-First-OSPF-Protocol)
 for OSPFv2 for the troubleshooting discussion. The equivalent commands
 are:
 
@@ -86,7 +86,7 @@ are:
 Another helpful command is `net show ospf6 spf tree`. It dumps the node
 topology as computed by SPF to help visualize the network view.
 
-## Related Information</span>
+## Related Information
 
   - [Bidirectional forwarding
     detection](/version/cumulus-linux-343/Layer-Three/Bidirectional-Forwarding-Detection-BFD)

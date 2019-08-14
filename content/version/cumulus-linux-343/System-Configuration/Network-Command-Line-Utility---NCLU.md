@@ -3,11 +3,11 @@ title: Network Command Line Utility - NCLU
 author: Cumulus Networks
 weight: 63
 aliases:
- - /display/CL34/Network+Command+Line+Utility+++NCLU
+ - /display/CL343/Network+Command+Line+Utility+++NCLU
  - /pages/viewpage.action?pageId=7112338
 pageID: 7112338
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -41,13 +41,13 @@ monitoring and troubleshooting functionality for these features.
 with `net`, in addition to running show and clear commands related to
 `ifupdown2` and FRRouting.
 
-## What's New and Different in NCLU in Version 3.4?</span>
+## What's New and Different in NCLU in Version 3.4?
 
 A number of commands have been added, updated, or removed from NCLU in
 the new release. Read more about [what's
 changed](https://support.cumulusnetworks.com/hc/en-us/articles/115011823667-NCLU-What-s-New-and-Different-in-Cumulus-Linux-3-4-0).
 
-## Installing NCLU</span>
+## Installing NCLU
 
 If you upgraded Cumulus Linux from a version earlier than 3.2 instead of
 performing a full binary install, you need to install the `nclu` package
@@ -68,7 +68,7 @@ the following message when it is manually installed:
 
 {{%/notice%}}
 
-## Getting Started</span>
+## Getting Started
 
 NCLU uses the following workflow for staging and committing changes to
 Cumulus Linux:
@@ -129,7 +129,7 @@ using:
     
     {{%/notice%}}
 
-### Tab Completion, Verification and Inline Help</span>
+### Tab Completion, Verification and Inline Help
 
 NCLU provides a number of features to assist users. In addition to tab
 completion and partial keyword commands identification, verification
@@ -227,7 +227,7 @@ Multiple interfaces can be configured at once:
 
 {{%/notice%}}
 
-### <span id="src-7112338_NetworkCommandLineUtility-NCLU-questionmark" class="confluence-anchor-link"></span>Adding ? (Question Mark) Ability to NCLU</span>
+### Adding ? (Question Mark) Ability to NCLU
 
 While tab completion is enabled by default, you can also configure NCLU
 to use the **?** (question mark character) to look at available
@@ -270,7 +270,7 @@ terminal. This is normal, expected behavior.
 
 {{%/notice%}}
 
-### Built-In Examples</span>
+### Built-In Examples
 
 The NCLU has a number of built in examples to guide users through basic
 configuration setup:
@@ -336,7 +336,7 @@ configuration setup:
     switch1# net show interface
     switch1# net show bridge macs
 
-## Adding More NCLU Users or Groups</span>
+## Adding More NCLU Users or Groups
 
 If you've created custom users or groups on your Cumulus Linux switches,
 you can configure those users to be able to run NCLU commands.
@@ -369,18 +369,18 @@ the `groups_with_edit` and `groups_with_show` lines in the file.
 
 Take care to which groups you want to give the `groups_with_edit`
 permission. For example, you wouldn't want to give it to the [*tacacs*
-group](TACACS-Plus.html#src-7112316_TACACSPlus-nclu).
+group](/version/cumulus-linux-343/System-Configuration/Authentication-Authorization-and-Accounting/TACACS-Plus).
 
 {{%/notice%}}
 
-## <span id="src-7112338_NetworkCommandLineUtility-NCLU-restart" class="confluence-anchor-link"></span>Restarting the netd Service</span>
+## Restarting the netd Service
 
 Whenever you modify `netd.conf`, you must restart the `netd` service for
 the changes to take effect:
 
     cumulus@switch:~$ sudo systemctl restart netd.service
 
-## <span id="src-7112338_NetworkCommandLineUtility-NCLU-backuptofile" class="confluence-anchor-link"></span>Backing up the Configuration to a Single File</span>
+## Backing up the Configuration to a Single File
 
 You can easily back up your NCLU configuration to a file by outputting
 the results of `net show configuration commands` to a file, then
@@ -399,7 +399,7 @@ configuration by running:
 
     cumulus@leaf01:~$ source leaf01.txt
 
-## <span id="src-7112338_NetworkCommandLineUtility-NCLU-conf" class="confluence-anchor-link"></span>Advanced Configuration</span>
+## Advanced Configuration
 
 NCLU needs no initial configuration; it's ready to go in Cumulus Linux.
 However, if you need to modify its configuration, you must manually

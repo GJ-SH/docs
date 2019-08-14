@@ -3,11 +3,11 @@ title: Filtering Learned MAC Addresses
 author: Cumulus Networks
 weight: 287
 aliases:
- - /display/CL34/Filtering+Learned+MAC+Addresses
+ - /display/CL343/Filtering+Learned+MAC+Addresses
  - /pages/viewpage.action?pageId=7112333
 pageID: 7112333
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -128,7 +128,7 @@ These commands create the following configuration in the
         pre-up bridge fdb add 00:00:00:00:00:55 dev swp5 master static vlan 500
         pre-up bridge fdb add 00:00:00:00:00:66 dev swp6 master static vlan 600
 
-## Interactions with EVPN</span>
+## Interactions with EVPN
 
 If you are using
 [EVPN](/version/cumulus-linux-343/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN),

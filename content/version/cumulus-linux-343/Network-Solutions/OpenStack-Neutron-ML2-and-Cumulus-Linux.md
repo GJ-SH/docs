@@ -3,11 +3,11 @@ title: OpenStack Neutron ML2 and Cumulus Linux
 author: Cumulus Networks
 weight: 247
 aliases:
- - /display/CL34/OpenStack+Neutron+ML2+and+Cumulus+Linux
+ - /display/CL343/OpenStack+Neutron+ML2+and+Cumulus+Linux
  - /pages/viewpage.action?pageId=7112712
 pageID: 7112712
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -35,7 +35,7 @@ Cumulus Linux switches, you need the following:
 
 {{% imgOld 0 %}}
 
-## Configuring the REST API</span>
+## Configuring the REST API
 
 1.  Configure the relevant settings in `/etc/restapi.conf`:
     
@@ -56,7 +56,7 @@ Cumulus Linux switches, you need the following:
 Additional REST API calls have been added to support the configuration
 of bridge using the bridge name instead of network ID.
 
-## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver</span>
+## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver
 
 You need to install the Cumulus Networks ML2 mechanism driver on your
 Neutron host, which is available upstream:
@@ -101,7 +101,7 @@ You configure them in the `/etc/neutron/plugins/ml2/ml2_conf.ini` file.
     for the bridge configuration. The default value is *False*, so a
     traditional mode bridge is created.
 
-## Demo</span>
+## Demo
 
 A demo involving OpenStack with Cumulus Linux is available in the
 [Cumulus Networks knowledge

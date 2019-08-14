@@ -3,11 +3,11 @@ title: RADIUS AAA
 author: Cumulus Networks
 weight: 273
 aliases:
- - /display/CL34/RADIUS+AAA
+ - /display/CL343/RADIUS+AAA
  - /pages/viewpage.action?pageId=7112317
 pageID: 7112317
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -18,7 +18,7 @@ There is no need to create accounts or directories on the switch.
 Authentication is handled via PAM, and includes login, `ssh`, `sudo` and
 `su`.
 
-## Installing and Configuring the RADIUS Packages</span>
+## Installing and Configuring the RADIUS Packages
 
 The plugin is installed from two RADIUS packages, which are not in the
 base Cumulus Linux image. There is no RADIUS metapackage.
@@ -36,7 +36,7 @@ During installation, the PAM configuration is modified automatically via
 plugins. If you remove or purge the packages, these files are modified
 to remove the configuration for these plugins.
 
-## Configuring the RADIUS Client</span>
+## Configuring the RADIUS Client
 
 For common use cases, the only configuration file that needs to be
 modified is `/etc/pam_radius_auth.conf`. You need to add the hostname or
@@ -51,9 +51,9 @@ described in the `pam_radius_auth (5)` man page.
 Consider the following example configuration in the
 `/etc/pam_radius_auth.conf` file:
 
-    # server[:port]     shared_secret       timeout (secs)      src_ip
-    aaa-testing         radius321
-    192.168.0.254       secretkey
+    # server[:port]   shared_secret       timeout (secs)      src_ip
+    aaa-testing       radius321
+    192.168.0.254     secretkey
 
 The `timeout` defaults to 3 seconds; you only need to change this
 setting if the server is slow or latencies are high.
@@ -96,7 +96,7 @@ support, man pages describing the PAM and RADIUS configuration, and the
 setting of the `SUDO_PROMPT` environment variable to the login name as
 part of the mapping support described below.
 
-## Configuring NCLU for RADIUS Users</span>
+## Configuring NCLU for RADIUS Users
 
 [NCLU](/version/cumulus-linux-343/System-Configuration/Network-Command-Line-Utility-NCLU)
 has its own configuration file to enable RADIUS users to run the `net`
@@ -142,7 +142,7 @@ a message similar to the following gets displayed:
     rad_user@switch:~$ net show version
     net not authorized by TACACS+ with given arguments, not executing
 
-### Enabling Login without Local Accounts</span>
+### Enabling Login without Local Accounts
 
 The above description of the PAM interfaces is similar to the normal
 Debian `libpam-radius-auth` package, which work without the
@@ -187,7 +187,7 @@ A flat file mapping is done based on the session number assigned during
 login, and it persists across `su` and `sudo`. The mapping is removed at
 logout.
 
-## Enabling sudo Access for RADIUS Users</span>
+## Enabling sudo Access for RADIUS Users
 
 To allow RADIUS users to use `sudo`, you need to create a `sudoers` file
 authorizing them. The simplest case is to give them full `sudo` access,
@@ -205,7 +205,7 @@ members of the *radius\_users* group:
     cumulus@switch:~$ sudo vi /etc/sudoers.d/radius
     %radius_users ALL=(ALL:ALL) ALL
 
-## <span id="src-7112317_RADIUSAAA-remove" class="confluence-anchor-link"></span>Removing the RADIUS Client Packages</span>
+## Removing the RADIUS Client Packages
 
 You can remove the RADIUS packages with the following command:
 
@@ -251,9 +251,9 @@ that account name instead of *radius\_user*).
     cumulus@switch:~$ sudo deluser --remove-home radius_user
     cumulus@switch:~$ sudo delgroup radius_users
 
-## Limitations</span>
+## Limitations
 
-### Multiple RADIUS Users</span>
+### Multiple RADIUS Users
 
 If two or more RADIUS users are logged in simultaneously, a UID lookup
 only returns the user that logged in first. This means that any
@@ -266,7 +266,7 @@ user from the password file.
 The current algorithm returns the first name matching the UID from the
 mapping file; this could be the first or second user that logged in.
 
-## Related Information</span>
+## Related Information
 
   - [TACACS+
     client](/version/cumulus-linux-343/System-Configuration/Authentication-Authorization-and-Accounting/TACACS-Plus)

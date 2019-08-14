@@ -3,11 +3,11 @@ title: Bonding - Link Aggregation
 author: Cumulus Networks
 weight: 117
 aliases:
- - /display/CL34/Bonding+++Link+Aggregation
+ - /display/CL343/Bonding+++Link+Aggregation
  - /pages/viewpage.action?pageId=7112409
 pageID: 7112409
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -39,7 +39,7 @@ Cumulus Linux uses version 1 of the LAG control protocol (LACP).
 To temporarily bring up a bond even when there is no LACP partner, use
 [LACP Bypass](/version/cumulus-linux-343/Layer-One-and-Two/LACP-Bypass).
 
-## Hash Distribution</span>
+## Hash Distribution
 
 Egress traffic through a bond is distributed to a slave based on a
 packet hash calculation, providing load balancing over the slaves; many
@@ -63,7 +63,7 @@ over available slaves.
 
 {{%/notice%}}
 
-## Creating a Bond</span>
+## Creating a Bond
 
 Bonds can be created and configured using the Network Command Line
 Utility
@@ -89,7 +89,7 @@ The name of the bond must be:
 
 {{%/notice%}}
 
-### Configuration Options</span>
+### Configuration Options
 
 The configuration options, and their default values, are listed in the
 table below.
@@ -179,7 +179,7 @@ configuration values, refer to the Related Information section below.
 </tbody>
 </table>
 
-### <span id="src-7112409_Bonding-LinkAggregation-balance_xor" class="confluence-anchor-link"></span>Enabling balance-xor Mode</span>
+### Enabling balance-xor Mode
 
 When you enable *balance-xor mode*, the bonding of slave interfaces are
 static and all slave interfaces are active for load balancing and fault
@@ -257,7 +257,7 @@ To view the bond, use
       inet6 fe80::202:ff:fe00:12/64
       Interface Type Other
 
-## Example Configuration: Bonding 4 Slaves</span>
+## Example Configuration: Bonding 4 Slaves
 
 In the following example, the front panel port interfaces swp1-swp4 are
 slaves in bond0, while swp5 and swp6 are not part of bond0.
@@ -336,7 +336,7 @@ address traffic to the bond.
 
 {{%/notice%}}
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - An interface cannot belong to multiple bonds.
 
@@ -347,7 +347,7 @@ address traffic to the bond.
   - Slave ports within a bond should all be set to the same
     speed/duplex, and should match the link partner’s slave ports.
 
-## Related Information</span>
+## Related Information
 
   - [Linux Foundation -
     Bonding](http://www.linuxfoundation.org/collaborate/workgroups/networking/bonding)

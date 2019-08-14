@@ -3,11 +3,11 @@ title: LACP Bypass
 author: Cumulus Networks
 weight: 123
 aliases:
- - /display/CL34/LACP+Bypass
+ - /display/CL343/LACP+Bypass
  - /pages/viewpage.action?pageId=7112446
 pageID: 7112446
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -20,7 +20,7 @@ connected to a switch on a bond configured in 802.3ad mode. Once the
 pre-boot process finishes and the host is capable of running LACP, the
 normal 802.3ad link aggregation operation takes over.
 
-## Understanding the LACP Bypass All-active Mode</span>
+## Understanding the LACP Bypass All-active Mode
 
 When a bond has multiple slave interfaces, each bond slave interface
 operates as an active link while the bond is in bypass mode. This is
@@ -37,7 +37,7 @@ Keep in the mind the following caveats with all-active mode:
     slave interfaces when the LACP bond is in all-active mode.
     Therefore, only use all-active mode on host-facing LACP bonds.
     Cumulus Networks highly recommends you configure [STP BPDU
-    guard](Spanning-Tree-and-Rapid-Spanning-Tree.html#src-7112441_SpanningTreeandRapidSpanningTree-bpdu)
+    guard](/version/cumulus-linux-343/Layer-One-and-Two/Spanning-Tree-and-Rapid-Spanning-Tree)
     along with all-active mode.
 
 {{%notice note%}}
@@ -54,7 +54,7 @@ The following features are not supported:
 
 {{%/notice%}}
 
-### LACP Bypass and MLAG Deployments</span>
+### LACP Bypass and MLAG Deployments
 
 In an [MLAG
 deployment](/version/cumulus-linux-343/Layer-One-and-Two/Multi-Chassis-Link-Aggregation-MLAG)
@@ -62,7 +62,7 @@ where bond slaves of a host are connected to two switches and the bond
 is in all-active mode, all the slaves of bond are active on both the
 primary and secondary MLAG nodes.
 
-## Configuring LACP Bypass</span>
+## Configuring LACP Bypass
 
 To enable LACP bypass on the host-facing bond, set
 `bond-lacp-bypass-allow` to *yes*.
@@ -162,7 +162,7 @@ and its slave interfaces:
     cumulus@switch:~$ cat /sys/class/net/swp51/bonding_slave/ad_rx_bypass 
     1
 
-### Traditional Bridge Mode Configuration</span>
+### Traditional Bridge Mode Configuration
 
 The following configuration shows LACP bypass enabled for multiple
 active interfaces (all-active mode) with a bridge in [traditional bridge

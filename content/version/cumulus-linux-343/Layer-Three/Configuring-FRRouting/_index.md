@@ -3,11 +3,11 @@ title: Configuring FRRouting
 author: Cumulus Networks
 weight: 179
 aliases:
- - /display/CL34/Configuring+FRRouting
+ - /display/CL343/Configuring+FRRouting
  - /pages/viewpage.action?pageId=7112658
 pageID: 7112658
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -15,7 +15,7 @@ This section provides an overview of configuring FRRouting, the routing
 software package that provides a suite of routing protocols so you can
 configure routing on your switch.
 
-## Configuring FRRouting</span>
+## Configuring FRRouting
 
 FRRouting does not start by default in Cumulus Linux. Before you run
 FRRouting, make sure all you have enabled relevant daemons that you
@@ -32,7 +32,7 @@ The `zebra` daemon must always be enabled. The others you can enable
 according to how you plan to route your network — using
 [BGP](/version/cumulus-linux-343/Layer-Three/Border-Gateway-Protocol-BGP)
 for example, instead of
-[OSPF](/version/cumulus-linux-343/Layer-Three/Open-Shortest-Path-First-OSPF---Protocol).
+[OSPF](/version/cumulus-linux-343/Layer-Three/Open-Shortest-Path-First-OSPF-Protocol).
 
 Before you start FRRouting, you need to enable the corresponding
 daemons. Edit the `/etc/frr/daemons` file and set to *yes* each daemon
@@ -49,7 +49,7 @@ you are enabling. For example, to enable BGP, set both `zebra` and
     babeld=no
     pimd=no
 
-### Enabling and Starting FRRouting</span>
+### Enabling and Starting FRRouting
 
 Once you enable the appropriate daemons, then you need to enable and
 start the FRRouting service.
@@ -75,7 +75,7 @@ Daemons](/version/cumulus-linux-343/System-Configuration/Managing-Application-Da
 
 {{%/notice%}}
 
-### <span id="src-7112658_ConfiguringFRRouting-integrated_cfg" class="confluence-anchor-link"></span>Understanding Integrated Configurations</span>
+### Understanding Integrated Configurations
 
 By default in Cumulus Linux, FRRouting saves the configuration of all
 daemons in a single integrated configuration file, `frr.conf`.
@@ -120,7 +120,7 @@ this:
     Configuration saved to /etc/frr/bgpd.conf
     [OK]
 
-### Restoring the Default Configuration</span>
+### Restoring the Default Configuration
 
 If you need to restore the FRRouting configuration to the default
 running configuration, you need to delete the `frr.conf` file and
@@ -151,17 +151,17 @@ you should remove all the configuration files (such as `zebra.conf` or
 
 {{%/notice%}}
 
-## Interface IP Addresses and VRFs</span>
+## Interface IP Addresses and VRFs
 
 FRRouting inherits the IP addresses and any associated routing tables
 for the network interfaces from the `/etc/network/interfaces` file. This
 is the recommended way to define the addresses; do **not** create
 interfaces using FRRouting. For more information, see [Configuring IP
-Addresses](Interface-Configuration-and-Management.html#src-7112612_InterfaceConfigurationandManagement-ip)
+Addresses](/version/cumulus-linux-343/Interface-Configuration-and-Management/)
 and [Virtual Routing and Forwarding -
 VRF](/version/cumulus-linux-343/Layer-Three/Virtual-Routing-and-Forwarding-VRF).
 
-## <span id="src-7112658_ConfiguringFRRouting-vtysh" class="confluence-anchor-link"></span>Using the FRRouting vtysh Modal CLI</span>
+## Using the FRRouting vtysh Modal CLI
 
 FRRouting provides a CLI – `vtysh` – for configuring and displaying the
 state of the protocols. It is invoked by running:
@@ -417,7 +417,7 @@ FRRouting, you can use a suite of [Cumulus Linux-specific
 commands](/version/cumulus-linux-343/Layer-Three/Configuring-FRRouting/Comparing-NCLU-and-vtysh-Commands)
 instead.
 
-## Reloading the FRRouting Configuration</span>
+## Reloading the FRRouting Configuration
 
 If you make a change to your routing configuration, you need to reload
 FRRouting so your changes take place. *FRRouting reload* enables you to
@@ -445,7 +445,7 @@ in `/etc/frr/frr.conf`:
 
     cumulus@switch:~$ net show configuration
 
-### Debugging</span>
+### Debugging
 
 If the running configuration is not what you expected, please [submit a
 support
@@ -459,7 +459,7 @@ supply the following information:
 
   - The contents of `/var/log/frr/frr-reload.log`
 
-## Related Information</span>
+## Related Information
 
   - [frrouting.org/user-guide/BGP.html\#BGP](https://frrouting.org/user-guide/BGP.html#BGP)
 

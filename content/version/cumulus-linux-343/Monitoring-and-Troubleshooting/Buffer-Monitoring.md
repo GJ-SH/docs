@@ -3,11 +3,11 @@ title: Buffer Monitoring
 author: Cumulus Networks
 weight: 219
 aliases:
- - /display/CL34/Buffer+Monitoring
+ - /display/CL343/Buffer+Monitoring
  - /pages/viewpage.action?pageId=7112383
 pageID: 7112383
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -47,7 +47,7 @@ Buffer monitoring is supported on Mellanox switches only.
 
 {{%/notice%}}
 
-## Understanding Histograms</span>
+## Understanding Histograms
 
 The Mellanox Spectrum ASIC provides a mechanism to measure and report
 egress queue lengths in *histograms*. You can configure the ASIC to
@@ -106,7 +106,7 @@ bytes:
 When using the snapshot action, all of this information is captured in
 the file specified by the *monitor.histogram\_pg.snapshot.file* setting.
 
-## Configuring Buffer Monitoring</span>
+## Configuring Buffer Monitoring
 
 The `asic-monitor` tool has a number of settings you need to configure
 before you can start monitoring. They're described in the following
@@ -230,7 +230,7 @@ There is no default configuration. Here is a sample configuration:
     monitor.histogram_pg.collect.queue_bytes = 500                              
     monitor.histogram_pg.collect.port_group_list = [buffers_pg,all_packet_pg]
 
-## Restarting the asic-monitor Service</span>
+## Restarting the asic-monitor Service
 
 After you modify the configuration in the `monitor.conf` file, you need
 to restart the `asic-monitor` service. This does not disrupt traffic,
@@ -242,7 +242,7 @@ take effect.
 The service is enabled by default when you boot the switch and is
 restarted whenever you restart `switchd`.
 
-## Understanding Triggers</span>
+## Understanding Triggers
 
 During state collection, the monitoring service may respond to a
 threshold being crossed, which triggers a monitoring action.
@@ -263,7 +263,7 @@ an action. Triggers can include:
 If no trigger is configured for a monitoring action, the action happens
 unconditionally and always occurs.
 
-## Understanding Monitoring Actions</span>
+## Understanding Monitoring Actions
 
 Monitoring actions are responses to triggers issued by the
 `asic-monitor` service.
@@ -292,7 +292,7 @@ snapshot has taken, the original snapshot file —
 `/var/lib/cumulus/snapshot_0` — is overwritten and the files are
 overwritten in sequence..
 
-## <span id="src-7112383_BufferMonitoring-caveats" class="confluence-anchor-link"></span>Caveats and Errata</span>
+## Caveats and Errata
 
 Keep in mind that a lot of overhead is involved in collecting this data,
 hitting the CPU and SDK process, which can affect execution of

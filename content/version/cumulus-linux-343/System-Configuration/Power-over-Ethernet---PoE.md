@@ -3,11 +3,11 @@ title: Power over Ethernet - PoE
 author: Cumulus Networks
 weight: 75
 aliases:
- - /display/CL34/Power+over+Ethernet+++PoE
+ - /display/CL343/Power+over+Ethernet+++PoE
  - /pages/viewpage.action?pageId=7112334
 pageID: 7112334
 product: Cumulus Linux
-version: 3.4.3
+version: '3.4'
 imgData: cumulus-linux-343
 siteSlug: cumulus-linux-343
 ---
@@ -23,7 +23,7 @@ The [currently supported platform](http://cumulusnetworks.com/hcl/) is
 the Edge-Core AS4610-54P, which supports PoE and PoE+ and configuration
 over Ethernet layer 2 LLDP for power negotiation.
 
-## How It Works</span>
+## How It Works
 
 PoE functionality is provided by the `cumulus-poe` package. When a
 powered device is connected to the switch via an Ethernet cable:
@@ -60,14 +60,14 @@ The AS4610-54P has an LED on the front panel to indicate PoE status:
   - Yellow: One or more errors are detected or the `poed` daemon is not
     running
 
-### About Link State and PoE State</span>
+### About Link State and PoE State
 
 Link state and PoE state are completely independent of each other. When
 a link is brought down on a particular port using `ip link <port> down`,
 power on that port is not turned off; however, LLDP negotiation is not
 possible.
 
-## Configuring PoE</span>
+## Configuring PoE
 
 You use the `poectl` command utility to configure PoE on a [switch that
 supports](http://cumulusnetworks.com/hcl/) the feature. You can:
@@ -246,7 +246,7 @@ To see all the PoE information for a switch, run `poectl -s`:
 The set commands (priority, enable, disable) either succeed silently or
 display an error message if the command fails.
 
-### <span id="src-7112334_PoweroverEthernet-PoE-args" class="confluence-anchor-link"></span>poectl Arguments</span>
+### poectl Arguments
 
 The `poectl` command takes the following arguments:
 
@@ -317,7 +317,7 @@ The `poectl` command takes the following arguments:
 </tbody>
 </table>
 
-## Troubleshooting PoE and PoE+</span>
+## Troubleshooting PoE and PoE+
 
 You can troubleshoot PoE and PoE+ using the following utilities and
 files:
@@ -335,7 +335,7 @@ files:
   - The contents of the PoE/PoE+ `/etc/lldpd.d/poed.conf` configuration
     file, as described above.
 
-### Verify the Link Is Up</span>
+### Verify the Link Is Up
 
 LLDP requires network connectivity, so verify that the link is up.
 
@@ -344,7 +344,7 @@ LLDP requires network connectivity, so verify that the link is up.
     --  ------  -----------------  -------  -----  ---------
     UP  swp20   44:38:39:00:00:04  1G        1500  Access/L2
 
-### View LLDP Information Using lldpcli</span>
+### View LLDP Information Using lldpcli
 
 You can run `lldpcli` to view the LLDP information that has been
 received on a switch port. For example:
@@ -384,7 +384,7 @@ received on a switch port. For example:
         TLV:          OUI: 00,01,42, SubType: 1, Len: 1 0D
     -------------------------------------------------------------------------------
 
-### View LLDP Information Using tcpdump</span>
+### View LLDP Information Using tcpdump
 
 You can use `tcpdump` to view the LLDP frames being transmitted and
 received. For example:
@@ -392,59 +392,59 @@ received. For example:
     cumulus@switch:~$ sudo tcpdump -v -v -i swp20 ether proto 0x88cc
     tcpdump: listening on swp20, link-type EN10MB (Ethernet), capture size 262144 bytes
     18:41:47.559022 LLDP, length 211
-        Chassis ID TLV (1), length 7
-          Subtype MAC address (4): 00:30:ab:f2:d7:a5 (oui Unknown)
-          0x0000:  0400 30ab f2d7 a5
-        Port ID TLV (2), length 6
-          Subtype Interface Name (5): swp20
-          0x0000:  0573 7770 3230
-        Time to Live TLV (3), length 2: TTL 120s
-          0x0000:  0078
-        System Name TLV (5), length 13: dni-3048up-09
-          0x0000:  646e 692d 3330 3438 7570 2d30 39
-        System Description TLV (6), length 68
-          Cumulus Linux version 3.0.1~1466303042.2265c10 running on dni 3048up
-          0x0000:  4375 6d75 6c75 7320 4c69 6e75 7820 7665
-          0x0010:  7273 696f 6e20 332e 302e 317e 3134 3636
-          0x0020:  3330 3330 3432 2e32 3236 3563 3130 2072
-          0x0030:  756e 6e69 6e67 206f 6e20 646e 6920 3330
-          0x0040:  3438 7570
-        System Capabilities TLV (7), length 4
-          System  Capabilities [Bridge, Router] (0x0014)
-          Enabled Capabilities [Router] (0x0010)
-          0x0000:  0014 0010
-        Management Address TLV (8), length 12
-          Management Address length 5, AFI IPv4 (1): 10.0.3.190
-          Interface Index Interface Numbering (2): 2
-          0x0000:  0501 0a00 03be 0200 0000 0200
-        Management Address TLV (8), length 24
-          Management Address length 17, AFI IPv6 (2): fe80::230:abff:fef2:d7a5
-          Interface Index Interface Numbering (2): 2
-          0x0000:  1102 fe80 0000 0000 0000 0230 abff fef2
-          0x0010:  d7a5 0200 0000 0200
-        Port Description TLV (4), length 5: swp20
-          0x0000:  7377 7032 30
-        Organization specific TLV (127), length 9: OUI IEEE 802.3 Private (0x00120f)
-          Link aggregation Subtype (3)
-            aggregation status [supported], aggregation port ID 0
-          0x0000:  0012 0f03 0100 0000 00
-        Organization specific TLV (127), length 9: OUI IEEE 802.3 Private (0x00120f)
-          MAC/PHY configuration/status Subtype (1)
-            autonegotiation [supported, enabled] (0x03)
-            PMD autoneg capability [10BASE-T fdx, 100BASE-TX fdx, 1000BASE-T fdx] (0x2401)
-            MAU type 100BASEFX fdx (0x0012)
-          0x0000:  0012 0f01 0324 0100 12
-        Organization specific TLV (127), length 12: OUI IEEE 802.3 Private (0x00120f)
-          Power via MDI Subtype (2)
-            MDI power support [PSE, supported, enabled], power pair spare, power class class4
-          0x0000:  0012 0f02 0702 0513 01fe 01fe
-        Organization specific TLV (127), length 5: OUI Unknown (0x000142)
-          0x0000:  0001 4201 0d
-        Organization specific TLV (127), length 5: OUI Unknown (0x000142)
-          0x0000:  0001 4201 01
-        End TLV (0), length 0
+      Chassis ID TLV (1), length 7
+        Subtype MAC address (4): 00:30:ab:f2:d7:a5 (oui Unknown)
+        0x0000:  0400 30ab f2d7 a5
+      Port ID TLV (2), length 6
+        Subtype Interface Name (5): swp20
+        0x0000:  0573 7770 3230
+      Time to Live TLV (3), length 2: TTL 120s
+        0x0000:  0078
+      System Name TLV (5), length 13: dni-3048up-09
+        0x0000:  646e 692d 3330 3438 7570 2d30 39
+      System Description TLV (6), length 68
+        Cumulus Linux version 3.0.1~1466303042.2265c10 running on dni 3048up
+        0x0000:  4375 6d75 6c75 7320 4c69 6e75 7820 7665
+        0x0010:  7273 696f 6e20 332e 302e 317e 3134 3636
+        0x0020:  3330 3330 3432 2e32 3236 3563 3130 2072
+        0x0030:  756e 6e69 6e67 206f 6e20 646e 6920 3330
+        0x0040:  3438 7570
+      System Capabilities TLV (7), length 4
+        System  Capabilities [Bridge, Router] (0x0014)
+        Enabled Capabilities [Router] (0x0010)
+        0x0000:  0014 0010
+      Management Address TLV (8), length 12
+        Management Address length 5, AFI IPv4 (1): 10.0.3.190
+        Interface Index Interface Numbering (2): 2
+        0x0000:  0501 0a00 03be 0200 0000 0200
+      Management Address TLV (8), length 24
+        Management Address length 17, AFI IPv6 (2): fe80::230:abff:fef2:d7a5
+        Interface Index Interface Numbering (2): 2
+        0x0000:  1102 fe80 0000 0000 0000 0230 abff fef2
+        0x0010:  d7a5 0200 0000 0200
+      Port Description TLV (4), length 5: swp20
+        0x0000:  7377 7032 30
+      Organization specific TLV (127), length 9: OUI IEEE 802.3 Private (0x00120f)
+        Link aggregation Subtype (3)
+          aggregation status [supported], aggregation port ID 0
+        0x0000:  0012 0f03 0100 0000 00
+      Organization specific TLV (127), length 9: OUI IEEE 802.3 Private (0x00120f)
+        MAC/PHY configuration/status Subtype (1)
+          autonegotiation [supported, enabled] (0x03)
+          PMD autoneg capability [10BASE-T fdx, 100BASE-TX fdx, 1000BASE-T fdx] (0x2401)
+          MAU type 100BASEFX fdx (0x0012)
+        0x0000:  0012 0f01 0324 0100 12
+      Organization specific TLV (127), length 12: OUI IEEE 802.3 Private (0x00120f)
+        Power via MDI Subtype (2)
+          MDI power support [PSE, supported, enabled], power pair spare, power class class4
+        0x0000:  0012 0f02 0702 0513 01fe 01fe
+      Organization specific TLV (127), length 5: OUI Unknown (0x000142)
+        0x0000:  0001 4201 0d
+      Organization specific TLV (127), length 5: OUI Unknown (0x000142)
+        0x0000:  0001 4201 01
+      End TLV (0), length 0
 
-### Logging poed Events in syslog</span>
+### Logging poed Events in syslog
 
 The `poed` service logs the following events to `syslog`:
 
