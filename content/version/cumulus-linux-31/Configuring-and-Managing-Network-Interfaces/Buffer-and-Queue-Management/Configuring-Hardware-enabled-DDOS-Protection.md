@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122109
 pageID: 5122109
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -18,7 +18,7 @@ Tomahawk chipsets.
 
 {{%/notice%}}
 
-## Configure Persistent DDOS Protection</span>
+## Configure Persistent DDOS Protection
 
 1.  Open the `/etc/cumulus/datapath/traffic.conf` file in a text editor.
 

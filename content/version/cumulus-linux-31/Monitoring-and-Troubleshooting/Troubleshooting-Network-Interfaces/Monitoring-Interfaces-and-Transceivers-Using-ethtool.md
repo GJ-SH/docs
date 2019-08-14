@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121961
 pageID: 5121961
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -18,13 +18,13 @@ prints the current settings of the network device. See `man ethtool(8)`
 for details. Not all options are currently supported on switch port
 interfaces.
 
-## Commands</span>
+## Commands
 
   - cl-netstat
 
   - ethtool
 
-## Monitoring Interface Status Using ethtool</span>
+## Monitoring Interface Status Using ethtool
 
 To check the status of an interface using `ethtool`:
 
@@ -78,7 +78,7 @@ To query interface statistics:
             SoftOutTxFifoFull: 0
             HwIfOutQLen: 0
 
-### Viewing and Clearing Interface Counters</span>
+### Viewing and Clearing Interface Counters
 
 Interface counters contain information about an interface. You can view
 this information when you run `cl-netstat`, `ifconfig`, or `cat
@@ -106,7 +106,7 @@ information:
 | \-t \<tag name\> | Saves statistics with `<tag name>`.                                                 |
 | \-v              | Prints `cl-netstat` version and exits.                                              |
 
-## Monitoring Switch Port SFP/QSFP Hardware Information Using ethtool</span>
+## Monitoring Switch Port SFP/QSFP Hardware Information Using ethtool
 
 To see hardware capabilities and measurement information on the SFP or
 QSFP module installed in a particular port, use the `ethtool -m`

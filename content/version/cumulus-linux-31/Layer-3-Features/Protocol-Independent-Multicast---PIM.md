@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122116
 pageID: 5122116
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -34,7 +34,7 @@ Cumulus Linux 3.1 supports PIM Sparse Mode.
 
 {{%/notice%}}
 
-## Installing and Configuring PIM Sparse Mode</span>
+## Installing and Configuring PIM Sparse Mode
 
 PIM Sparse Mode builds explicit multicasts trees rooted at a Rendezvous
 Point (RP) for each group. Each RP keeps track of all multicast sources
@@ -123,7 +123,7 @@ To enable PIM on an interface:
         cumulus# ip pim rp 192.168.0.1 228.0.0.0/8
         cumulus# ip pim rp 192.168.0.2 229.0.0.0/8
 
-## Limitations</span>
+## Limitations
 
   - Only PIM Sparse Mode is available in Cumulus Linux 3.1
 

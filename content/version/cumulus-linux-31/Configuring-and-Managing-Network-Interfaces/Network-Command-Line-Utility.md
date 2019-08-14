@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122114
 pageID: 5122114
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -50,13 +50,13 @@ The Cumulus Linux 3.1 release of NCLU supports ifupdown2 and quagga.
 
 {{%/notice%}}
 
-## Installation</span>
+## Installation
 
 To install the `nclu` package, follow the instructions in the [Cumulus
 Linux 3.1 release
 notes](https://support.cumulusnetworks.com/hc/en-us/articles/224473608#ea).
 
-## Configuration</span>
+## Configuration
 
 Configuration of the `net` utility is done in the `/etc/netd.conf` file.
 This file can be configured to allow different permission levels for
@@ -81,7 +81,7 @@ environment variable to *true*. The value is not case sensitive.
 
 {{%/notice%}}
 
-## Getting Started</span>
+## Getting Started
 
 NCLU uses the following workflow for staging and committing changes to
 Cumulus Linux 3.1:
@@ -176,7 +176,7 @@ Multiple interfaces can be configured at once:
 
 {{%/notice%}}
 
-### Built-In Examples</span>
+### Built-In Examples
 
 The NCLU has a couple of built in examples to guide users through basic
 configuration setup:

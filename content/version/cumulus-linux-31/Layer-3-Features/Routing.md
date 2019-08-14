@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122117
 pageID: 5122117
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -15,11 +15,11 @@ siteSlug: cumulus-linux-31
 
 This chapter discusses routing on switches running Cumulus Linux.
 
-## Commands</span>
+## Commands
 
   - ip route
 
-## Static Routing via ip route</span>
+## Static Routing via ip route
 
 A static route can be persistently added by adding `up ip route add ..`
 into `/etc/network/interfaces`. For example:
@@ -136,7 +136,7 @@ To delete a static route:
     198.51.100.10/24 dev swp4  proto kernel  scope link  src 198.51.100.11
     198.51.100.20/24 dev br0  proto kernel  scope link  src 198.51.100.21
 
-## Static Routing via Quagga</span>
+## Static Routing via Quagga
 
 You can also manage static routes via `vtysh`, the Quagga CLI. The
 routes are added to the `quagga` routing table, and then will be updated
@@ -227,7 +227,7 @@ To delete a static route in Quagga (does not persist across reboot):
     C>* 127.0.0.0/8 is directly connected, lo
     switch#
 
-## Supported Route Table Entries</span>
+## Supported Route Table Entries
 
 Cumulus Linux — via `switchd` — advertises the maximum number of route
 table entries that are supported on a given switch architecture,
@@ -261,7 +261,7 @@ You can use
 [`cl-resource-query`](/version/cumulus-linux-31/Monitoring-and-Troubleshooting/Resource-Diagnostics-Using-cl-resource-query)
 to determine the current table sizes on a given switch.
 
-### <span id="src-5122117_Routing-uft" class="confluence-anchor-link"></span>Forwarding Table Profiles</span>
+### Forwarding Table Profiles
 
 Mellanox Spectrum and some Broadcom ASICs provide the ability to
 configure the allocation of forwarding table resources and mechanisms.
@@ -283,7 +283,7 @@ your network architecture and specify the profile name for the
     forwarding_table.profile = default
 
 After you specify a different profile, [restart
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 for the change to take effect. You can see the forwarding table profile
 when you run `cl-resource-query`.
 
@@ -294,7 +294,7 @@ only the *default* profile.
 
 {{%/notice%}}
 
-### Number of Supported Route Entries, by Platform</span>
+### Number of Supported Route Entries, by Platform
 
 The following tables list the number of MAC addresses, layer 3 neighbors
 and LPM routes validated for each forwarding table profile for the
@@ -302,7 +302,7 @@ various supported platforms. If you are not specifying any profiles as
 described above, the *default* values are the ones that the switch will
 use.
 
-#### Mellanox Spectrum Switches</span>
+#### Mellanox Spectrum Switches
 
 | Profile        | MAC Addresses | L3 Neighbors              | Longest Prefix Match (LPM)     |
 | -------------- | ------------- | ------------------------- | ------------------------------ |
@@ -312,7 +312,7 @@ use.
 | v4-lpm-heavy-1 | 8k            | 8k (IPv4) and 2k (IPv6)   | 128k (IPv4) and 2k (IPv6-long) |
 | v6-lpm-heavy   | 8k            | 8k (IPv4) and 8k (IPv6)   | 8k (IPv4) and 40k (IPv6-long)  |
 
-#### Broadcom Tomahawk Switches</span>
+#### Broadcom Tomahawk Switches
 
 | Profile                    | MAC Addresses | L3 Neighbors | Longest Prefix Match (LPM)     |
 | -------------------------- | ------------- | ------------ | ------------------------------ |
@@ -320,7 +320,7 @@ use.
 | l2-heavy                   | 72k           | 72k          | 8k (IPv4) or 2k (IPv6-long)    |
 | v4-lpm-heavy, v6-lpm-heavy | 8k            | 8k           | 128k (IPv4) or 20k (IPv6-long) |
 
-#### Broadcom Trident II/Trident II+ Switches</span>
+#### Broadcom Trident II/Trident II+ Switches
 
 | Profile                    | MAC Addresses | L3 Neighbors | Longest Prefix Match (LPM)     |
 | -------------------------- | ------------- | ------------ | ------------------------------ |
@@ -328,7 +328,7 @@ use.
 | l2-heavy                   | 160k          | 96k          | 8k (IPv4) or 2k (IPv6-long)    |
 | v4-lpm-heavy, v6-lpm-heavy | 32k           | 16k          | 128k (IPv4) or 20k (IPv6-long) |
 
-## Configuration Files</span>
+## Configuration Files
 
   - /etc/cumulus/datapath/traffic.conf
 
@@ -336,15 +336,15 @@ use.
 
   - /etc/quagga/zebra.conf
 
-## Useful Links</span>
+## Useful Links
 
   - [linux-ip.net/html/tools-ip-route.html](http://linux-ip.net/html/tools-ip-route.html)
 
   - [www.nongnu.org/quagga/docs/docs-info.html\#Static-Route-Commands](http://www.nongnu.org/quagga/docs/docs-info.html#Static-Route-Commands)
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
-### Don't Delete Routes via Linux Shell</span>
+### Don't Delete Routes via Linux Shell
 
 Static routes added via Quagga can be deleted via Linux shell. This
 operation, while possible, should be avoided. Routes added by Quagga
@@ -352,7 +352,7 @@ should only be deleted by Quagga, otherwise Quagga might not be able to
 clean up all its internal state completely and incorrect routing can
 occur as a result.
 
-### Adding IPv6 Default Route with src Address on eth0 Fails without Adding Delay</span>
+### Adding IPv6 Default Route with src Address on eth0 Fails without Adding Delay
 
 Attempting to install an IPv6 default route on eth0 with a source
 address fails at reboot or when running `ifup` on eth0.

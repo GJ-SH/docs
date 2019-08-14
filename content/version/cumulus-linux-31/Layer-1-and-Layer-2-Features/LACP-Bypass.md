@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122093
 pageID: 5122093
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -20,7 +20,7 @@ connected to a switch on a bond configured in 802.3ad mode. Once the
 pre-boot process finishes and the host is capable of running LACP, the
 normal 802.3ad link aggregation operation takes over.
 
-## Understanding the LACP Bypass All-active Mode</span>
+## Understanding the LACP Bypass All-active Mode
 
 When a bond has multiple slave interfaces, each bond slave interface
 operates as an active link while the bond is in bypass mode. This is
@@ -37,7 +37,7 @@ Keep in the mind the following caveats with all-active mode:
     slave interfaces when the LACP bond is in all-active mode.
     Therefore, only use all-active mode on host-facing LACP bonds.
     Cumulus Networks highly recommends you configure [STP BPDU
-    guard](Spanning-Tree-and-Rapid-Spanning-Tree.html#src-5122089_SpanningTreeandRapidSpanningTree-bpdu)
+    guard](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Spanning-Tree-and-Rapid-Spanning-Tree)
     along with all-active mode.
 
 {{%notice note%}}
@@ -47,7 +47,7 @@ bond-lacp-bypass-all-active are not supported.
 
 {{%/notice%}}
 
-### LACP Bypass and MLAG Deployments</span>
+### LACP Bypass and MLAG Deployments
 
 In an [MLAG
 deployment](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Multi-Chassis-Link-Aggregation-MLAG)
@@ -55,14 +55,14 @@ where bond slaves of a host are connected to two switches and the bond
 is in all-active mode, all the slaves of bond are active on both the
 primary and secondary MLAG nodes.
 
-## Configuring LACP Bypass</span>
+## Configuring LACP Bypass
 
 You configure LACP bypass in the `/etc/network/interfaces` file.
 
 To enable LACP bypass on the host-facing bond, under the bond interface
 stanza, set `bond-lacp-bypass-allow` to *1*.
 
-### VLAN-aware Bridge Mode Configuration</span>
+### VLAN-aware Bridge Mode Configuration
 
 The following configuration shows LACP bypass enabled for a bridge in
 [VLAN-aware
@@ -109,7 +109,7 @@ and its slave interfaces:
     cumulus@switch:~$ cat /sys/class/net/swp51s3/bonding_slave/ad_rx_bypass 
     1
 
-### Traditional Bridge Mode Configuration</span>
+### Traditional Bridge Mode Configuration
 
 The following configuration shows LACP bypass enabled for multiple
 active interfaces (all-active mode) with a bridge in [traditional bridge

@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122076
 pageID: 5122076
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -50,7 +50,7 @@ characteristics:
 
   - Head end replication is used for handling BUM traffic.
 
-## Installing the EVPN Package</span>
+## Installing the EVPN Package
 
 To install EVPN on a switch:
 
@@ -58,8 +58,8 @@ To install EVPN on a switch:
 
 2.  Uncomment the early access repo lines and save the file:
     
-        #deb        http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
-        #deb-src    http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
+        #deb      http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
+        #deb-src  http://repo3.cumulusnetworks.com/repo CumulusLinuz-3-early-access cumulus
 
 3.  Run the following commands to install the EVPN package in Cumulus
     Linux:
@@ -79,7 +79,7 @@ To install EVPN on a switch:
         +++-========================-=================-=================-=====================================================
         ii  quagga                   0.99.24+cl3eau5   amd64             BGP/OSPF/RIP routing daemon
 
-## Enabling Quagga</span>
+## Enabling Quagga
 
 Quagga needs to be enabled prior to using EVPN.
 
@@ -97,7 +97,7 @@ Quagga needs to be enabled prior to using EVPN.
         cumulus@switch:~$ sudo systemctl enable quagga.service
         cumulus@switch:~$ sudo systemctl start quagga.service
 
-## Example Configuration</span>
+## Example Configuration
 
 The following configurations are used throughout this chapter. You can
 find the flat-file configurations for the network devices in the Cumulus
@@ -108,7 +108,7 @@ for leaf03, leaf04, server03, server04). Here is the topology diagram:
 
 {{% imgOld 0 %}}
 
-### leaf01 and leaf02 Configurations</span>
+### leaf01 and leaf02 Configurations
 
 <table>
 <colgroup>
@@ -300,7 +300,7 @@ end</code></pre>
 </tbody>
 </table>
 
-### spine01 and spine02 Configurations</span>
+### spine01 and spine02 Configurations
 
 <table>
 <colgroup>
@@ -469,7 +469,7 @@ end</code></pre>
 </tbody>
 </table>
 
-### server01 and server02 Configurations</span>
+### server01 and server02 Configurations
 
 <table>
 <colgroup>
@@ -522,7 +522,7 @@ iface eth2.200
 </tbody>
 </table>
 
-## EVPN Provisioning</span>
+## EVPN Provisioning
 
 EVPN can be provisioned with either RDs and RTs automatically
 configured, or by manually defining them. The output below shows example
@@ -530,7 +530,7 @@ configured, or by manually defining them. The output below shows example
 configuration](/version/cumulus-linux-31/Layer-3-Features/Configuring-Quagga/)
 for these two provisioning options:
 
-### Enable EVPN with Automatic RDs and RTs</span>
+### Enable EVPN with Automatic RDs and RTs
 
     router bgp 65011
      bgp router-id 10.0.0.11
@@ -546,7 +546,7 @@ for these two provisioning options:
      exit-address-family
      exit
 
-### Enable EVPN with User-defined RDs and RTs for Some VNIs</span>
+### Enable EVPN with User-defined RDs and RTs for Some VNIs
 
     router bgp 65100
      address-family evpn
@@ -556,7 +556,7 @@ for these two provisioning options:
          rd 172.16.10.1:20
          route-target both 65100:20
 
-## Testing Connectivity between Servers</span>
+## Testing Connectivity between Servers
 
 SSH to server01 and ping the VLAN1 IP address on server02:
 
@@ -578,7 +578,7 @@ connectivity across the L3 fabric:
 | VLAN100 | 172.16.100.101 | 172.16.100.102 | 172.16.100.103 | 172.16.100.104 |
 | VLAN200 | 172.16.200.101 | 172.16.200.102 | 172.16.200.103 | 172.16.200.104 |
 
-## BGP Output Commands</span>
+## BGP Output Commands
 
 The following commands are not unique to EVPN but help troubleshoot
 connectivity and route propagation. You can display the L3 fabric by
@@ -615,13 +615,13 @@ participating in BGP by running the `show ip bgp` command:
     *> 10.0.0.21/32     0.0.0.0                  0          32768 i
     Displayed  5 out of 5 total prefixes
 
-## EVPN BGP Output Commands</span>
+## EVPN BGP Output Commands
 
 The following commands are unique to EVPN address-families and VXLAN.
 Note that just because two network nodes are BGP peers does not mean
 they are EVPN address-family peers or are exchanging VXLAN information.
 
-### Displaying EVPN address-family Peers</span>
+### Displaying EVPN address-family Peers
 
 The network device participating in BGP EVPN address-family can be shown
 using the ` show bgp evpn summary  `command
@@ -640,7 +640,7 @@ using the ` show bgp evpn summary  `command
     leaf04(swp4)    4 65014    1090    1076        0    0    0 00:52:23        3
     Total number of neighbors 4
 
-### Displaying VNIs</span>
+### Displaying VNIs
 
 You can display the configured VNIs on a network device participating in
 BGP EVPN by running the `show bgp evpn vni` command. The following
@@ -680,7 +680,7 @@ have any VNIs configured on itself:
     BGP EVPN INFORMATION
     Advertise VNI flag: Enabled
 
-### Displaying EVPN VXLANs</span>
+### Displaying EVPN VXLANs
 
 Run the `show evpn vni` command to list all local configured VXLANs and
 remote VTEPs:
@@ -706,7 +706,7 @@ remote VTEPs:
       10.0.0.12
       10.0.0.14
 
-### Displaying BGP EVPN Routes</span>
+### Displaying BGP EVPN Routes
 
 Run the `show bgp evpn route` command to display all EVPN routes at the
 same time:
@@ -775,7 +775,7 @@ same time:
      
     Displayed 21 out of 21 total prefixes
 
-#### Output Explained</span>
+#### Output Explained
 
   - The output ` *> [3]:[0]:[4]:[10.0.0.14]  `is explained as follows:
     
@@ -796,7 +796,7 @@ same time:
     giving us 24 total prefixes. However, three of them are originating,
     so 24-3 = 21 prefixes.
 
-### Displaying a Specific EVPN Route</span>
+### Displaying a Specific EVPN Route
 
 To drill down on a specific route for more information, run the `show
 bgp evpn route rd <VTEP:VXLAN>` command:
@@ -822,7 +822,7 @@ bgp evpn route rd <VTEP:VXLAN>` command:
           AddPath ID: RX 0, TX 26
           Last update: Thu Nov  3 15:33:48 2016
 
-## Caveats</span>
+## Caveats
 
 The following caveats are in place for the early access release:
 
@@ -830,7 +830,7 @@ The following caveats are in place for the early access release:
     for VXLAN itself.
 
   - [VXLAN active-active
-    mode](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Network-Virtualization/Lightweight-Network-Virtualization---LNV/LNV-VXLAN-Active-Active-Mode)
+    mode](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Network-Virtualization/Lightweight-Network-Virtualization-LNV/LNV-VXLAN-Active-Active-Mode)
     is not supported.
 
   - Only VNI values less than 65535 are supported.

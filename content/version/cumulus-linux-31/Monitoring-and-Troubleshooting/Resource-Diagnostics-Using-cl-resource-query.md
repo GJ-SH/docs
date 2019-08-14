@@ -7,14 +7,14 @@ aliases:
  - /pages/viewpage.action?pageId=5121948
 pageID: 5121948
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
 You can use `cl-resource-query` to retrieve information about host
 entries, MAC entries, L2 and L3 routes, and ECMPs (equal-cost multi-path
 routes, see [Load
-Balancing](Network-Topology.html#src-5122120_NetworkTopology-load_balancing))
+Balancing](/version/cumulus-linux-31/Layer-3-Features/Network-Topology))
 that are in use. This is especially useful because Cumulus Linux syncs
 routes between the kernel and the switching silicon. If the required
 resource pools in hardware fill up, new kernel routes can cause existing

@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122108
 pageID: 5122108
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -52,19 +52,19 @@ which are assigned equal scheduling weights.
 
 Datapath configuration takes effect when you initialize `switchd`.
 Changes to the `traffic.conf` file require you to [restart the
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 service.
 
-## Commands</span>
+## Commands
 
 If you modify the configuration in the
 `/etc/cumulus/datapath/traffic.conf` file, you must [restart
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 for the changes to take effect:
 
     cumulus@switch:~$ sudo systemctl restart switchd.service
 
-## Configuration Files</span>
+## Configuration Files
 
 The following configuration applies to 10G, 40G, and 100G switches on
 Tomahawk, Trident II+ or Trident II
@@ -204,7 +204,7 @@ Tomahawk, Trident II+ or Trident II
     #
     #forwarding_table.profile = default
 
-## Configuring Traffic Marking through ACL Rules</span>
+## Configuring Traffic Marking through ACL Rules
 
 You can mark traffic for egress packets through `iptables` or
 `ip6tables` rule classifications. To enable these rules, you do one of
@@ -253,7 +253,7 @@ TCAM slices in the hardware.
 To put the rule in the mangle table, include `-t mangle`; to put the
 rule in the filter table, omit `-t mangle`.
 
-## <span id="src-5122108_BufferandQueueManagement-pfc" class="confluence-anchor-link"></span>Configuring Priority Flow Control</span>
+## Configuring Priority Flow Control
 
 *Priority flow control*, as defined in the [IEEE 802.1Qbb
 standard](http://www.ieee802.org/1/pages/802.1bb.html), provides a
@@ -345,7 +345,7 @@ pfc.pfc_port_group.tx_enable = true
 pfc.pfc_port_group.rx_enable = true       
 ```
 
-### Understanding Port Groups</span>
+### Understanding Port Groups
 
 A *port group* refers to one or more sequences of contiguous ports.
 Multiple port groups can be defined by:
@@ -382,12 +382,12 @@ sequences of contiguous ports; you can see which ports are contiguous in
         ...
 
 [Restart
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 to allow the PFC configuration changes to take effect:
 
     cumulus@switch:~$ sudo systemctl restart switchd.service
 
-## <span id="src-5122108_BufferandQueueManagement-pause" class="confluence-anchor-link"></span>Configuring Link Pause</span>
+## Configuring Link Pause
 
 The PAUSE frame is a flow control mechanism that halts the transmission
 of the transmitter for a specified period of time. A server or other
@@ -429,12 +429,12 @@ link_pause.pause_port_group.tx_enable = true
 ```
 
 [Restart
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 to allow link pause configuration changes to take effect:
 
     cumulus@switch:~$ sudo systemctl restart switchd.service
 
-## <span id="src-5122108_BufferandQueueManagement-ecn" class="confluence-anchor-link"></span>Configuring Explicit Congestion Notification</span>
+## Configuring Explicit Congestion Notification
 
 {{%notice warning%}}
 
@@ -480,17 +480,17 @@ through swp4 and swp6:
     ecn.ecn_port_group.port_set = swp1-swp4,swp6
 
 [Restart
-`switchd`](Configuring-switchd.html#src-5121932_Configuringswitchd-restartswitchd)
+`switchd`](/version/cumulus-linux-31/System-Management/Configuring-switchd)
 to allow the ECN configuration changes to take effect:
 
     cumulus@switch:~$ sudo systemctl restart switchd.service
 
-## Useful Links</span>
+## Useful Links
 
   - [iptables-extensions man
     page](http://ipset.netfilter.org/iptables-extensions.man.html)
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - You can configure Quality of Service (QoS) for 10G, 40G, and 100G
     switches on the Tomahawk, Trident II+ or Trident II platforms only.

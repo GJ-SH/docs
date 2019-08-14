@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122142
 pageID: 5122142
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -24,7 +24,7 @@ Cumulus Linux does not support demand mode in BFD.
 
 {{%/notice%}}
 
-## Using BFD Multihop Routed Paths</span>
+## Using BFD Multihop Routed Paths
 
 BFD multihop sessions are built over arbitrary paths between two
 systems, which results in some complexity that does not exist for single
@@ -44,7 +44,7 @@ hop sessions. Here are some best practices for using multihop paths:
 Multihop BFD sessions are supported for both IPv4 and IPv6 peers. See
 below for more details.
 
-## BFD Parameters</span>
+## BFD Parameters
 
 You can configure the following BFD parameters for both IPv4 and IPv6
 sessions:
@@ -56,7 +56,7 @@ sessions:
 
   - The detection time multiplier.
 
-## Configuring BFD</span>
+## Configuring BFD
 
 You configure BFD one of two ways: by specifying the configuration in
 the [PTM `topology.dot`
@@ -82,7 +82,7 @@ that has been created by both topology file and client (Quagga).
 
 {{%/notice%}}
 
-### BFD in BGP</span>
+### BFD in BGP
 
 For Quagga when using **BGP**, neighbors are registered and
 de-registered with
@@ -154,7 +154,7 @@ neighbors <IP address>`.
         Detect Mul: 3, Min Rx interval: 300, Min Tx interval: 300
         Status: Down, Last update: 0:00:00:13
 
-### BFD in OSPF</span>
+### BFD in OSPF
 
 For Quagga using **OSFP**, neighbors are registered and de-registered
 dynamically with
@@ -177,7 +177,7 @@ discovered on that interface inherit the configuration.
         <cr>
     quagga(config-if)# ipv6 ospf6 bfd 5 500 500
 
-### OSPF Show Commands</span>
+### OSPF Show Commands
 
 The BFD lines at the end of each code block shows the corresponding IPv6
 or IPv4 OSPF interface or neighbor information.
@@ -253,7 +253,7 @@ or IPv4 OSPF interface or neighbor information.
           Detect Mul: 5, Min Rx interval: 500, Min Tx interval: 500
           Status: Down, Last update: 0:00:01:29
 
-### Scripts</span>
+### Scripts
 
 `ptmd` executes scripts at `/etc/ptm.d/bfd-sess-down` and
 ` /etc/ptm.d/bfd-sess-up  `for when BFD sessions go down or up, running
@@ -262,7 +262,7 @@ when a BFD session goes up.
 
 You should modify these default scripts as needed.
 
-## Troubleshooting BFD</span>
+## Troubleshooting BFD
 
 To troubleshoot BFD, use `ptmctl -b`. For more information, see
 [Prescriptive Topology Manager -

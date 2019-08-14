@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122145
 pageID: 5122145
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -69,7 +69,7 @@ routing table, and configuring an instance of the routing protocol — BGP
 
 {{% imgOld 0 %}}
 
-## Configuring VRF</span>
+## Configuring VRF
 
 Each routing table is called a *VRF table*, and has its own table ID.
 You configure VRF using ` ifupdown2  `or the `vrf` command.
@@ -105,7 +105,7 @@ Here is a sample VRF configuration in `/etc/network/interfaces`:
         ... 
         vrf <vrf-name>
 
-### Specifying a Table ID</span>
+### Specifying a Table ID
 
 Instead of having Cumulus Linux assign a table ID for the VRF table, you
 can specify your own table ID in the configuration. The table ID to name
@@ -120,7 +120,7 @@ table ID like this:
 Note that if you do specify a table ID, it **must** be in the range of
 1001 to 1255.
 
-### Bringing a VRF Up after Downing It with ifdown</span>
+### Bringing a VRF Up after Downing It with ifdown
 
 If you take down a VRF using `ifdown`, to bring it back up you need to
 do one of two things:
@@ -134,7 +134,7 @@ For example:
     cumulus@switch:~$ sudo ifdown red
     cumulus@switch:~$ sudo ifup --with-depends red
 
-### <span id="src-5122145_VirtualRoutingandForwarding-VRF-vrf_cmd" class="confluence-anchor-link"></span>Using the vrf Command</span>
+### Using the vrf Command
 
 The `vrf` command returns information about VRF tables. You can also use
 it to execute non-VRF-specific commands and perform other tasks related
@@ -237,7 +237,7 @@ To determine which VRF table is associated with a particular PID, run
      
     red
 
-## Quagga Operation in a VRF</span>
+## Quagga Operation in a VRF
 
 In Cumulus Linux 3.0 and later, BGP and static routing (IPv4 and IPv6)
 are supported within a VRF context. Various Quagga routing constructs,
@@ -284,7 +284,7 @@ but they become active only when configured through
     exist for this configuration to be accepted - either already defined
     through `/etc/network/interfaces` or pre-provisioned in Quagga.
 
-### Example Configuration</span>
+### Example Configuration
 
 Here's an example VRF configuration in BGP:
 
@@ -313,12 +313,12 @@ Here's an example VRF configuration in BGP:
       exit-address-family
     !
 
-## Example Quagga Commands</span>
+## Example Quagga Commands
 
 You can view VRF data either directly in Cumulus Linux with `ip`
 commands or with the `vtysh` shell.
 
-### Showing VRF Data with vtysh</span>
+### Showing VRF Data with vtysh
 
 You run the following Quagga commands are run in the `vtysh` terminal.
 
@@ -494,7 +494,7 @@ BGP IPv6 routes in the VRF:
     switch# exit
     cumulus@switch:/home/cumulus$
 
-### Showing VRF Data Using ip Commands</span>
+### Showing VRF Data Using ip Commands
 
 To list all VRFs provisioned, showing the VRF ID (14, 21, 28 below) as
 well as the table ID:
@@ -591,7 +591,7 @@ To show IPv6 routes in a VRF:
     unreachable default dev lo  metric 240  error -101 pref medium
     cumulus@switch:~$
 
-## Using BGP Unnumbered Interfaces with VRF</span>
+## Using BGP Unnumbered Interfaces with VRF
 
 [BGP unnumbered interface
 configurations](/version/cumulus-linux-31/Layer-3-Features/Border-Gateway-Protocol-BGP)
@@ -657,7 +657,7 @@ Quagga BGP configuration:
      exit-address-family
     !
 
-## Using DHCP with VRF</span>
+## Using DHCP with VRF
 
 Since you can use VRF to bind IPv4 and IPv6 sockets to non-default VRF
 tables, you have the ability to start DHCP servers and relays in any
@@ -701,7 +701,7 @@ file for each instance. The files must be named as follows:
 
 See the example configuration below for more details.
 
-### Caveats for DHCP with VRF</span>
+### Caveats for DHCP with VRF
 
   - Cumulus Linux does **not** support DHCP server and relay across
     VRFs, so the server and host cannot be in different VRF tables. In
@@ -718,7 +718,7 @@ See the example configuration below for more details.
 
   - This method only works with `systemd`-based services.
 
-### Example Configuration</span>
+### Example Configuration
 
 In the following example, there is one IPv4 network with a VRF named
 *red* and one IPv6 network with a VRF named *blue*.
@@ -881,7 +881,7 @@ or<br />
 </tbody>
 </table>
 
-## Using ping or traceroute</span>
+## Using ping or traceroute
 
 If you wish to use `ping` or `traceroute` on a VRF, use the `-I <vrf>`
 flag for ping and `-i <vrf>` for `traceroute`.
@@ -893,7 +893,7 @@ Or:
 
     cumulus@switch:~$ sudo traceroute -i blue
 
-## Caveats</span>
+## Caveats
 
   - The Penguin Computing Arctica 4804IP switch does not support VRFs.
 

@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121973
 pageID: 5121973
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -15,7 +15,7 @@ Nutanix Prism is a graphical user interface (GUI) for managing
 infrastructure and virtual environments. In order to use it, you need to
 take special steps within Cumulus Linux before you can configure Prism.
 
-## Configuring Cumulus Linux</span>
+## Configuring Cumulus Linux
 
 1.  SSH to the Cumulus Linux switch that needs to be configured,
     replacing `[switch]` below as appropriate:
@@ -52,7 +52,7 @@ take special steps within Cumulus Linux before you can configure Prism.
         cumulus@switch:~$ sudo systemctl restart snmpd.service
         Restarting network management services: snmpd.
 
-## Configuring Nutanix </span>
+## Configuring Nutanix
 
 1.  Log into the Nutanix Prism. Nutanix defaults to the Home menu,
     referred to as the Dashboard:
@@ -115,7 +115,7 @@ Nutanix hosts are visible.
 
 {{%/notice%}}
 
-## Switch Information Displayed on Nutanix Prism</span>
+## Switch Information Displayed on Nutanix Prism
 
   - Physical Interface (e.g. swp1, swp2). This will only display swp
     interfaces connected to Nutanix hosts by default.
@@ -160,7 +160,7 @@ CLI, login using the default username **nutanix**, and the password
         Switch Vendor Name        : Unknown
         Port Ids                  : 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:52, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:53, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:54, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:55
 
-## Troubleshooting a Nutanix Node</span>
+## Troubleshooting a Nutanix Node
 
 To help visualize the following diagram is provided:
 
@@ -173,7 +173,7 @@ To help visualize the following diagram is provided:
 | Node C (Red)    | vmnic2        | swp51              |
 | Node D (Yellow) | vmnic2        | swp52              |
 
-## Enabling LLDP/CDP on VMware ESXi (Hypervisor on Nutanix)</span>
+## Enabling LLDP/CDP on VMware ESXi (Hypervisor on Nutanix)
 
 1.  Follow the directions on one of the following websites to enable
     CDP:
@@ -240,7 +240,7 @@ To help visualize the following diagram is provided:
         swp51         10G(SFP+)    Access/L2  ====  vmnic2         NX-1050-C          Untagged: br-ntnx
         swp52         10G(SFP+)    Access/L2  ====  vmnic2         NX-1050-D          Untagged: br-ntnx
 
-### Enabling LLDP/CDP on Nutanix Acropolis (Hypervisor on Nutanix Acropolis)</span>
+### Enabling LLDP/CDP on Nutanix Acropolis (Hypervisor on Nutanix Acropolis)
 
 [Nutanix Acropolis](http://www.nutanix.com/products/acropolis/) is an
 alternate hypervisor that Nutanix supports. Acropolis Hypervisor uses
@@ -249,7 +249,7 @@ daemons to operating just like Cumulus Linux. LLDP should be enabled for
 each interface on the host. Refer to
 <https://community.mellanox.com/docs/DOC-1522> for setup instructions.
 
-## Troubleshooting Connections without LLDP or CDP</span>
+## Troubleshooting Connections without LLDP or CDP
 
 1.  Find the MAC address information in the Prism GUI, located in:
     **Hardware** \> **Table** \> **Host** \> **Host NICs**
@@ -260,45 +260,45 @@ each interface on the host. Refer to
 3.  List out all the MAC addresses associated to the bridge:
     
         cumulus@switch:~$ brctl showmacs br-ntnx
-        port name mac addr      vlan    is local?   ageing timer
-        swp9      00:02:00:00:00:06 0   no        66.94
-        swp52     00:0c:29:3e:32:12 0   no         2.73
-        swp49     00:0c:29:5a:f4:7f 0   no         2.73
-        swp51     00:0c:29:6f:e1:e4 0   no         2.73
-        swp49     00:0c:29:74:0c:ee 0   no         2.73
-        swp50     00:0c:29:a9:36:91 0   no         2.73
-        swp9      08:9e:01:f8:8f:0c 0   no        13.56
-        swp9      08:9e:01:f8:8f:35 0   no         2.73
-        swp4      0c:c4:7a:09:9e:d4 0   no        24.05
-        swp1      0c:c4:7a:09:9f:8e 0   no        13.56
-        swp3      0c:c4:7a:09:9f:93 0   no        13.56
-        swp2      0c:c4:7a:09:9f:95 0   no        24.05
-        swp52     0c:c4:7a:09:a0:c1 0   no         2.73
-        swp51     0c:c4:7a:09:a2:35 0   no         2.73
-        swp49     0c:c4:7a:09:a2:43 0   no         2.73
-        swp9      44:38:39:00:82:04 0   no         2.73
-        swp9      74:e6:e2:f5:a2:80 0   no         2.73
-        swp1      74:e6:e2:f5:a2:81 0   yes        0.00
-        swp2      74:e6:e2:f5:a2:82 0   yes        0.00
-        swp3      74:e6:e2:f5:a2:83 0   yes        0.00
-        swp4      74:e6:e2:f5:a2:84 0   yes        0.00
-        swp5      74:e6:e2:f5:a2:85 0   yes        0.00
-        swp6      74:e6:e2:f5:a2:86 0   yes        0.00
-        swp7      74:e6:e2:f5:a2:87 0   yes        0.00
-        swp8      74:e6:e2:f5:a2:88 0   yes        0.00
-        swp9      74:e6:e2:f5:a2:89 0   yes        0.00
-        swp10     74:e6:e2:f5:a2:8a 0   yes        0.00
-        swp49     74:e6:e2:f5:a2:b1 0   yes        0.00
-        swp50     74:e6:e2:f5:a2:b2 0   yes        0.00
-        swp51     74:e6:e2:f5:a2:b3 0   yes        0.00
-        swp52     74:e6:e2:f5:a2:b4 0   yes        0.00
-        swp9      8e:0f:73:1b:f8:24 0   no         2.73
-        swp9      c8:1f:66:ba:60:cf 0   no        66.94
+        port name mac addr        vlan    is local?   ageing timer
+        swp9      00:02:00:00:00:06   0 no        66.94
+        swp52     00:0c:29:3e:32:12   0 no         2.73
+        swp49     00:0c:29:5a:f4:7f   0 no         2.73
+        swp51     00:0c:29:6f:e1:e4   0 no         2.73
+        swp49     00:0c:29:74:0c:ee 0 no         2.73
+        swp50     00:0c:29:a9:36:91   0 no         2.73
+        swp9      08:9e:01:f8:8f:0c   0 no        13.56
+        swp9      08:9e:01:f8:8f:35 0 no         2.73
+        swp4      0c:c4:7a:09:9e:d4 0 no        24.05
+        swp1      0c:c4:7a:09:9f:8e 0 no        13.56
+        swp3      0c:c4:7a:09:9f:93   0 no        13.56
+        swp2      0c:c4:7a:09:9f:95   0 no        24.05
+        swp52     0c:c4:7a:09:a0:c1 0 no         2.73
+        swp51     0c:c4:7a:09:a2:35   0 no         2.73
+        swp49     0c:c4:7a:09:a2:43   0 no         2.73
+        swp9      44:38:39:00:82:04   0 no         2.73
+        swp9      74:e6:e2:f5:a2:80   0 no         2.73
+        swp1      74:e6:e2:f5:a2:81   0 yes        0.00
+        swp2      74:e6:e2:f5:a2:82   0 yes        0.00
+        swp3      74:e6:e2:f5:a2:83   0 yes        0.00
+        swp4      74:e6:e2:f5:a2:84   0 yes        0.00
+        swp5      74:e6:e2:f5:a2:85   0 yes        0.00
+        swp6      74:e6:e2:f5:a2:86   0 yes        0.00
+        swp7      74:e6:e2:f5:a2:87   0 yes        0.00
+        swp8      74:e6:e2:f5:a2:88   0 yes        0.00
+        swp9      74:e6:e2:f5:a2:89   0 yes        0.00
+        swp10     74:e6:e2:f5:a2:8a 0 yes        0.00
+        swp49     74:e6:e2:f5:a2:b1 0 yes        0.00
+        swp50     74:e6:e2:f5:a2:b2 0 yes        0.00
+        swp51     74:e6:e2:f5:a2:b3 0 yes        0.00
+        swp52     74:e6:e2:f5:a2:b4 0 yes        0.00
+        swp9      8e:0f:73:1b:f8:24   0 no         2.73
+        swp9      c8:1f:66:ba:60:cf   0 no        66.94
     
     Alternatively, you can use `grep`:
     
         cumulus@switch:~$ brctl showmacs br-ntnx | grep 0c:c4:7a:09:a2:43
-        swp49     0c:c4:7a:09:a2:43 0   no         4.58
+        swp49     0c:c4:7a:09:a2:43   0 no         4.58
     
     vmnic1 is now hooked up to swp49. This matches what is seen in
     `lldp`:

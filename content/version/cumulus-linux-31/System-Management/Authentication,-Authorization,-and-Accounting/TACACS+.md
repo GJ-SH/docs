@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121931
 pageID: 5121931
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -61,7 +61,7 @@ installed.
 
 {{%/notice%}}
 
-## Package Dependencies</span>
+## Package Dependencies
 
 TACACS+ requires the following packages to be installed on Cumulus
 Linux:
@@ -77,7 +77,7 @@ Linux:
 | libsimple-tacacct1\_1.0.0-1\_amd64.deb | Provides an interface for programs to send accounting records to the TACACS+ server. Used by `audisp-tacplus`.                                                                                                                                                                                                                                                                   |
 | sudo\_1.8.10p3-cl3u1\_amd64.deb        | A modified version of the standard Debian package, adding TACACS+ authenticated user/password lookup functionality. This package is installed by default.                                                                                                                                                                                                                        |
 
-## Installing and Removing the TACACS+ Client Packages</span>
+## Installing and Removing the TACACS+ Client Packages
 
 To install the `tacplus-client` package, on a switch, follow the
 instructions in the [Cumulus Linux 3.1 release
@@ -94,14 +94,14 @@ To remove the TACACS+ client configuration files as well as the packages
 
     cumulus@switch:~$ sudo apt-get autoremove --purge
 
-## TACACS+ Authentication</span>
+## TACACS+ Authentication
 
 The initial authentication configuration is done through the PAM
 modules, and an updated version of the `libpam-tacplus` package. When
 the package is installed, the PAM configuration is updated in
 `/etc/pam.d` with the `pam-auth-update` command.
 
-## NSS Plugin</span>
+## NSS Plugin
 
 When used with `pam_tacplus`, TACACS+ authenticated users can log in
 without a local account on the system by using the NSS plugin that comes
@@ -140,7 +140,7 @@ tacacs0 and tacacs15.
 
 {{%/notice%}}
 
-## TACACS+ Accounting</span>
+## TACACS+ Accounting
 
 TACACS+ accounting is implemented with the `audisp` module, with an
 additional plugin for auditd/audisp. The plugin maps the auid in the
@@ -177,7 +177,7 @@ Filenames can be altered in the `/etc/audisp/audisp-tacplus.conf` file.
 
 {{%/notice%}}
 
-## TACACS+ Configuration</span>
+## TACACS+ Configuration
 
 Post-installation TACACS+ configuration is done in the following
 configuration files:
@@ -374,7 +374,7 @@ options available:
 
 For more information, refer to the `audisp.8` and `auditd.8` man pages.
 
-## Troubleshooting TACACS+</span>
+## Troubleshooting TACACS+
 
 The `getent` command can be used to determine whether TACACS+ is
 configured correctly, and the local password is stored in the
@@ -424,7 +424,7 @@ configuration files should be debugged with *debug=1*:
 
 All logs are stored in `/var/log/syslog`.
 
-## Limitations</span>
+## Limitations
 
 If two or more TACACS+ users are logged in simultaneously, with the same
 privilege level, while the accounting records are maintained correctly,

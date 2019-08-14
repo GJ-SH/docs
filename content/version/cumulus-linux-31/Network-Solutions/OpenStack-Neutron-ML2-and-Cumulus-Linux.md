@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122188
 pageID: 5122188
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -41,7 +41,7 @@ Cumulus Linux switches, you need to install two packages:
 
 {{% imgOld 0 %}}
 
-## Installing and Configuring the REST API</span>
+## Installing and Configuring the REST API
 
 To install the `python-falcon` and `python-cumulus-restapi` packages,
 follow the instructions in the [Cumulus Linux 3.1 release
@@ -71,7 +71,7 @@ effect:
 
     cumulus@switch:~$ sudo systemctl restart restserver
 
-## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver</span>
+## Installing and Configuring the Cumulus Networks Modular Layer 2 Mechanism Driver
 
 You need to install the Cumulus Networks ML2 mechanism driver on your
 Neutron host. Download the Debian .deb or Red Hat RPM image from the
@@ -98,7 +98,7 @@ example:
     [ml2_cumulus]
     switches="192.168.10.10,192.168.20.20"
 
-## Demo</span>
+## Demo
 
 A demo involving OpenStack with Cumulus Linux is available in the
 [Cumulus Networks knowledge

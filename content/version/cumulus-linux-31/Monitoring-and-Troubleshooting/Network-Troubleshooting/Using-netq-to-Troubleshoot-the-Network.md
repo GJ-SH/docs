@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121955
 pageID: 5121955
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -56,7 +56,7 @@ to debug it.
 Because `netq` is a Linux application, it's easy to automate with tools
 like Ansible, Puppet or Chef.
 
-## Components</span>
+## Components
 
 `netq` has three primary components:
 
@@ -88,7 +88,7 @@ like Ansible, Puppet or Chef.
 
 {{% imgOld 0 %}}
 
-## Early Access Feature Limitations</span>
+## Early Access Feature Limitations
 
 `netq` is an [early access
 feature](https://support.cumulusnetworks.com/hc/en-us/articles/202933878).
@@ -114,7 +114,7 @@ If you are interested in trying out this or any other early access
 feature, contact your Cumulus Networks account representative to let us
 know you are testing it.
 
-## Installing netq</span>
+## Installing netq
 
 To install the `netq` package — `cumulus-netq` — on a switch, follow the
 instructions in the [Cumulus Linux 3.1 release
@@ -123,7 +123,7 @@ The `cumulus-netq` package contains `netq` and the `netq-agent`. Cumulus
 Networks recommends you install the `netq-agent` on every Cumulus Linux
 switch in the network; you can also install it on the redis server.
 
-### Installing redis Server</span>
+### Installing redis Server
 
 Cumulus Networks recommends you install the `redis` server on its own
 server or VM. Ideally, you should run the `redis` server on a separate,
@@ -174,7 +174,7 @@ You cannot specify a port number for the `redis` server at this time.
 Once you install the redis server, you must configure it before you can
 configure netq on the switch.
 
-## Configuring the redis Server</span>
+## Configuring the redis Server
 
 Depending upon the operating system of the redis server host, you may
 need to modify its configuration before it can start monitoring the
@@ -195,7 +195,7 @@ server is listening to external-facing ports, and not the localhost.
     
         root@redis-server:~# systemctl restart redis-server
 
-## Configuring netq</span>
+## Configuring netq
 
 Once you install the `netq` packages and configure the redis server, you
 need to configure `netq` to monitor your network.
@@ -235,7 +235,7 @@ The `netq` configuration is stored in the following files:
     are being pushed to the agent, as determined when the agent starts,
     as well as the `redis` server IP address and more.
 
-## Using netq</span>
+## Using netq
 
 `netq` has a number of options to use with the command to return various
 kinds of data about your network — press the *Tab* key at any time to
@@ -253,7 +253,7 @@ each one:
     show : Show fabric-wide info
     view : Show output of pre-defined commands on specific node
 
-### Checking the Health of the Network</span>
+### Checking the Health of the Network
 
 It's best to start with ` netq health agents  `to see the status of
 every network node, based on the whether the agent missed receiving any
@@ -298,7 +298,7 @@ You can also check the health of BGP and MLAG in the network:
     leaf-9               Peer Connectivity failed
     None
 
-### Using netq show</span>
+### Using netq show
 
 The `netq show` command can return information regarding the network
 fabric overall, including:
@@ -387,7 +387,7 @@ To see the route information, run:
     1      254   10.1.20.0/24    leaf-2            Local                     38 minutes ago
     1      255   10.1.20.1/32    leaf-1            Local                     38 minutes ago
 
-### Using netq view</span>
+### Using netq view
 
 The `netq view` command provides information about a specific node in
 the network. The available options are:
@@ -424,7 +424,7 @@ For example, to see the BGP summary for switch leaf-5, run:
      
     Total number of neighbors 4
 
-## Monitoring the redis Server</span>
+## Monitoring the redis Server
 
 You can use the `redis-cli info` command to determine how much memory is
 consumed by the `redis` server, how many connections there are, and so
@@ -440,7 +440,7 @@ To use the [`redis` CLI](http://redis.io/topics/rediscli), you need to
 
 {{%/notice%}}
 
-### Specifying a Different redis Server</span>
+### Specifying a Different redis Server
 
 If you need to change the IP address of the `redis` server, run `netq
 add server` again, specifying the IP address of the new server, then
@@ -454,7 +454,7 @@ monitoring with `netq`. Cumulus Networks recommends you use an
 automation tool like Ansible or Puppet to quickly update the server
 across all switches.
 
-## Troubleshooting netq</span>
+## Troubleshooting netq
 
 `netq` agent logs to `/var/log/netq-agent.log`. The logs are logrotated.
 

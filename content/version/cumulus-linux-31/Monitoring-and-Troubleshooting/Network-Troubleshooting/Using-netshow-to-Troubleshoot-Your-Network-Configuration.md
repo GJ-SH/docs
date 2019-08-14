@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121953
 pageID: 5121953
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -25,11 +25,11 @@ most relevant information to a network administrator.
 `netshow` can be used on any distribution of Linux, not just Cumulus
 Linux.
 
-## Installing netshow</span>
+## Installing netshow
 
 `netshow` is installed by default in Cumulus Linux.
 
-### Installing netshow on a Linux Server or in OpenStack</span>
+### Installing netshow on a Linux Server or in OpenStack
 
 To install `netshow` on a Linux server, run:
 
@@ -41,7 +41,7 @@ Debian and Red Hat packages will be available in the near future.
 
 {{%/notice%}}
 
-## Using netshow</span>
+## Using netshow
 
 Running `netshow` with no arguments displays all available command line
 arguments usable by `netshow`. (Running `netshow --help` gives you the
@@ -107,7 +107,7 @@ the networking industry, where most command troubleshooting tools are
 designed by developers and are most useful in the network application
 development process.
 
-## Showing Interfaces</span>
+## Showing Interfaces
 
 To show all available interfaces that are physically UP, run `netshow
 interface`:
@@ -185,7 +185,7 @@ system`:
      
     Uptime: 3 days, 6:29:44
 
-## Troubleshooting Example: OpenStack</span>
+## Troubleshooting Example: OpenStack
 
 Looking at an OpenStack Environment, here is the physical diagram:
 
@@ -262,7 +262,7 @@ simplifies understanding basic network troubleshooting, making the Linux
 administrator more productive and improving time to resolution while
 investigating network problems.
 
-## Other Useful netshow Features</span>
+## Other Useful netshow Features
 
 `netshow` uses the [python
 network-docopt](https://pypi.python.org/pypi/network-docopt) package.
@@ -278,7 +278,7 @@ near future, if you run `netshow int tap123` and there is only one
 interface starting with `tap123`, `netshow` will autocomplete the
 command option with the full interface.
 
-## Contributions Welcome\!</span>
+## Contributions Welcome\!
 
 `netshow` is an open source project licensed under GPLv2. To contribute
 please contact Cumulus Networks through the [Cumulus Community

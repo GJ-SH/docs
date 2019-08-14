@@ -4,15 +4,14 @@ author: Cumulus Networks
 weight: 11
 aliases:
  - /display/CL31/What's+New+in+Cumulus+Linux+3.1
- - /display/CL31/Whats+New+in+Cumulus+Linux+3.1
  - /pages/viewpage.action?pageId=5122208
 pageID: 5122208
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
-## What's New in Cumulus Linux 3.1.2</span>
+## What's New in Cumulus Linux 3.1.2
 
 Cumulus Linux 3.1.2 includes bug fixes as well as the following [early
 access
@@ -20,13 +19,13 @@ feature](https://support.cumulusnetworks.com/hc/en-us/articles/202933878).
 
   - [Edge-Core 5812-54X](http://cumulusnetworks.com/HCL)
 
-## What's New in Cumulus Linux 3.1.1</span>
+## What's New in Cumulus Linux 3.1.1
 
 Cumulus Linux 3.1.1 contains bug fixes and the following [early access
 features](https://support.cumulusnetworks.com/hc/en-us/articles/202933878).
 
   - [Priority flow
-    control](Buffer-and-Queue-Management.html#src-5122108_BufferandQueueManagement-BufferandQueueManagement-pfc)
+    control](/version/cumulus-linux-31/Configuring-and-Managing-Network-Interfaces/Buffer-and-Queue-Management/)
     (PFC) — Mellanox switches only
 
   - [Explicit congestion
@@ -43,7 +42,7 @@ the `cumulus-evpn` metapackage to use EVPN; read the [EVPN
 chapter](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN)
 for instructions.
 
-## What's New in Cumulus Linux 3.1.0</span>
+## What's New in Cumulus Linux 3.1.0
 
 Cumulus Linux 3.1.0 includes many new features and platforms. In
 addition to this chapter, please read the [release
@@ -67,10 +66,11 @@ to learn about known issues with this release.
     (Power over Ethernet)
 
   - [VXLAN with VLAN-aware
-    bridges](VLAN-aware-Bridge-Mode-for-Large-scale-Layer-2-Environments.html#src-5122017_VLAN-awareBridgeModeforLarge-scaleLayer2Environments-VXLANswithVLAN-awareBridges)
+    bridges](/version/cumulus-linux-31/Layer-1-and-Layer-2-Features/Ethernet-Bridging-VLANs/VLAN-aware-Bridge-Mode-for-Large-scale-Layer-2-Environments)
     ([Broadcom switches](https://cumulusnetworks.com/hcl) only)
 
-  - [Forwarding table profiles](Routing.html#src-5122117_Routing-uft)
+  - [Forwarding table
+    profiles](/version/cumulus-linux-31/Layer-3-Features/Routing)
 
 New platforms include:
 
@@ -98,7 +98,7 @@ New platforms include:
     
       - Mellanox SN2410B
 
-### Early Access Features</span>
+### Early Access Features
 
 The following [early access
 features](https://support.cumulusnetworks.com/hc/en-us/articles/202933878)

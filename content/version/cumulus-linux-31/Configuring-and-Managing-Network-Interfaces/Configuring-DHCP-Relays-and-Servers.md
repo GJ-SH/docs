@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5122111
 pageID: 5122111
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -38,7 +38,7 @@ services.
 
 {{%/notice%}}
 
-## Configuring the Host Interfaces</span>
+## Configuring the Host Interfaces
 
 You need to configure the host interfaces for DHCP for both IPv4 and
 IPv6. On each host, edit `/etc/network/interfaces` and add the following
@@ -58,7 +58,7 @@ note](https://support.cumulusnetworks.com/hc/en-us/articles/224473608#rn445).
 
 {{%/notice%}}
 
-## Configuring the DHCP Relays on Cumulus Linux Switches</span>
+## Configuring the DHCP Relays on Cumulus Linux Switches
 
 Configure the IPv4 and IPv6 DHCP relays on each leaf switch. You need to
 run two independent instances of `dhcrelay`, one for IPv4 and one for
@@ -77,7 +77,7 @@ switch itself may hang after starting or restarting.
 
 {{%/notice%}}
 
-### Configuring the DHCP Relay Interfaces</span>
+### Configuring the DHCP Relay Interfaces
 
 As described above, you can configure the interfaces on the DHCP relay
 (the Cumulus Linux switch) a number of ways, either as layer 3 or as a
@@ -128,7 +128,7 @@ And here's the configuration for the bridge in traditional mode:
       bridge-ports swp1
       bridge-stp yes
 
-### Configuring IPv4 DHCP Relays</span>
+### Configuring IPv4 DHCP Relays
 
 Edit `dhcrelay.service`, as described below. The IPv4 `dhcrelay.service`
 *Unit* script calls `/etc/default/isc-dhcp-relay` to find launch
@@ -171,7 +171,7 @@ service so the configuration persists between reloads:
 
     cumulus@switch:~$ sudo systemctl enable dhcrelay.service
 
-### Configuring IPv6 DHCP Relays</span>
+### Configuring IPv6 DHCP Relays
 
 If you're configuring IPv6, you need to create the `dhcrelay6.service`
 file and populate its content, as described below. The
@@ -206,7 +206,7 @@ service so the configuration persists between reloads:
 
     cumulus@switch:~$ sudo systemctl enable dhcrelay6.service
 
-## Configuring DHCP Server on Cumulus Linux Switches</span>
+## Configuring DHCP Server on Cumulus Linux Switches
 
 You can use the following sample configurations for `dhcp.conf` and
 `dhcpd6.conf` to start both an IPv4 and an IPv6 DHCP server. The
@@ -217,7 +217,7 @@ pools:
 
   - Pool 2: Subnet that includes the addresses
 
-### Configuring the IPv4 DHCP Server</span>
+### Configuring the IPv4 DHCP Server
 
 In a text editor, edit the `dhcpd.conf` file with a configuration
 similar to the following:
@@ -248,7 +248,7 @@ After you've finished configuring the DHCP server, enable the ` dhcpd
 
     cumulus@switch:~$ sudo systemctl enable dhcpd.service
 
-### Configuring the IPv6 DHCP Server</span>
+### Configuring the IPv6 DHCP Server
 
 In a text editor, edit the `dhcpd6.conf` file with a configuration
 similar to the following:
@@ -279,7 +279,7 @@ After you've finished configuring the DHCP server, enable the`  dhcpd6
 
     cumulus@switch:~$ sudo systemctl enable dhcpd6.service
 
-## Troubleshooting the DHCP Relays</span>
+## Troubleshooting the DHCP Relays
 
 If you are experiencing issues with the DHCP relay, you can run the
 following commands to determine whether or not the issue is with

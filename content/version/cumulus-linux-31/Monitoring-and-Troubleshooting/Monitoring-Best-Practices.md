@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5121980
 pageID: 5121980
 product: Cumulus Linux
-version: 3.1.2
+version: '3.1'
 imgData: cumulus-linux-31
 siteSlug: cumulus-linux-31
 ---
@@ -18,7 +18,7 @@ reviewing and troubleshooting potential issues with Cumulus Linux
 environments. In addition, several of the more common issues have been
 listed, with potential solutions included.
 
-## Overview</span>
+## Overview
 
 This document aims to provide two sets of outputs:
 
@@ -27,7 +27,7 @@ This document aims to provide two sets of outputs:
 
 2.  Critical log messages that can be monitored for triggered alerts
 
-### Trend Analysis via Metrics</span>
+### Trend Analysis via Metrics
 
 A metric is a quantifiable measure that is used to track and assess the
 status of a specific infrastructure component. It is a check collected
@@ -36,7 +36,7 @@ utilization and total number of routes.
 
 Metrics are more valuable when used for trend analysis.
 
-### Alerting via Triggered Logging</span>
+### Alerting via Triggered Logging
 
 Triggered issues are normally sent to syslog, but could go to another
 log file depending on the feature. On Cumulus Linux rsyslog handles all
@@ -47,7 +47,7 @@ steady state.
 Sending logs to a centralized collector, then creating an alerts based
 on critical logs is optimal solution for alerting.
 
-## Hardware</span>
+## Hardware
 
 The `smond` process provides monitoring functionality for various switch
 hardware elements. Mininmum/maximum values are output, depending on the
@@ -152,12 +152,12 @@ cumulus@switch:~$ ledmgrd -j</code></pre></td>
 </tbody>
 </table>
 
-## System Data</span>
+## System Data
 
 Cumulus Linux includes a number of ways to monitor various aspects of
 system data. In addition, alerts are issued in high risk situations.
 
-### CPU Idle Time</span>
+### CPU Idle Time
 
 When a CPU reports five high CPU alerts within a span of 5 minutes, an
 alert is logged.
@@ -268,7 +268,7 @@ Cumulus Linux 2.5, CPU and Memory warnings are generated via jdoo. The
 configuration for the thresholds are stored in
 **/etc/jdoo/jdoorc.d/cl-utilities.rc**.
 
-### Memory Usage</span>
+### Memory Usage
 
 When the memory utilization exceeds 90% a warning is logged and a
 cl-support is generated.
@@ -298,7 +298,7 @@ cumulus@switch:~$ cat
 </tbody>
 </table>
 
-### Disk Usage</span>
+### Disk Usage
 
 When monitoring disk utilization **tmpfs** can be excluded from
 monitoring.
@@ -325,7 +325,7 @@ monitoring.
 </tbody>
 </table>
 
-## Process Restart </span>
+## Process Restart
 
 In Cumulus Linux 3.0 and later, systemd is responsible for monitoring
 and restarting processes.
@@ -384,7 +384,7 @@ invokes init.d to restart the process.
 </tbody>
 </table>
 
-## Layer 1 Protocols and Interfaces</span>
+## Layer 1 Protocols and Interfaces
 
 Link and port state interface transitions are logged to
 **/var/log/syslog** and **/var/log/switchd.log**.
@@ -685,7 +685,7 @@ documentation](/display/CL31/Prescriptive+Topology+Manager+-+PTM).
 </tbody>
 </table>
 
-## Layer 2 Protocols</span>
+## Layer 2 Protocols
 
 Spanning tree is a protocol that prevents loops in a layer 2
 infrastructure. In a stable state, the spanning tree protocol should
@@ -780,7 +780,7 @@ mstpd: MSTP_OUT_flush_all_fids: bridge:swp2:0 Flushing forwarding database</code
 </tbody>
 </table>
 
-## Layer 3 Protocols</span>
+## Layer 3 Protocols
 
 When Quagga boots up for the first time, there will be a different log
 file for each daemon that has been activated. If the log file is ever
@@ -790,7 +790,7 @@ sends all logs to the same file.
 In order to send Quagga logs to syslog, apply the configuration **log
 syslog** in **vtysh**.
 
-### BGP</span>
+### BGP
 
 When monitoring BGP, c <span style="color: #000000;"> heck if BGP peers
 are operational. </span> There is not much value in alerting on the
@@ -855,7 +855,7 @@ bgpd[3000]: %ADJCHANGE: neighbor swp1 Down BGP Notification send</code></pre></t
 </tbody>
 </table>
 
-### OSPF</span>
+### OSPF
 
 When monitoring OSPF, check if OSPF peers are operational. There is not
 much value in alerting on the current operational state of the peer as
@@ -895,7 +895,7 @@ cumulus@switch:~$ cl-ospf summary show json</code></pre></td>
 </tbody>
 </table>
 
-### Route and Host Entries</span>
+### Route and Host Entries
 
 <table>
 <colgroup>
@@ -926,7 +926,7 @@ cumulus@switch:~$ cl-resource-query -k</code></pre></td>
 </tbody>
 </table>
 
-### Routing Logs</span>
+### Routing Logs
 
 <table>
 <colgroup>
@@ -957,7 +957,7 @@ watchquagga[7719]: ospfd state -&gt; up : connect succeeded</code></pre></td>
 </tbody>
 </table>
 
-## Logging</span>
+## Logging
 
 The table below covers the various log files, and what they should be
 used for:
@@ -1003,18 +1003,18 @@ After booting up, quagga switches over to using the integrated configuration whi
 </tbody>
 </table>
 
-## Protocols and Services</span>
+## Protocols and Services
 
-### NTP</span>
+### NTP
 
 Run the following command to confirm the NTP process is working
 correctly, and that the switch clock is synced with NTP:
 
     cumulus@switch:~$ /usr/bin/ntpq -p
 
-## Device Management</span>
+## Device Management
 
-### Device Access Logs</span>
+### Device Access Logs
 
 <table>
 <colgroup>
@@ -1039,7 +1039,7 @@ sshd[31830]: pam_unix(sshd:session): session opened for user cumulus by (uid=0)<
 </tbody>
 </table>
 
-### Device Super User Command Logs</span>
+### Device Super User Command Logs
 
   
 <span style="color: #000000;"> </span>
