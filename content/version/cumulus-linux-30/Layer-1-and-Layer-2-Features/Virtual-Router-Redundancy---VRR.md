@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118357
 pageID: 5118357
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -33,7 +33,7 @@ An actual implementation will have many more server hosts and network
 connections than are shown here. But this basic configuration provides a
 complete description of the important aspects of the VRR setup.
 
-## Configuring the Network</span>
+## Configuring the Network
 
 Configuring this network is fairly straightforward. First create the
 bridge subinterface, then create the secondary address for the virtual
@@ -100,7 +100,7 @@ interface* on the SVI. This MAC VLAN interface is:
 
   - Assigned an IP address of `192.168.0.254`.
 
-### Reserved MAC Address Range</span>
+### Reserved MAC Address Range
 
 In order to prevent MAC address conflicts with other interfaces in the
 same bridged network, Cumulus Networks has [reserved a range of MAC
@@ -112,7 +112,7 @@ You may notice that this is the same range reserved for VRRP, since VRR
 serves a similar function. Cumulus Networks recommends you use this
 range of MAC addresses when configuring VRR.
 
-### Configuring the Hosts</span>
+### Configuring the Hosts
 
 Each host should have two network interfaces. The routers configure the
 interfaces as bonds running LACP; the hosts should also configure its
@@ -124,7 +124,7 @@ router; this default gateway address never changes.
 Configure the links between the hosts and the routers in *active-active*
 mode for First Hop Redundancy Protocol.
 
-### Configuring the Routers</span>
+### Configuring the Routers
 
 The routers implement the layer 2 network interconnecting the hosts, as
 well as the redundant routers. If you are using
@@ -146,12 +146,12 @@ interface to each host instead of a bond.
 
 {{%/notice%}}
 
-### Other Network Connections</span>
+### Other Network Connections
 
 Other interfaces on the router can connect to other subnets and are
 accessed through layer 3 forwarding (swp7 in the image above).
 
-### Handling ARP Requests</span>
+### Handling ARP Requests
 
 The entire purpose of this configuration is to have all the redundant
 routers respond to ARP requests from hosts for the virtual router IP
@@ -169,7 +169,7 @@ that receives these replies will not get confused over which response is
 "correct" and will either ignore replies after the first, or accept them
 and overwrite the previous reply with identical information.
 
-### Monitoring Peer Links and Uplinks</span>
+### Monitoring Peer Links and Uplinks
 
 When an uplink on a switch in active-active mode goes down, the peer
 link may get congested. When this occurs, you should monitor the uplink
@@ -183,7 +183,7 @@ goes to the secondary MLAG switch, traffic will be black-holed. To avoid
 this, shut down all the uplinks when the peer link goes down using
 `ifplugd`.
 
-## <span id="src-5118357_VirtualRouterRedundancy-VRR-ifplugd" class="confluence-anchor-link"></span>Using ifplugd</span>
+## Using ifplugd
 
 `ifplugd` is a link state monitoring daemon that can execute
 user-specified scripts on link transitions (not admin-triggered
@@ -247,7 +247,7 @@ Finally, restart `ifplugd` for your changes to take effect:
 
     cumulus@switch:$ sudo systemctl restart ifplugd.service
 
-## Notes</span>
+## Notes
 
   - The default shell is `/bin/sh`, which is `dash` and not `bash`. This
     makes for faster execution of the script since `dash` is small and

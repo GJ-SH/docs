@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118211
 pageID: 5118211
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -18,13 +18,14 @@ access a Cumulus Linux switch remotely.
 
 By default, you cannot use the root account to SSH to a Cumulus Linux
 switch unless you [generate an SSH
-key](User-Accounts.html#src-5118212_UserAccounts-ssh_key) or [set a
-password](User-Accounts.html#src-5118212_UserAccounts-root_passwd) for
-the account.
+key](/version/cumulus-linux-30/System-Management/Authentication-Authorization-and-Accounting/User-Accounts)
+or [set a
+password](/version/cumulus-linux-30/System-Management/Authentication-Authorization-and-Accounting/User-Accounts)
+for the account.
 
 {{%/notice%}}
 
-## Access Using Passkey (Basic Setup)</span>
+## Access Using Passkey (Basic Setup)
 
 Cumulus Linux uses the openSSH package to provide SSH functionality. The
 standard mechanisms of generating passwordless access just applies. The
@@ -62,13 +63,13 @@ Next, append the public key in `~/.ssh/id_rsa.pub` into
         Enter passphrase for key '/home/cumulus/.ssh/id_rsa':
         id_rsa.pub
 
-### Completely Passwordless System</span>
+### Completely Passwordless System
 
 When generating the passphrase and its associated keys, as in the first
 step above, do not enter a passphrase. Follow all the other
 instructions.
 
-## Useful Links</span>
+## Useful Links
 
   - <http://www.debian-administration.org/articles/152>
 

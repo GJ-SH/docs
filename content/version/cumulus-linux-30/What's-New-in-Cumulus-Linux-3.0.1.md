@@ -4,11 +4,10 @@ author: Cumulus Networks
 weight: 11
 aliases:
  - /display/CL30/What's+New+in+Cumulus+Linux+3.0.1
- - /display/CL30/Whats+New+in+Cumulus+Linux+3.0.1
  - /pages/viewpage.action?pageId=5118422
 pageID: 5118422
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -40,7 +39,7 @@ Cumulus Linux 3.0 includes these new features and platforms:
     forwarding](/version/cumulus-linux-30/Layer-3-Features/Virtual-Routing-and-Forwarding-VRF)
 
   - [BGP
-    add-path](Border-Gateway-Protocol-BGP.html#src-5118393_BorderGatewayProtocol-BGP-add-path)
+    add-path](/version/cumulus-linux-30/Layer-3-Features/Border-Gateway-Protocol-BGP)
     (TX and RX)
 
   - [Redistribute
@@ -57,19 +56,19 @@ Cumulus Linux 3.0 includes these new features and platforms:
 
 Read on to learn about more new functionality and new behaviors.
 
-## New Behavior and Functionality</span>
+## New Behavior and Functionality
 
 Cumulus Linux 3.0 marks a significant departure from earlier releases of
 the operating system. As such, some new functionality and behaviors are
 to be expected.
 
-### Cumulus Linux Now Based on Jessie</span>
+### Cumulus Linux Now Based on Jessie
 
 Cumulus Linux is now based on Debian Jessie, instead of Debian Wheezy.
 For a list of issues you need to be aware of, please read the [Debian
 documentation](https://www.debian.org/releases/stable/amd64/release-notes/ch-information.en.html).
 
-### Quagga Default Configuration Changes</span>
+### Quagga Default Configuration Changes
 
 <table>
 <colgroup>
@@ -188,7 +187,7 @@ Additional configuration changes:
     configure a neighbor and attach to peer-group:  
     `neighbor <swpX> interface peer-group <group name>`
 
-### PowerPC Switches Not Supported</span>
+### PowerPC Switches Not Supported
 
 PowerPC switches are **not** supported under Cumulus Linux 3.0. They are
 supported under Cumulus Linux 2.5 Extended Service Release (ESR). To see
@@ -200,7 +199,7 @@ if your switch uses a PowerPC processor, you can either:
   - Run `uname -m` in the console on the switch. If it returns *ppc*,
     it's a PowerPC switch.
 
-### Default snmpd Port Binding</span>
+### Default snmpd Port Binding
 
 In previous releases of Cumulus Linux, the default port binding
 configuration in `/etc/snmp/snmpd.conf` was:
@@ -224,7 +223,7 @@ into the box on an interface. Since this is really only useful for
 testing purposes, most customers should change this to binding to a
 specific IP address.
 
-### iquerySecName and Rouser</span>
+### iquerySecName and Rouser
 
 In 2.5.x, default values for iquerySecName and rouser were configured in
 `/etc/snmp/snmpd.conf` as follows:
@@ -241,7 +240,7 @@ setting, by commenting out the default user:
 User accounts must now be created manually for SNMP traps to function
 correctly.
 
-### New Bond Defaults</span>
+### New Bond Defaults
 
 In order to simplify configurations, many [bond
 settings](/version/cumulus-linux-30/Layer-1-and-Layer-2-Features/Bonding-Link-Aggregation)
@@ -256,7 +255,7 @@ have had their defaults changed:
 | use-carrier      | none        | 1           |
 | xmit-hash-policy | none        | layer3+4    |
 
-### New bridge mdb Command Syntax</span>
+### New bridge mdb Command Syntax
 
 The syntax of the `bridge mdb` command has changed slightly. Instead of
 using `vlan <vid>` to specify the VLAN ID of a multicast group on a
@@ -264,14 +263,14 @@ VLAN-aware bridge, Cumulus Linux uses `vid <vid>`. Similarly, when
 dumping the MDB with the `bridge mdb show` command, the VLAN ID, if any,
 is displayed following the `vid` keyword.
 
-### Adding Static Bridge FDB Entries</span>
+### Adding Static Bridge FDB Entries
 
 To add a static bridge FDB entry, make sure to specify *static* in the
 `bridge fdb` command. For example:
 
     cumulus@switch:~$ sudo bridge fdb add 00:01:02:03:04:06 dev eth0 master static
 
-### Printing VLAN Ranges for a Bridge</span>
+### Printing VLAN Ranges for a Bridge
 
 In order to print a range of [VLANs in a
 bridge](/version/cumulus-linux-30/Layer-1-and-Layer-2-Features/Ethernet-Bridging-VLANs/VLAN-aware-Bridge-Mode-for-Large-scale-Layer-2-Environments),
@@ -279,7 +278,7 @@ use the `-c` option with `bridge vlan show`:
 
     cumulus@switch:~$ bridge -c vlan show
 
-### List of Ports for a VLAN No Longer Displayed</span>
+### List of Ports for a VLAN No Longer Displayed
 
 The `bridge vlan show vlan <vlanid>` command in the Linux 4.1 kernel no
 longer displays the list of ports for a VLAN, unlike in the 3.2 kernel,
@@ -288,34 +287,34 @@ which did show list of ports for a VLAN.
 In addition, the `/sys/class/net/<portname>/brport/pvid sysfs` node is
 no longer present in Cumulus Linux.
 
-### Expanded Reserved VLAN Range</span>
+### Expanded Reserved VLAN Range
 
 Cumulus Linux now [reserves a
-range](VLAN-aware-Bridge-Mode-for-Large-scale-Layer-2-Environments.html#src-5118287_VLAN-awareBridgeModeforLarge-scaleLayer2Environments-range)
+range](/version/cumulus-linux-30/Layer-1-and-Layer-2-Features/Ethernet-Bridging-VLANs/VLAN-aware-Bridge-Mode-for-Large-scale-Layer-2-Environments)
 of 1000 VLAN IDs, from 3000 to 3999. Previously, the range was 700
 VLANs, numbered 3300 to 3999.
 
-### virtio-net Driver Changes</span>
+### virtio-net Driver Changes
 
 The default speed setting for the virtio-net driver is set to SPEED\_10.
 
 In addition, VLAN Tx offload is enabled in the virtio-net driver by
 default.
 
-### MLAG ad\_actor\_key Setting Change</span>
+### MLAG ad\_actor\_key Setting Change
 
 In Cumulus Linux 3.0, the `ad_actor_key` parameter for a 10G full-duplex
 port is set to 13; in Cumulus Linux 2.5.x, the `ad_actor_key` for the
 same 10G speed and full-duplex port was set to 33.
 
-### New ARP Refresh Rate</span>
+### New ARP Refresh Rate
 
 For [ARP
 timers](https://support.cumulusnetworks.com/hc/en-us/articles/202012933),
 the default `base_reachable_time_ms` in Cumulus Linux 3.0 and later is
 14400000 (4 hours); in Cumulus Linux 2.5.x it is 110000 (110 seconds).
 
-### switchd Doesn't Start if License Isn't Present</span>
+### switchd Doesn't Start if License Isn't Present
 
 If a license is not installed on a Cumulus Linux switch, the `switchd`
 service will not start. If you install the license again, start
@@ -323,20 +322,20 @@ service will not start. If you install the license again, start
 
     cumulus@switch:~$ sudo systemctl start switchd.service
 
-### SSH to Switch as root User Disabled by Default</span>
+### SSH to Switch as root User Disabled by Default
 
 To improve security, the ability to use SSH to connect to a switch as
 the root user using a password has been disabled by default. To enable
 it, read [User
 Accounts](/version/cumulus-linux-30/System-Management/Authentication-Authorization-and-Accounting/User-Accounts).
 
-### SSH Output No Longer Truncated</span>
+### SSH Output No Longer Truncated
 
 In Cumulus Linux 2.5.x, depending upon the number of peers on the
 network, the output of `show ip bgp summary json` over an SSH session
 might get truncated. This has been fixed in Cumulus Linux 3.0.
 
-## Not All Features Available on Mellanox Platforms</span>
+## Not All Features Available on Mellanox Platforms
 
 A number of features are not available or are limited on [Mellanox
 switches](http://cumulusnetworks.com/hcl/) at this time. These include:
@@ -359,7 +358,7 @@ switches](http://cumulusnetworks.com/hcl/) at this time. These include:
 
   - Specific cables supported
 
-### Supported Cables for Mellanox Switches</span>
+### Supported Cables for Mellanox Switches
 
 Cumulus Networks has tested and suggests using the following cables and
 transceivers with Mellanox switches at this time:
@@ -1968,7 +1967,7 @@ Yes (with ConnectX4)
 
 </table>
 
-## Early Access Features</span>
+## Early Access Features
 
 The following [early access
 features](https://support.cumulusnetworks.com/hc/en-us/articles/202933878)
@@ -1978,7 +1977,7 @@ are included in Cumulus Linux 3.0:
     optimization](https://support.cumulusnetworks.com/hc/en-us/articles/203735078)
     (applies configuration modifications only)
 
-## Removed Features</span>
+## Removed Features
 
   - `cl-img-install`. The
     [installer](/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Managing-Cumulus-Linux-Disk-Images/Installing-a-New-Cumulus-Linux-Image)

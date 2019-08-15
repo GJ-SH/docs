@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118291
 pageID: 5118291
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -57,7 +57,7 @@ destination.
 
 {{%/notice%}}
 
-## Commands</span>
+## Commands
 
   - brctl
 
@@ -71,7 +71,7 @@ destination.
 
   - vtep-ctl
 
-## Useful Links</span>
+## Useful Links
 
   - [VXLAN IETF
     draft](http://tools.ietf.org/html/draft-mahalingam-dutt-dcops-vxlan-06)

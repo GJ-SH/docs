@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118231
 pageID: 5118231
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -23,7 +23,7 @@ You monitor system hardware in these ways, using:
 
   - watchdog
 
-## Commands</span>
+## Commands
 
   - decode-syseeprom
 
@@ -35,7 +35,7 @@ You monitor system hardware in these ways, using:
 
   - smond
 
-## Monitoring Hardware Using decode-syseeprom</span>
+## Monitoring Hardware Using decode-syseeprom
 
 The `decode-syseeprom` command enables you to retrieve information about
 the switch's EEPROM. If the EEPROM is writable, you can set values on
@@ -63,7 +63,7 @@ For example:
     CRC-32               0xFE   4 0x96543BC5
     (checksum valid)
 
-### Command Options</span>
+### Command Options
 
 Usage: `/usr/cumulus/bin/decode-syseeprom [-a][-r][-s [args]][-t]`
 
@@ -76,7 +76,7 @@ Usage: `/usr/cumulus/bin/decode-syseeprom [-a][-r][-s [args]][-t]`
 | \-t TARGET   | Selects the target EEPROM (`board`, `psu2`, `psu1`) for the read or write operation; default is `board`.                                                                                                                                                                                                                                                                                                                                            |
 | \-e, –serial | Prints the device serial number.                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-### Related Commands</span>
+### Related Commands
 
 You can also use the `dmidecode` command to retrieve hardware
 configuration information that’s been populated in the BIOS.
@@ -84,7 +84,7 @@ configuration information that’s been populated in the BIOS.
 You can use `apt-get` to install the `lshw` program on the switch, which
 also retrieves hardware configuration information.
 
-## Monitoring Hardware Using sensors</span>
+## Monitoring Hardware Using sensors
 
 The `sensors` command provides a method for monitoring the health of
 your switch hardware, such as power, temperature and fan speeds. This
@@ -121,7 +121,7 @@ number of sensors.
 
 {{%/notice%}}
 
-### Command Options</span>
+### Command Options
 
 Usage: `sensors [OPTION]... [CHIP]...`
 
@@ -152,12 +152,12 @@ printed. Example chip names include:
 
 <span id="src-5118231_MonitoringSystemHardware-snmp"></span>
 
-## Monitoring Switch Hardware Using SNMP</span>
+## Monitoring Switch Hardware Using SNMP
 
 The Net-SNMP documentation has been moved to a new chapter, [available
 here](/version/cumulus-linux-30/Monitoring-and-Troubleshooting/SNMP-Monitoring).
 
-## Monitoring System Units Using smond</span>
+## Monitoring System Units Using smond
 
 The `smond` daemon monitors system units like power supply and fan,
 updates their corresponding LEDs, and logs the change in the state.
@@ -185,7 +185,7 @@ units:
     Temp8     (Left side of the board                ):  OK
     Temp9     (Right side of the board               ):  OK
 
-### Command Options</span>
+### Command Options
 
 Usage: `smonctl [OPTION]... [CHIP]...`
 
@@ -198,7 +198,7 @@ For more information, read `man smond` and `man smonctl`.
 
 <span id="src-5118231_MonitoringSystemHardware-watchdog"></span>
 
-## Keeping the Switch Alive Using the Hardware Watchdog</span>
+## Keeping the Switch Alive Using the Hardware Watchdog
 
 Cumulus Linux includes a simplified version of the ` wd_keepalive(8)
  `daemon from the standard Debian package ` watchdog  `. `wd_keepalive`
@@ -227,7 +227,7 @@ You can modify the settings for the watchdog — like the timeout setting
 and scheduler priority — in its configuration file,
 `/etc/watchdog.conf`.
 
-## Configuration Files</span>
+## Configuration Files
 
   - /etc/cumulus/switchd.conf
 
@@ -238,7 +238,7 @@ and scheduler priority — in its configuration file,
 
   - /etc/watchdog.conf
 
-## Useful Links</span>
+## Useful Links
 
   - <http://packages.debian.org/search?keywords=lshw>
 

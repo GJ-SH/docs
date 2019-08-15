@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118319
 pageID: 5118319
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -101,7 +101,7 @@ packet to every remote VTEP.
 
 {{%/notice%}}
 
-#### Head End Replication 
+#### Head End Replication
 
 The Tomahawk, Trident II+ and Trident II chipsets are capable of head
 end replication — the ability to generate all the BUM traffic in
@@ -187,7 +187,7 @@ The LNV packages are not installed automatically if you upgrade Cumulus
 Linux. You can install LNV in one of two ways:
 
   - Do a [binary image
-    install](Managing-Cumulus-Linux-Disk-Images.html#src-5118256_ManagingCumulusLinuxDiskImages-new_image)
+    install](/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Managing-Cumulus-Linux-Disk-Images/)
     of Cumulus Linux, using [ONIE](http://onie.org)
 
   - Install the LNV packages for the registration and service node
@@ -353,7 +353,7 @@ The service nodes and registration nodes must all be routable between
 each other. The L3 fabric on Cumulus Linux can either be
 [BGP](/version/cumulus-linux-30/Layer-3-Features/Border-Gateway-Protocol-BGP)
 or
-[OSPF](/version/cumulus-linux-30/Layer-3-Features/Open-Shortest-Path-First-OSPF---Protocol).
+[OSPF](/version/cumulus-linux-30/Layer-3-Features/Open-Shortest-Path-First-OSPF-Protocol).
 In this example, OSPF is used to demonstrate full reachability. Expand
 the Quagga configurations below.
 
@@ -640,13 +640,13 @@ Use the `brctl show` command to see the physical and logical interfaces
 associated with that bridge:
 
     cumulus@leaf1:~$ brctl show
-    bridge name bridge id           STP enabled     interfaces
-    br-10       8000.443839008404   no              swp32s0.10
-                                                    vni-10
-    br-20       8000.443839008404   no              swp32s0.20
-                                                    vni-2000
-    br-30       8000.443839008404   no              swp32s0.30
-                                                    vni-30
+    bridge name   bridge id           STP enabled     interfaces
+    br-10     8000.443839008404   no              swp32s0.10
+                                                  vni-10
+    br-20     8000.443839008404   no              swp32s0.20
+                                                  vni-2000
+    br-30     8000.443839008404   no              swp32s0.30
+                                                  vni-30
 
 As with any logical interfaces on Linux, the name does not matter (other
 than a 15-character limit). To verify the associated VNI for the logical
@@ -844,7 +844,7 @@ Use *1*, *yes*, *true* or *on* for True for each relevant option. Use
 
 ## Verification and Troubleshooting
 
-### Verifying the Registration Node Daemon 
+### Verifying the Registration Node Daemon
 
 Use the `vxrdctl vxlans` ****command to see the configured VNIs, the
 local address being used to source the VXLAN tunnel and the service node
@@ -1061,11 +1061,11 @@ First, get the MAC address of the server:
 Next, check the MAC address table of the leaf switch:
 
     cumulus@leaf1:~$ brctl showmacs br-10
-    port name mac addr      vlan    is local?   ageing timer
-    vni-10    46:c6:57:fc:1f:54 0   yes        0.00
-    swp32s0.10 90:e2:ba:55:f0:85    0   no        75.87
-    vni-10    90:e2:ba:7e:a9:c1 0   no        75.87
-    swp32s0.10 ec:f4:bb:fc:67:a1    0   yes        0.00
+    port name mac addr        vlan    is local?   ageing timer
+    vni-10    46:c6:57:fc:1f:54   0   yes        0.00
+    swp32s0.10 90:e2:ba:55:f0:85  0   no        75.87
+    vni-10    90:e2:ba:7e:a9:c1   0   no        75.87
+    swp32s0.10 ec:f4:bb:fc:67:a1  0   yes        0.00
 
 *90:e2:ba:55:f0:85* appears in the MAC address table, which indicates
 that connectivity is occurring between leaf1 and server1.
@@ -1119,6 +1119,8 @@ A loopback cable must be connected between swp47 and swp48 for this to
 work. This will be addressed in a future version of Cumulus Linux so a
 physical port does not need to be used for this purpose.
 
+<span id="src-5118319_LightweightNetworkVirtualization-LNV-loadbalancing"></span>
+
 ## Advanced LNV Usage
 
 ### Scaling LNV by Load Balancing with Anycast
@@ -1129,6 +1131,8 @@ traffic across multiple service nodes, use
 [Anycast](http://en.wikipedia.org/wiki/Anycast). Anycast enables BUM
 traffic to reach the topologically nearest service node rather than
 overwhelming a single service node.
+
+#### 
 
 #### Enabling the Service Node Daemon on Additional Spine Switches
 

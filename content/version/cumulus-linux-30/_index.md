@@ -1,7 +1,7 @@
 ---
 title: Cumulus Linux User Guide
 author: Cumulus Networks
-weight: -30
+weight: 1
 aliases:
  - /display/CL30/Cumulus+Linux+User+Guide
  - /pages/viewpage.action?pageId=5118197
@@ -12,7 +12,7 @@ imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 subsection: true
 ---
-## Welcome to Cumulus Networks</span>
+## Welcome to Cumulus Networks
 
 We are transforming networking with Cumulus Linux, the industry's first,
 full-featured Linux operating system for networking hardware. Cumulus
@@ -40,7 +40,7 @@ documentation.
     Linux 3.0.1](https://support.cumulusnetworks.com/hc/en-us/articles/222822047)
 
   - [What's New in Cumulus Linux
-    3.0.1](/version/cumulus-linux-30/Whats-New-in-Cumulus-Linux-3.0.1)
+    3.0.1](/version/cumulus-linux-30/What's-New-in-Cumulus-Linux-3.0.1)
 
   - [Quick Start Guide](/version/cumulus-linux-30/Quick-Start-Guide)
 

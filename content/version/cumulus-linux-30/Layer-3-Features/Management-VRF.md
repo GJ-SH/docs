@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118405
 pageID: 5118405
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -31,7 +31,7 @@ default context does not impact services run through `systemd` and the
 the switch; for example, using the `ip` command to list links, neighbors
 or routes.
 
-## <span id="src-5118405_ManagementVRF-enablevrf" class="confluence-anchor-link"></span>Enabling Management VRF</span>
+## Enabling Management VRF
 
 To enable management VRF on eth0, complete the following steps:
 
@@ -53,7 +53,7 @@ To enable management VRF on eth0, complete the following steps:
     
         cumulus@switch:~$ sudo reboot
 
-### Enabling NTP</span>
+### Enabling NTP
 
 To enable NTP to run in the mgmt VRF:
 
@@ -104,7 +104,7 @@ To enable NTP to run in the mgmt VRF:
     
         cumulus@switch:~$ sudo systemctl enable ntp@mgmt
 
-### Enabling snmpd</span>
+### Enabling snmpd
 
 To enable `snmpd` to run in the mgmt VRF:
 
@@ -140,7 +140,7 @@ To enable `snmpd` to run in the mgmt VRF:
     
         cumulus@switch:~$ sudo systemctl enable snmpd@mgmt
 
-### Using ping or traceroute</span>
+### Using ping or traceroute
 
 By default, issuing a `ping` or `traceroute` assumes the packet should
 be sent to the dataplane network (the main routing table). If you wish
@@ -153,7 +153,7 @@ or
 
     cumulus@switch:~$ sudo traceroute -i mgmt
 
-## OSPF and BGP</span>
+## OSPF and BGP
 
 In general, no changes are required for either BGP or OSPF. Quagga was
 updated in Cumulus Linux 3.0 to be VRF-aware and automatically sends
@@ -162,7 +162,7 @@ peering via loopback interfaces. BGP does routing lookups in the default
 table. However, one modification you may consider has to do with how
 your routes get redistributed.
 
-### Redistributing Routes in Management VRF</span>
+### Redistributing Routes in Management VRF
 
 Management VRF uses the mgmt table, including local routes. It does not
 affect how the routes are redistributed when using routing protocols
@@ -192,7 +192,7 @@ in this way (for both BGP and OSPF):
     !
     route-map redistribute-connected permit 1000
 
-## SNMP Traps Use eth0 Only</span>
+## SNMP Traps Use eth0 Only
 
 SNMP cannot use a switch port to send data. For any SNMP traps, this
 traffic gets sent out to eth0. Cumulus Networks plans to support switch
@@ -205,7 +205,7 @@ affected.
 
 {{%/notice%}}
 
-## Using SSH within a Management VRF Context</span>
+## Using SSH within a Management VRF Context
 
 If you SSH to the switch through a switch port, it works as expected. If
 you need to SSH from the device out a switch port, use `vrf exec default
@@ -220,7 +220,7 @@ ssh <ip_address_of_swp_port>`. For example:
     
     cumulus@switch:~$ sudo vrf exec default ssh 10.23.23.2 10.3.3.3
 
-## Viewing the Routing Tables</span>
+## Viewing the Routing Tables
 
 When you look at the routing table with `ip route show`, you are looking
 at the switch port (*main*) table. You can also see the dataplane
@@ -238,7 +238,7 @@ To look at information about eth0 (the management routing table), use
     10.23.23.0/24 dev swp17  proto kernel  scope link  src 10.23.23.2
     192.168.0.0/24 dev eth0  proto kernel  scope link  src 192.168.0.11
 
-### Viewing a Single Route</span>
+### Viewing a Single Route
 
 Note that if you use `ip route get` to return information about a single
 route, the command resolves over the *mgmt* table by default. To get
@@ -255,10 +255,10 @@ So to get the route for the mgmt VRF, run:
 
     cumulus@switch:~$ ip route get <addr> oif mgmt
 
-## Using the mgmt Interface Class</span>
+## Using the mgmt Interface Class
 
 In `ifupdown2` [interface
-classes](Configuring-and-Managing-Network-Interfaces.html#src-5118370_ConfiguringandManagingNetworkInterfaces-classes)
+classes](/version/cumulus-linux-30/Configuring-and-Managing-Network-Interfaces/)
 are used to create a user-defined grouping for interfaces. The special
 class *mgmt* is available to separate the switch's management interfaces
 from the data interfaces. This allows you to manage the data interfaces
@@ -299,7 +299,7 @@ To reload the configurations for interfaces in the mgmt class, run:
 However, you can still bring the management interface up and down using
 `ifup eth0` and `ifdown eth0`.
 
-## Management VRF and DNS</span>
+## Management VRF and DNS
 
 Cumulus Linux supports both DHCP and static DNS entries over management
 VRF through IP FIB rules. These rules are added to direct lookups to the
@@ -312,7 +312,7 @@ Because DNS lookups are forced out of the management interface using FIB
 rules, this could affect data plane ports if there are overlapping
 addresses.
 
-## Incompatibility with cl-ns-mgmt</span>
+## Incompatibility with cl-ns-mgmt
 
 {{%notice warning%}}
 

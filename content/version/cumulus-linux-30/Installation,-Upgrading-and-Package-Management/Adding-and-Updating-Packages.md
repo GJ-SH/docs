@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118253
 pageID: 5118253
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -81,7 +81,7 @@ sub-commands:
     rsyslog - reliable system and kernel logging daemon
     libwrap0 - Wietse Venema's TCP wrappers library
     netbase - Basic TCP/IP networking system
-
+    
     cumulus@switch:~$ apt-cache show tcpdump
     Package: tcpdump
     Status: install ok installed
@@ -151,7 +151,7 @@ For example, the following adds the package `tcpreplay` to the system:
     Unpacking tcpreplay (from .../tcpreplay_4.6.2-5+deb8u1_amd64.deb) ...
     Processing triggers for man-db ...
     Setting up tcpreplay (4.6.2-5+deb8u1) ...
-    cumulus@switch:~$
+    cumulus@switch:~$ 
 
 ## Listing Installed Packages
 
@@ -223,13 +223,13 @@ To install a new package, please complete the following steps:
 
 1.  First, ensure package is not already installed in the system. Use
     the `dpkg` command:
-
+    
         cumulus@switch:~$ dpkg -l | grep {name of package}
 
 2.  If the package is installed already, ensure it's the version you
     need. If it's an older version, then update the package from the
     Cumulus Linux repository:
-
+    
         cumulus@switch:~$ sudo apt-get update
         cumulus@switch:~$ sudo apt-get install {name of package}
 
@@ -239,23 +239,23 @@ To install a new package, please complete the following steps:
     please edit and add the appropriate source to the file. For example,
     add the following if you wanted a package from the Debian repository
     that is **not** in the Cumulus Linux repository:
-
+    
         deb http://http.us.debian.org/debian jessie main
         deb http://security.debian.org/ jessie/updates main
-
+    
     Otherwise, the repository may be listed in `/etc/apt/sources.list`
     but is commented out, as can be the case with the early-access
     repository:
-
+    
         #deb http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
-
+    
     To uncomment the repository, remove the \# at the start of the line,
     then save the file:
-
+    
         deb http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
 
 4.  Run `apt-get update` then install the package:
-
+    
         cumulus@switch:~$ sudo apt-get update
         cumulus@switch:~$ sudo apt-get install {name of package}
 

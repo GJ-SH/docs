@@ -7,10 +7,11 @@ aliases:
  - /pages/viewpage.action?pageId=5118265
 pageID: 5118265
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
+<details>
 
 Before you install Cumulus Linux, the switch can be in two different
 states:
@@ -19,22 +20,22 @@ states:
     [ONIE](http://www.onie.org/)) or you desire or require a clean
     installation. In this case, you can install Cumulus Linux in one of
     the following ways, using:
-
+    
       - [DHCP/a Web server with DHCP
         options](#src-5118265_InstallingaNewCumulusLinuxImage-dhcp_options)
-
+    
       - [DHCP/a Web server without DHCP
         options](#src-5118265_InstallingaNewCumulusLinuxImage-dhcp_noopts)
-
+    
       - [A Web server with no
         DHCP](#src-5118265_InstallingaNewCumulusLinuxImage-web_nodhcp)
-
+    
       - [FTP or TFTP without a Web
         server](#src-5118265_InstallingaNewCumulusLinuxImage-ftp)
-
+    
       - [Local file
         installation](#src-5118265_InstallingaNewCumulusLinuxImage-local)
-
+    
       - [USB](#src-5118265_InstallingaNewCumulusLinuxImage-usb)
 
   - The switch already has Cumulus Linux installed on it, so you only
@@ -81,7 +82,7 @@ Once you connect the cable, the installation proceeds as follows:
 3.  ONIE downloads the Cumulus Linux binary, installs and reboots.
 
 4.  Success\! You are now running Cumulus Linux.
-
+    
     {{% imgOld 0 %}}
 
 {{%notice note%}}
@@ -123,7 +124,7 @@ controlled by another team), do the following:
 
 2.  Run the `onie-nos-install` command manually, since DHCP options
     can't be modified:
-
+    
         ONIE:/ #onie-nos-install http://10.0.1.251/path/to/cumulus-install-[PLATFORM].bin
 
 ## Installing via a Web Server with no DHCP
@@ -137,15 +138,15 @@ so if you are setting a static IPv4 address for the eth0 management
 port, you need to disable discovery mode or else ONIE may get confused.
 
 1.  To disable discovery mode, run:
-
-        onie# onie-discovery-stop
-
+    
+        onie# onie-discovery-stop 
+    
     or, on older ONIE versions if that command isn't supported:
-
-        onie# /etc/init.d/discover.sh stop
+    
+        onie# /etc/init.d/discover.sh stop 
 
 2.  Assign a static address to eth0 via ONIE (using `ip addr add`):
-
+    
         ONIE:/ #ip addr add 10.0.1.252/24 dev eth0
 
 3.  Place the Cumulus Linux installer image in a directory on your Web
@@ -153,7 +154,7 @@ port, you need to disable discovery mode or else ONIE may get confused.
 
 4.  Run the `onie-nos-install` command manually since there are no DHCP
     options:
-
+    
         ONIE:/ #onie-nos-install http://10.0.1.251/path/to/cumulus-install-[PLATFORM].bin
 
 ## Installing via FTP or TFTP without a Web Server
@@ -167,9 +168,9 @@ port, you need to disable discovery mode or else ONIE may get confused.
 
 4.  If you are not utilizing DHCP options, run one of the following
     commands (`tftp` for TFTP or `ftp` for FTP):
-
+    
         ONIE# onie-nos-install ftp://local-ftp-server/cumulus-install-[PLATFORM].bin
-
+        
         ONIE# onie-nos-install tftp://local-tftp-server/cumulus-install-[PLATFORM].bin
 
 ## Installing via a Local File
@@ -180,15 +181,15 @@ port, you need to disable discovery mode or else ONIE may get confused.
 
 3.  Use [scp](http://en.wikipedia.org/wiki/Secure_copy) to copy the
     Cumulus Linux binary to the switch.
-
+    
     {{%notice tip%}}
-
-Windows users can use [WinScp](http://winscp.net/eng/index.php).
-
+    
+    Windows users can use [WinScp](http://winscp.net/eng/index.php).
+    
     {{%/notice%}}
 
 4.  Run the following command:
-
+    
         ONIE# onie-nos-install /path/to/local/file/cumulus-install-[PLATFORM].bin
 
 ## Installing via USB
@@ -201,8 +202,8 @@ software installation.
 
 {{%notice note%}}
 
-Make sure to
-[back up](/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Managing-Cumulus-Linux-Disk-Images/Upgrading-Cumulus-Linux)
+Make sure to [back
+up](/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Managing-Cumulus-Linux-Disk-Images/Upgrading-Cumulus-Linux)
 any important configuration files that you may need to restore the
 configuration of your switch after the installation finishes.
 
@@ -215,15 +216,15 @@ configuration of your switch after the installation finishes.
     page](http://cumulusnetworks.com/downloads/).
 
 2.  
-
+    
     <details>
-
+    
     Prepare your flash drive by formatting in one of the supported
     formats: FAT32, vFAT or EXT2.
-
+    
     <summary>Optional: Preparing a USB Drive inside Cumulus Linux
     </summary>
-
+    
     <table>
     <colgroup>
     <col style="width: 100%" />
@@ -251,7 +252,7 @@ configuration of your switch after the installation finishes.
     sudo mkfs.msdos -F 32 /dev/sdb1
     sudo mkfs.vfat /dev/sdb1</code></pre>
     <p>{{%notice note%}}</p>
-    <p>To use <code>mkfs.msdos</code> or <code>mkfs.vfat</code>, you need to install the <code>dosfstools</code> package from the <a href="http://docs.cumulusnetworks.com/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Adding-and-Updating-Packages/#adding-packages-from-another-repository" class="external-link">Debian software repositories</a> (step 3 here shows you how to add repositories from Debian), as they are not included by default.</p>
+    <p>To use <code>mkfs.msdos</code> or <code>mkfs.vfat</code>, you need to install the <code>dosfstools</code> package from the <a href="http://docs.cumulusnetworks.com/display/CL30/Adding+and+Updating+Packages#AddingandUpdatingPackages-AddingPackagesfromAnotherRepository" class="external-link">Debian software repositories</a> (step 3 here shows you how to add repositories from Debian), as they are not included by default.</p>
     <p>{{%/notice%}}</p></li>
     <li><p>To continue installing Cumulus Linux, mount the USB drive in order to move files to it.</p>
     <pre><code>sudo mkdir /mnt/usb
@@ -260,29 +261,29 @@ configuration of your switch after the installation finishes.
     </tr>
     </tbody>
     </table>
-
+    
     </details>
 
 3.  Copy the image and license files over to the flash drive and rename
     the image file to:
-
+    
       - `onie-installer-x86_64`, if installing on an x86 platform
-
+    
       - `onie-installer-arm`, if installing on an ARM platform
-
+    
     {{%notice note%}}
-
-You can also use any of the [ONIE naming schemes mentioned
+    
+    You can also use any of the [ONIE naming schemes mentioned
     here](http://opencomputeproject.github.io/onie/design-spec/discovery.html#default-file-name-search-order).
-
+    
     {{%/notice%}}
-
+    
     {{%notice warning%}}
-
-When using a Mac or Windows computer to rename the installation file
+    
+    When using a Mac or Windows computer to rename the installation file
     the file extension may still be present. Make sure to remove the
     file extension otherwise ONIE will not be able to detect the file\!
-
+    
     {{%/notice%}}
 
 4.  Insert the USB stick into the switch, then continue with the
@@ -293,45 +294,45 @@ When using a Mac or Windows computer to rename the installation file
 <summary>Click to expand x86 instructions... </summary>
 
 1.  Prepare the switch for installation:
-
+    
       - If the switch is offline, connect to the console and power on
         the switch.
-
+    
       - If the switch is already online in Cumulus Linux, connect to the
         console and reboot the switch into the ONIE environment with the
         `sudo onie-select -i` command, followed by `sudo reboot`. Then
         skip to step 4 below.
-
+    
       - If the switch is already online in ONIE, use the `reboot`
         command.
-
+    
     {{%notice note%}}
-
-SSH sessions to the switch get dropped after this step. To complete
+    
+    SSH sessions to the switch get dropped after this step. To complete
     the remaining instructions, connect to the console of the switch.
     Cumulus Linux switches display their boot process to the console, so
     you need to monitor the console specifically to complete the next
     step.
-
+    
     {{%/notice%}}
 
 2.  Monitor the console and select the ONIE option from the first GRUB
     screen shown below.
-
+    
     {{% imgOld 1 %}}
 
 3.  Cumulus Linux on x86 uses GRUB chainloading to present a second GRUB
     menu specific to the ONIE partition. No action is necessary in this
     menu to select the default option *ONIE: Install OS*.
-
+    
     {{% imgOld 2 %}}
 
 4.  At this point, the USB drive should be automatically recognized and
     mounted. The image file should be located and automatic installation
     of Cumulus Linux should begin. Here is some sample output:
-
+    
         ONIE: OS Install Mode  ...
-
+         
         Version : quanta_common_rangeley-2014.05.05-6919d98-201410171013
         Build  Date: 2014-10-17T10:13+0800
         Info: Mounting kernel filesystems...  done.
@@ -342,9 +343,9 @@ SSH sessions to the switch get dropped after this step. To complete
         sd 6:0:0:0: [sdb] Write Protect is off
         sd 6:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
         sd 6:0:0:0: [sdb] Attached SCSI disk
-
+         
         <...snip...>
-
+         
         ONIE:  Executing installer: file://dev/sdb1/onie-installer-x86_64
         Verifying image checksum ... OK.
         Preparing image archive ... OK.
@@ -365,41 +366,41 @@ SSH sessions to the switch get dropped after this step. To complete
 6.  Determine and note at which device your flash drive can be found by
     using output from `cat /proc/partitions` and `sudo fdisk -l
     [device]`. For example, `sudo fdisk -l /dev/sdb`.
-
+    
     {{%notice warning%}}
-
-These instructions assume your USB drive is the `/dev/sdb` device,
+    
+    These instructions assume your USB drive is the `/dev/sdb` device,
     which is typical if the USB stick was inserted after the machine was
     already booted. However, if the USB stick was plugged in during the
     boot process, it is possible the device could be `/dev/sda`. Make
     sure to modify the commands below to use the proper device for your
     USB drive\!
-
+    
     {{%/notice%}}
 
 7.  Create a mount point to mount the USB drive to:
-
-    ```
+    
+    ``` 
      sudo mkdir /mnt/mountpoint
     ```
 
 8.  Mount the USB drive to the newly created mount point:
-
-    ```
+    
+    ``` 
      sudo mount /dev/sdb1 /mnt/mountpoint
     ```
 
 9.  Install your license file with the `cl-license` command:
-
-    ```
+    
+    ``` 
      sudo cl-license -i /mnt/mountpoint/license.txt
     ```
 
 10. Check that your license is installed with the `cl-license` command.
 
 11. Reboot the switch to utilize the new license.
-
-    ```
+    
+    ``` 
      sudo reboot
     ```
 
@@ -408,56 +409,56 @@ These instructions assume your USB drive is the `/dev/sdb` device,
 <summary>Click to expand ARM instructions... </summary>
 
 1.  Prepare the switch for installation:
-
+    
       - If the switch is offline, connect to the console and power on
         the switch.
-
+    
       - If the switch is already online in Cumulus Linux, connect to the
         console and reboot the switch into the ONIE environment with the
         `sudo onie-select -i` command, followed by `sudo reboot`. Then
         skip to step 4 below.
-
+    
       - If the switch is already online in ONIE, use the `reboot`
         command.
-
+    
     {{%notice note%}}
-
-SSH sessions to the switch get dropped after this step. To complete
+    
+    SSH sessions to the switch get dropped after this step. To complete
     the remaining instructions, connect to the console of the switch.
     Cumulus Linux switches display their boot process to the console, so
     you need to monitor the console specifically to complete the next
     step.
-
+    
     {{%/notice%}}
 
 2.  Interrupt the normal boot process before the countdown (shown below)
     completes. Press any key to stop the autobooting.
-
+    
         U-Boot 2013.01-00016-gddbf4a9-dirty (Feb 14 2014 - 16:30:46) Accton: 1.4.0.5
-
+         
         CPU0: P2020, Version: 2.1, (0x80e20021)
         Core: E500, Version: 5.1, (0x80211051)
         Clock Configuration:
-         CPU0:1200 MHz, CPU1:1200 MHz,
+         CPU0:1200 MHz, CPU1:1200 MHz, 
          CCB:600 MHz,
          DDR:400 MHz (800 MT/s data rate) (Asynchronous), LBC:37.500 MHz
         L1: D-cache 32 kB enabled
          I-cache 32 kB enabled
-
+         
         <...snip…>
-
+         
         USB: USB2513 hub OK
         Hit any key to stop autoboot: 0
 
 3.  A command prompt appears, so you can run commands. Execute the
     following command:
-
+    
         run onie_bootcmd
 
 4.  At this point the USB drive should be automatically recognized and
     mounted. The image file should be located and automatic installation
     of Cumulus Linux should begin. Here is some sample output:
-
+    
         Loading Open Network Install Environment …
         Platform: arm-as4610_54p-r0
         Version : 1.6.1.3
@@ -479,9 +480,9 @@ SSH sessions to the switch get dropped after this step. To complete
            Uncompressing Multi-File Image ... OK
            Loading Ramdisk to 2ff53000, end 2ffff788 ... OK
            Loading Device Tree to 03ffa000, end 03fffd22 ... OK
-
+         
         <...snip...>
-
+         
         ONIE: Starting ONIE Service Discovery
         ONIE: Executing installer: file://dev/sdb1/onie-installer-arm
         Verifying image checksum ... OK.
@@ -503,41 +504,41 @@ SSH sessions to the switch get dropped after this step. To complete
 6.  Determine and note at which device your flash drive can be found by
     using output from `cat /proc/partitions` and `sudo fdisk -l
     [device]`. For example, `sudo fdisk -l /dev/sdb`.
-
+    
     {{%notice warning%}}
-
-These instructions assume your USB drive is the `/dev/sdb` device,
+    
+    These instructions assume your USB drive is the `/dev/sdb` device,
     which is typical if the USB stick was inserted after the machine was
     already booted. However, if the USB stick was plugged in during the
     boot process, it is possible the device could be `/dev/sda`. Make
     sure to modify the commands below to use the proper device for your
     USB drive\!
-
+    
     {{%/notice%}}
 
 7.  Create a mount point to mount the USB drive to:
-
-    ```
+    
+    ``` 
      sudo mkdir /mnt/mountpoint
     ```
 
 8.  Mount the USB drive to the newly created mount point:
-
-    ```
+    
+    ``` 
      sudo mount /dev/sdb1 /mnt/mountpoint
     ```
 
 9.  Install your license file with the `cl-license` command:
-
-    ```
+    
+    ``` 
      sudo cl-license -i /mnt/mountpoint/license.txt
     ```
 
 10. Check that your license is installed with the `cl-license` command.
 
 11. Reboot the switch to utilize the new license.
-
-    ```
+    
+    ``` 
      sudo reboot
     ```
 
@@ -549,4 +550,15 @@ Follow these upgrade steps for both major and minor releases, where:
 
   - A minor release upgrade is X.2.X to X.3.X (e.g. 2.2.0 to 2.5.5)
 
-For more information, see [Upgrading Cumulus Linux](Upgrading-Cumulus-Linux.html#src-5118269_UpgradingCumulusLinux-binary_upgrade).
+For more information, see [Upgrading Cumulus
+Linux](/version/cumulus-linux-30/Installation-Upgrading-and-Package-Management/Managing-Cumulus-Linux-Disk-Images/Upgrading-Cumulus-Linux).
+
+<article id="html-search-results" class="ht-content" style="display: none;">
+
+</article>
+
+<footer id="ht-footer">
+
+</footer>
+
+</details>

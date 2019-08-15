@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118243
 pageID: 5118243
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -16,7 +16,7 @@ for password recovery. Entering single user mode is
 [platform-specific](http://cumulusnetworks.com/hcl/), so follow the
 appropriate steps for your x86 or ARM switch.
 
-## Entering Single User Mode on an x86 Switch</span>
+## Entering Single User Mode on an x86 Switch
 
 1.  Boot the switch, as soon as you see the GRUB menu.
     
@@ -65,7 +65,7 @@ appropriate steps for your x86 or ARM switch.
     Restarting the system.    
     ```
 
-## Entering Single User Mode on an ARM Switch</span>
+## Entering Single User Mode on an ARM Switch
 
 1.  From the console, boot the switch, interrupting the U-Boot countdown
     to enter the U-Boot prompt. Enter the following:

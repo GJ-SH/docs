@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118287
 pageID: 5118287
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -44,7 +44,7 @@ you **must** use non-aware bridges.
 
 {{%/notice%}}
 
-## Defining VLAN-aware Bridge Attributes</span>
+## Defining VLAN-aware Bridge Attributes
 
 To configure a VLAN-aware bridge, include the `bridge-vlan-aware`
 attribute, setting it to *yes*. Name the bridge *bridge* to help ensure
@@ -72,7 +72,7 @@ For a definitive list of bridge attributes, run `ifquery --syntax-help`
 and look for the entries under **bridge**, **bridgevlan** and
 **mstpctl**.
 
-## Basic Trunking</span>
+## Basic Trunking
 
 A basic configuration for a VLAN-aware bridge configured for STP that
 contains two switch ports looks like this:
@@ -141,7 +141,7 @@ iface bridge
 
 {{%/notice%}}
 
-## VLAN Filtering/VLAN Pruning</span>
+## VLAN Filtering/VLAN Pruning
 
 By default, the bridge port inherits the bridge VIDs. A port's
 configuration can override the bridge VIDs. Do this by specifying
@@ -170,7 +170,7 @@ iface swp3
 </tbody>
 </table>
 
-## Untagged/Access Ports</span>
+## Untagged/Access Ports
 
 As described above, access ports ignore all tagged packets. In the
 configuration below, swp1 and swp2 are configured as access ports. All
@@ -204,7 +204,7 @@ iface swp2
 </tbody>
 </table>
 
-### Dropping Untagged Frames</span>
+### Dropping Untagged Frames
 
 With VLAN-aware bridge mode, it's possible to configure a switch port so
 it drops any untagged frames. To do this, add `bridge-allow-untagged no`
@@ -252,7 +252,7 @@ When you check VLAN membership for that port, it shows that there is
     
     bridge 101
 
-## <span id="src-5118287_VLAN-awareBridgeModeforLarge-scaleLayer2Environments-svi" class="confluence-anchor-link"></span>VLAN Layer 3 Addressing - Switch Virtual Interfaces and other VLAN Attributes </span>
+## VLAN Layer 3 Addressing - Switch Virtual Interfaces and other VLAN Attributes
 
 When configuring the VLAN attributes for the bridge, put the attributes
 in a separate stanza for each VLAN interface: \<bridge\>.\<vlanid\>. If
@@ -291,7 +291,7 @@ You can specify a range of VLANs as well. For example:
     vlan bridge.[1-2000]
         ATTRIBUTE VALUE
 
-## <span id="src-5118287_VLAN-awareBridgeModeforLarge-scaleLayer2Environments-glob" class="confluence-anchor-link"></span>Using the glob Keyword to Configure Multiple Ports in a Range</span>
+## Using the glob Keyword to Configure Multiple Ports in a Range
 
 The `glob` keyword referenced in the `bridge-ports` attribute indicates
 that swp1 through swp52 are part of the bridge, which is a short cut
@@ -304,7 +304,7 @@ that saves you from enumerating each port individually:
           bridge-stp on
           bridge-vids 310 700 707 712 850 910
 
-## Example Configuration with Access Ports and Pruned VLANs</span>
+## Example Configuration with Access Ports and Pruned VLANs
 
 The following example contains an access port and a switch port that is
 *pruned*; that is, it only sends and receives traffic tagged to and from
@@ -352,7 +352,7 @@ defined VLANs.
           mstpctl-portpathcost 0
           mstpctl-portnetwork yes
 
-## Example Configuration with Bonds</span>
+## Example Configuration with Bonds
 
 This configuration demonstrates a VLAN-aware bridge with a large set of
 bonds. The bond configurations are generated from a
@@ -433,7 +433,7 @@ bonds. The bond configurations are generated from a
         address 192.168.10.1/30
         broadcast 192.168.10.3
 
-## Converting a Traditional Bridge to VLAN-aware or Vice Versa</span>
+## Converting a Traditional Bridge to VLAN-aware or Vice Versa
 
 You cannot automatically convert a traditional bridge to/from a
 VLAN-aware bridge simply by changing the configuration in the
@@ -451,7 +451,7 @@ These steps assume you are converting a traditional mode bridge to a
 VLAN-aware one. To do the opposite, delete the VLAN-aware bridge in step
 1, and create a new traditional mode bridge in step 2.
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - **STP:** Because [Spanning Tree and Rapid Spanning
     Tree](/version/cumulus-linux-30/Layer-1-and-Layer-2-Features/Spanning-Tree-and-Rapid-Spanning-Tree)
@@ -484,7 +484,7 @@ VLAN-aware one. To do the opposite, delete the VLAN-aware bridge in step
         and specify the new range.
     
     2.  [Restart
-        `switchd`](Configuring-switchd.html#src-5118217_Configuringswitchd-restartswitchd)
+        `switchd`](/version/cumulus-linux-30/System-Management/Configuring-switchd)
         (`sudo systemctl restart switchd.service`) for the new range to
         take effect.
         
@@ -492,7 +492,7 @@ VLAN-aware one. To do the opposite, delete the VLAN-aware bridge in step
         
         While restarting `switchd`, all running ports will flap and
         forwarding will be
-        [interrupted](Configuring-switchd.html#src-5118217_Configuringswitchd-restartswitchd).
+        [interrupted](/version/cumulus-linux-30/System-Management/Configuring-switchd).
         
         {{%/notice%}}
 

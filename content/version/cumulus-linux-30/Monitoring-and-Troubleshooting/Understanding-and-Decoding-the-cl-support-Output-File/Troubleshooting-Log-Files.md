@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118238
 pageID: 5118238
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -151,7 +151,7 @@ debugging.
 </tr>
 <tr class="even">
 <td><p>/var/log/watchdog</p></td>
-<td><p><a href="Monitoring-System-Hardware.html#src-5118231_MonitoringSystemHardware-watchdog">Hardware watchdog</a> log files.</p></td>
+<td><p><a href="/version/cumulus-linux-30/Monitoring-and-Troubleshooting/Monitoring-System-Hardware">Hardware watchdog</a> log files.</p></td>
 </tr>
 <tr class="odd">
 <td><p>/var/log/wtmp</p></td>

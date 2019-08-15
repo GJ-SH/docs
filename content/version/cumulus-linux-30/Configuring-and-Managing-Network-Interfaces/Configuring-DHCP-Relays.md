@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118376
 pageID: 5118376
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -25,7 +25,7 @@ host, leaf and DHCP server using the following topology:
 
 <summary>Contents </summary>
 
-## Configuring the Relays </span>
+## Configuring the Relays
 
 Here is the host configuration:
 

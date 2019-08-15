@@ -7,19 +7,19 @@ aliases:
  - /pages/viewpage.action?pageId=5118229
 pageID: 5118229
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
 This chapter introduces monitoring and troubleshooting Cumulus Linux.
 
-## Commands</span>
+## Commands
 
   - cl-support
 
   - fw\_setenv (ARM switches only)
 
-## Using the Serial Console</span>
+## Using the Serial Console
 
 The serial console can be a useful tool for debugging issues, especially
 when you find yourself rebooting the switch often or if you don’t have a
@@ -28,7 +28,7 @@ reliable network connection.
 The default serial console baud rate is 115200, which is the baud rate
 [ONIE](http://opencomputeproject.github.io/onie/) uses.
 
-### Configuring the Serial Console on ARM Switches</span>
+### Configuring the Serial Console on ARM Switches
 
 On ARM switches, the U-Boot environment variable `baudrate` identifies
 the baud rate of the serial console. To change the `baudrate` variable,
@@ -60,7 +60,7 @@ The valid values for `baudrate` are:
 
   - 115200
 
-### Configuring the Serial Console on x86 Switches</span>
+### Configuring the Serial Console on x86 Switches
 
 On x86 switches, you configure serial console baud rate by editing
 `grub`.
@@ -115,7 +115,7 @@ To change the serial console baud rate:
 
 4.  Reboot the switch.
 
-## Diagnostics Using cl-support</span>
+## Diagnostics Using cl-support
 
 You can use `cl-support` to generate a single export file that contains
 various details and the configuration from a switch. This is useful for
@@ -188,7 +188,7 @@ You can save a lot of disk space and perhaps some time if you do not run
 
 {{%/notice%}}
 
-## <span id="src-5118229_MonitoringandTroubleshooting-syslog_server" class="confluence-anchor-link"></span>Sending Log Files to a syslog Server</span>
+## Sending Log Files to a syslog Server
 
 All logging on Cumulus Linux is done with
 [rsyslog](http://www.rsyslog.com/). `rsyslog` provides both local
@@ -294,7 +294,7 @@ file, where *@* indicates UDP, *192.168.1.2* is the IP address of the
 `syslog` server, and *514* is the UDP port. The value *switchd* must
 match the value in `$InputFileTag`.
 
-## Next Steps</span>
+## Next Steps
 
 The links below discuss more specific monitoring topics.
 

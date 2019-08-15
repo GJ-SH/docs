@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118217
 pageID: 5118217
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -24,7 +24,7 @@ configuration at `/etc/default/switchd.`
 
 {{%/notice%}}
 
-## The switchd File System</span>
+## The switchd File System
 
 `switchd` also exports a file system, mounted on `/cumulus/switchd`,
 that presents all the `switchd` configuration options as a series of
@@ -97,7 +97,7 @@ a switch with one switch port configured:
     |           `-- max_total
     `-- version
 
-## Configuring switchd Parameters</span>
+## Configuring switchd Parameters
 
 You can use `cl-cfg` to configure many `switchd` parameters at runtime
 (like ACLs, interfaces, and route table utilization), which minimizes
@@ -132,7 +132,7 @@ though you cannot update the switchd configuration with it.
 
 <span id="src-5118217_Configuringswitchd-restartswitchd"></span>
 
-## Restarting switchd</span>
+## Restarting switchd
 
 Whenever you modify any `switchd` hardware configuration file (typically
 changing any `*.conf` file that requires making a change to the
@@ -156,7 +156,7 @@ resetting the switch hardware configuration.
 
 {{%/notice%}}
 
-## Booting a Switch without a License</span>
+## Booting a Switch without a License
 
 If a license is not installed on a Cumulus Linux switch, the `switchd`
 service will not start. If you install the license again, start
@@ -164,11 +164,11 @@ service will not start. If you install the license again, start
 
     cumulus@switch:~$ sudo systemctl start switchd.service
 
-## Commands</span>
+## Commands
 
   - cl-cfg
 
-## Configuration Files</span>
+## Configuration Files
 
   - /etc/cumulus/switchd.conf
 

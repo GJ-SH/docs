@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118271
 pageID: 5118271
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -30,19 +30,19 @@ by default into `/var/log/daemon.log` with an `lldpd` prefix.
 statistics and other running configuration information. See `man
 lldpcli(8)` for details.
 
-## Commands</span>
+## Commands
 
   - lldpd (daemon)
 
   - lldpcli (interactive CLI)
 
-## Man Pages</span>
+## Man Pages
 
   - man lldpd
 
   - man lldpcli
 
-## Configuring LLDP</span>
+## Configuring LLDP
 
 You configure `lldpd` settings in `/etc/lldpd.conf` or `/etc/lldpd.d/`.
 
@@ -61,7 +61,7 @@ Here is an example persistent configuration:
     Aug  7 17:26:17 switch lldpcli[1711]: lldpd should resume operations
     Aug  7 17:26:32 switch lldpd[1805]: NET-SNMP version 5.4.3 AgentX subagent connected
 
-## Example lldpcli Commands</span>
+## Example lldpcli Commands
 
 To see all neighbors on all ports/interfaces:
 
@@ -275,7 +275,7 @@ To reset any interface list to none:
 
 <span id="src-5118271_LinkLayerDiscoveryProtocol-snmp"></span>
 
-## Enabling the SNMP Subagent in LLDP</span>
+## Enabling the SNMP Subagent in LLDP
 
 LLDP does not enable the SNMP subagent by default. You need to edit
 `/etc/default/lldpd` and enable the `-x` option.
@@ -289,7 +289,7 @@ LLDP does not enable the SNMP subagent by default. You need to edit
     # Enable CDP by default
     DAEMON_ARGS="$DAEMON_OPT_ARGS -c"
 
-## Configuration Files</span>
+## Configuration Files
 
   - /etc/lldpd.conf
 
@@ -297,13 +297,13 @@ LLDP does not enable the SNMP subagent by default. You need to edit
 
   - /etc/default/lldpd
 
-## Useful Links</span>
+## Useful Links
 
   - <http://vincentbernat.github.io/lldpd/>
 
   - <http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol>
 
-## Caveats and Errata</span>
+## Caveats and Errata
 
   - Annex E (and hence Annex D) of IEEE802.1AB (lldp) is not supported.
 

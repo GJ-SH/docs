@@ -7,10 +7,12 @@ aliases:
  - /pages/viewpage.action?pageId=5118370
 pageID: 5118370
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
+<details>
+
 `ifupdown` is the network interface manager for Cumulus Linux. Cumulus
 Linux 2.1 and later uses an updated version of this tool, `ifupdown2`.
 
@@ -66,31 +68,28 @@ To bring down a single interface, run:
 
     cumulus@switch:~$ sudo ifdown <ifname>
 
-<details>
 <summary>Runtime Configuration (Advanced) </summary>
 
-{{%notice warning%}}
-A runtime configuration is non-persistent, which means the configuration 
-you create here does not persist after you reboot the switch.
-{{%/notice%}}
-
-To administratively bring an interface up or down, run:
-
-    cumulus@switch:~$ sudo ip link set dev swp1 {up|down}
-
-{{%notice note%}}
-
-If you specified manual as the address family, you must bring up that 
-interface manually using `ifconfig`. For example, if you configured a 
-bridge like this:
-
-    auto bridge01
-    iface bridge01 inet manual
-
-You can only bring it up by running `ifconfig bridge01 up`.
-{{%/notice%}}
-
-</details>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>{{%notice warning%}}</p>
+<p>A runtime configuration is non-persistent, which means the configuration you create here does not persist after you reboot the switch.</p>
+<p>{{%/notice%}}</p>
+<p>To administratively bring an interface up or down, run:</p>
+<pre><code>cumulus@switch:~$ sudo ip link set dev swp1 {up|down}</code></pre>
+<p>{{%notice note%}}</p>
+<p>If you specified <em>manual</em> as the address family, you must bring up that interface manually using <code>ifconfig</code>. For example, if you configured a bridge like this:</p>
+<pre><code>auto bridge01
+iface bridge01 inet manual</code></pre>
+<p>You can only bring it up by running <code>ifconfig bridge01 up</code>.</p>
+<p>{{%/notice%}}</p></td>
+</tr>
+</tbody>
+</table>
 
 {{%notice info%}}
 
@@ -202,7 +201,8 @@ The loopback interface *lo* must always be specified in
 
 {{%/notice%}}
 
-### ifupdown Behavior with Child Interfaces
+<span id="src-5118370_ConfiguringandManagingNetworkInterfaces-ip"></span>ifupdown
+Behavior with Child Interfaces
 
 By default, `ifupdown` recognizes and uses any interface present on the
 system — whether a VLAN, bond or physical interface — that is listed as
@@ -250,7 +250,7 @@ iface bridge
 </tbody>
 </table>
 
-## Bridge in Traditional Mode - Example
+<summary>Bridge in Traditional Mode - Example </summary>
 
 For this example, swp1.100 and swp2.100 below do not need an entry in
 the `interfaces` file. The following stanzas defined in
@@ -494,26 +494,27 @@ You can specify both IPv4 and IPv6 addresses in the same `iface` stanza:
         address 192.0.2.2/30
         address 2001:DB8::1/126
 
-<details>
 <summary>Runtime Configuration (Advanced) </summary>
 
-{{%notice warning%}}
-
-A runtime configuration is non-persistent, which means the configuration you create here does not persist after you reboot the switch.
-
-{{%/notice%}}
-
-To make non-persistent changes to interfaces at runtime, use `ip addr add`:
-
-    cumulus@switch:~$ sudo ip addr add 192.0.2.1/30 dev swp1
-    cumulus@switch:~$ sudo ip addr add 2001:DB8::1/126 dev swp1
-
-To remove an addresses from an interface, `use ip addr del`:
-
-    cumulus@switch:~$ sudo ip addr del 192.0.2.1/30 dev swp1
-    cumulus@switch:~$ sudo ip addr del 2001:DB8::1/126 dev swp1
-
-See `man ip` for more details on the options available to manage and query interfaces.|
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>{{%notice warning%}}</p>
+<p>A runtime configuration is non-persistent, which means the configuration you create here does not persist after you reboot the switch.</p>
+<p>{{%/notice%}}</p>
+<p>To make non-persistent changes to interfaces at runtime, use <code>ip addr add</code>:</p>
+<pre><code>cumulus@switch:~$ sudo ip addr add 192.0.2.1/30 dev swp1
+cumulus@switch:~$ sudo ip addr add 2001:DB8::1/126 dev swp1</code></pre>
+<p>To remove an addresses from an interface, use <code>ip addr del</code>:</p>
+<pre><code>cumulus@switch:~$ sudo ip addr del 192.0.2.1/30 dev swp1
+cumulus@switch:~$ sudo ip addr del 2001:DB8::1/126 dev swp1</code></pre>
+<p>See <code>man ip</code> for more details on the options available to manage and query interfaces.</p></td>
+</tr>
+</tbody>
+</table>
 
 To show the assigned address on an interface, use `ip addr show`:
 
@@ -524,7 +525,6 @@ To show the assigned address on an interface, use `ip addr show`:
        inet 192.0.2.2/30 scope global swp1
         inet6 2001:DB8::1/126 scope global tentative
            valid_lft forever preferred_lft forever
-</details>
 
 ### Purging Existing IP Addresses on an Interface
 
@@ -676,7 +676,8 @@ alias appears on the `alias` line:
         link/ether aa:aa:aa:aa:aa:bc brd ff:ff:ff:ff:ff:ff
         alias hypervisor_port_1
 
-Interface descriptions also appear in the [SNMP OID](/version/cumulus-linux-25esr/Monitoring-and-Troubleshooting/SNMP-Monitoring/#supported-mibs)
+Interface descriptions also appear in the [SNMP
+OID](/version/cumulus-linux-30/Monitoring-and-Troubleshooting/Monitoring-System-Hardware)
 [IF-MIB::ifAlias](http://www.net-snmp.org/docs/mibs/ifMIBObjects.html#ifAlias).
 
 {{%notice note%}}
@@ -684,6 +685,8 @@ Interface descriptions also appear in the [SNMP OID](/version/cumulus-linux-25es
 Aliases are limited to 256 characters.
 
 {{%/notice%}}
+
+<span id="src-5118370_ConfiguringandManagingNetworkInterfaces-caveats"></span>
 
 ## Caveats and Errata
 
@@ -727,6 +730,19 @@ interfaces with multiple `iface` stanzas.
 ## Useful Links
 
   - <http://wiki.debian.org/NetworkConfiguration>
+
   - <http://www.linuxfoundation.org/collaborate/workgroups/networking/bonding>
+
   - <http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge>
+
   - <http://www.linuxfoundation.org/collaborate/workgroups/networking/vlan>
+
+<article id="html-search-results" class="ht-content" style="display: none;">
+
+</article>
+
+<footer id="ht-footer">
+
+</footer>
+
+</details>

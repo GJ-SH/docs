@@ -7,7 +7,7 @@ aliases:
  - /pages/viewpage.action?pageId=5118245
 pageID: 5118245
 product: Cumulus Linux
-version: 3.0.1
+version: '3.0'
 imgData: cumulus-linux-30
 siteSlug: cumulus-linux-30
 ---
@@ -23,7 +23,7 @@ monitoring environments, rather than SNMP.
 
 {{%/notice%}}
 
-## Introduction to SNMP (Simple Network Management Protocol)</span>
+## Introduction to SNMP (Simple Network Management Protocol)
 
 SNMP is an IETF standards-based network management architecture and
 protocol that traces its roots back to Carnegie-Mellon University in
@@ -36,7 +36,7 @@ collaborative open source project. The version used by Cumulus Networks
 is base on the latest `net-snmp` 5.7.3 branch with added custom MIBs and
 pass through and pass persist scripts.
 
-## Configuring Ports for SNMP to Listen for Requests</span>
+## Configuring Ports for SNMP to Listen for Requests
 
 For security reasons, the default port binding for `snmpd` is the
 loopback local address; consequently by default, the SNMP service does
@@ -51,7 +51,7 @@ before enabling and starting `snmpd`. The default configuration has no
 access community strings defined so `snmpd` will not respond to any SNMP
 requests until this is added.
 
-## Starting the SNMP Daemon</span>
+## Starting the SNMP Daemon
 
 The following procedure is the recommended process to start `snmpd` and
 monitor it using `systemctl`.
@@ -82,7 +82,7 @@ To start the SNMP daemon:
 Once the service is started, SNMP can be used to manage various
 components on the Cumulus Linux switch.
 
-## Configuring SNMP</span>
+## Configuring SNMP
 
 Cumulus Linux ships with a production usable default `snmpd.conf` file
 included. This section covers a few basic configuration options in
@@ -103,7 +103,7 @@ v2c environments or the `snmpd` daemon will not respond to any requests.
 
 {{%/notice%}}
 
-### Setting up the Custom Cumulus Networks MIBs</span>
+### Setting up the Custom Cumulus Networks MIBs
 
 {{%notice note%}}
 
@@ -128,7 +128,7 @@ custom Cumulus MIB to be recognized on the destination NMS server.
 
   - `/usr/share/snmp/mibs/Cumulus-Resource-Query-MIB.txt`
 
-### Enabling the .1.3.6.1.2.1 Range</span>
+### Enabling the .1.3.6.1.2.1 Range
 
 Some MIBs, including storage information, are not included by default in
 `snmpd.conf` in Cumulus Linux. This results in some default views on
@@ -177,7 +177,7 @@ To enable the .1.3.6.1.2.1 range:
     
         # sudo systemctl start snmpd.service
 
-### Enabling Public Community</span>
+### Enabling Public Community
 
 The `snmpd` authentication for versions 1 and 2 is disabled by default
 in Cumulus Linux. This password (called a community string) can be
@@ -198,7 +198,7 @@ a client:
     
         cumulus@switch:~$ sudo systemctl restart snmpd.service
 
-### Configuring SNMPv3</span>
+### Configuring SNMPv3
 
 Since community strings in versions 1 and 2c are sent in the clear,
 SNMPv3 is often used to enable authentication and encryption. SNMPv3 was
@@ -317,7 +317,7 @@ Configuring Nutanix Prism
 Nutanix Prism is a graphical user interface (GUI) for managing
 infrastructures and virtual environments.
 
-### Cumulus Linux Configuration</span>
+### Cumulus Linux Configuration
 
 1.  SSH to the Cumulus Linux switch that needs to be configured,
     replacing `[switch]` below as appropriate:
@@ -356,7 +356,7 @@ infrastructures and virtual environments.
         Restarting network management services: snmpd.
         cumulus@switch$
 
-### Nutanix Configuration</span>
+### Nutanix Configuration
 
 1.  Log into the Nutanix Prism. Nutanix defaults to the Home menu,
     referred to as the Dashboard:
@@ -419,7 +419,7 @@ Nutanix hosts are visible.
 
 {{%/notice%}}
 
-## Switch Information Displayed on Nutanix Prism</span>
+## Switch Information Displayed on Nutanix Prism
 
   - Physical Interface (e.g. swp1, swp2). This will only display swp
     interfaces connected to Nutanix hosts by default.
@@ -464,7 +464,7 @@ CLI, login using the default username **nutanix**, and the password
         Switch Vendor Name        : Unknown
         Port Ids                  : 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:52, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:53, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:54, 00051a76-f711-89b6-0000-000000003bac::5f13678e-6ffd-4b33-912f-f1aa6e8da982:55
 
-## Troubleshooting</span>
+## Troubleshooting
 
 To help visualize the following diagram is provided:
 
@@ -477,7 +477,7 @@ To help visualize the following diagram is provided:
 | Node C (Red)    | vmnic2        | swp51              |
 | Node D (Yellow) | vmnic2        | swp52              |
 
-## Enabling LLDP/CDP on VMware ESXi (Hypervisor on Nutanix)</span>
+## Enabling LLDP/CDP on VMware ESXi (Hypervisor on Nutanix)
 
 1.  Follow the directions on one of the following websites to enable
     CDP:
@@ -544,7 +544,7 @@ To help visualize the following diagram is provided:
         swp51         10G(SFP+)    Access/L2  ====  vmnic2         NX-1050-C          Untagged: br-ntnx
         swp52         10G(SFP+)    Access/L2  ====  vmnic2         NX-1050-D          Untagged: br-ntnx
 
-## Enabling LLDP/CDP on Nutanix Acropolis (Hypervisor on Nutanix Acropolis)</span>
+## Enabling LLDP/CDP on Nutanix Acropolis (Hypervisor on Nutanix Acropolis)
 
 [Nutanix Acropolis](http://www.nutanix.com/products/acropolis/) is an
 alternate hypervisor that Nutanix supports. Acropolis Hypervisor uses
@@ -553,7 +553,7 @@ daemons to operating just like Cumulus Linux. LLDP should be enabled for
 each interface on the host. Refer to
 <https://community.mellanox.com/docs/DOC-1522> for setup instructions.
 
-## snmpwalk the Switch from Another Linux Device</span>
+## snmpwalk the Switch from Another Linux Device
 
 One of the most important ways to troubleshoot is to snmpwalk the switch
 from another Linux device that can reach the switch running Cumulus
@@ -590,7 +590,7 @@ within the network is used.
     
         cumulus@switch2$ snmpwalk -c public -v2c 192.168.0.111
     
-    ##### Output Examples</span>
+    ##### <span>Output Examples</span>
     
         IF-MIB::ifPhysAddress.2 = STRING: 74:e6:e2:f5:a2:80
         IF-MIB::ifPhysAddress.3 = STRING: 0:e0:ec:25:b8:54
@@ -615,7 +615,7 @@ Any information gathered here should verify that snmpd is running
 correctly on the Cumulus Linux side, reducing locations where a problem
 may reside.
 
-### Troubleshooting Tips Table for snmp walks</span>
+### Troubleshooting Tips Table for snmp walks
 
 <table>
 <colgroup>
@@ -652,7 +652,7 @@ Is there an iptables rule blocking? Is the snmp walk being run correctly?</p></t
 </tbody>
 </table>
 
-## Troubleshooting Connections without LLDP or CDP</span>
+## Troubleshooting Connections without LLDP or CDP
 
 1.  Find the MAC address information in the Prism GUI, located in:
     **Hardware -\> Table -\> Host -\> Host NICs**
@@ -723,9 +723,9 @@ Is there an iptables rule blocking? Is the snmp walk being run correctly?</p></t
         -------------------------------------------------------------------------------
         cumulus@switch$
 
-## SNMP Traps</span>
+## SNMP Traps
 
-### snmptrapd.conf</span>
+### snmptrapd.conf
 
 The Net-SNMP trap daemon configuration file, `/etc/snmptrapd.conf`, is
 used to configure how incoming traps should be processed. For more
@@ -754,14 +754,14 @@ the following command in a terminal:
     snmpTrapdAddr localhost
     forward default {{global['snmp_server']}}
 
-### Generating Event Notification Traps</span>
+### Generating Event Notification Traps
 
 The Net-SNMP agent provides a method to generate SNMP trap events, via
 the Distributed Management (DisMan) Event MIB, for various system
 events, including linkup/down, exceeding the temperature sensor
 threshold, CPU load, or memory threshold, or other SNMP MIBs.
 
-#### Enabling MIB to OID Translation</span>
+#### Enabling MIB to OID Translation
 
 MIB names can be used instead of OIDs, by installing the
 `snmp-mibs-downloader`, to download SNMP MIBs to the switch prior to
@@ -805,7 +805,7 @@ enabling traps. This greatly improves the readability of the
     
         #deb http://ftp.us.debian.org/debian/ jessie main non-free
 
-#### Configuring Trap Events</span>
+#### Configuring Trap Events
 
 The following configurations should be made in `/etc/snmp/snmp.conf`, in
 order to enable specific types of traps. Once configured, restart the
@@ -934,7 +934,7 @@ directive:
 
     authtrapenable 1
 
-## <span id="src-5118245_SNMPMonitoring-supported_mibs" class="confluence-anchor-link"></span>Supported MIBs</span>
+## Supported MIBs
 
 Below are the MIBs supported by Cumulus Linux, as well as suggested uses
 for them. The overall Cumulus Linux MIB is defined in
@@ -953,7 +953,7 @@ for them. The overall Cumulus Linux MIB is defined in
 | [IP (includes ICMP)](http://net-snmp.sourceforge.net/docs/mibs/ip.html)                                    | IPv4, IPv4 addresses, counters, netmasks                                                                                                                                                                                                                                                                                                                                                                                  |
 | IPv6                                                                                                       | IPv6 counters                                                                                                                                                                                                                                                                                                                                                                                                             |
 | IP-FORWARD                                                                                                 | IP routing table                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [LLDP](http://www.mibdepot.com/cgi-bin/getmib3.cgi?i=1&n=LLDP-MIB&r=cisco&f=LLDP-MIB-V1SMI.my&v=v1&t=tree) | L2 neighbor info from `lldpd` (note, you need to [enable the SNMP subagent](Link-Layer-Discovery-Protocol.html#src-5118271_LinkLayerDiscoveryProtocol-snmp) in LLDP). `lldpd` needs to be started with the `-x` option to enable connectivity to `snmpd` (AgentX).                                                                                                                                                        |
+| [LLDP](http://www.mibdepot.com/cgi-bin/getmib3.cgi?i=1&n=LLDP-MIB&r=cisco&f=LLDP-MIB-V1SMI.my&v=v1&t=tree) | L2 neighbor info from `lldpd` (note, you need to [enable the SNMP subagent](/version/cumulus-linux-30/Layer-1-and-Layer-2-Features/Link-Layer-Discovery-Protocol) in LLDP). `lldpd` needs to be started with the `-x` option to enable connectivity to `snmpd` (AgentX).                                                                                                                                                  |
 | [LM-SENSORS MIB](http://support.ipmonitor.com/mibs_byoidtree.aspx?oid=.1.3.6.1.4.1.2021.13.16)             | Fan speed, temperature sensor values, voltages. This is deprecated since the ENTITY-SENSOR MIB has been added.                                                                                                                                                                                                                                                                                                            |
 | NET-SNMP-AGENT                                                                                             | Agent timers, user, group config                                                                                                                                                                                                                                                                                                                                                                                          |
 | NET-SNMP-EXTEND                                                                                            | Agent timers, user, group config                                                                                                                                                                                                                                                                                                                                                                                          |
