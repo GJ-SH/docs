@@ -24,6 +24,8 @@ frontend:
         - find public -name '*.xml' -type f -exec sed -i "s,s3-us-west-2.amazonaws.com/dev.docs.cumulusnetworks.com,$STATIC_DOMAIN,g" {} +
         - echo "Checking public directory size"
         - du -h -d 1 public
+        - find public -name '*.html' -type f -exec sed -i "s,dkahegywkrw3e.cloudfront.net,$STATIC_DOMAIN,g" {} +
+        - find public -name '*.xml' -type f -exec sed -i "s,dkahegywkrw3e.cloudfront.net,$STATIC_DOMAIN,g" {} +
   artifacts:
     files:
       - '**/*'
