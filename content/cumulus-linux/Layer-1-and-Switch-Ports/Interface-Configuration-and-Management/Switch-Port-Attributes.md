@@ -41,7 +41,7 @@ unsupported error is shown.
 
 {{%/notice%}}
 
-For switches with **[Spectrum ASICs](https://cumulusnetworks.com/products/hardware-compatibility-list/?ASIC=Mellanox Spectrum&ASIC=Mellanox Spectrum_A1)**, MTU is the only port attribute you can directly configure. The Spectrum firmware configures FEC, link speed, duplex mode and auto-negotiation automatically, following a predefined list of parameter settings until
+For switches with **[Spectrum ASICs](https://cumulusnetworks.com/products/hardware-compatibility-list/?asic%5B0%5D=Mellanox%20Spectrum&asic%5B1%5D=Mellanox%20Spectrum_A1)**, MTU is the only port attribute you can directly configure. The Spectrum firmware configures FEC, link speed, duplex mode and auto-negotiation automatically, following a predefined list of parameter settings until
 the link comes up. However, you can disable FEC if necessary, which forces the firmware to not try any FEC options.
 
 For **Broadcom-based switches,** Cumulus Networks recommends that you
@@ -191,6 +191,13 @@ For a global policy to set MTU, create a policy document (called
      "address": {"defaults": { "mtu": "9216" }
                 }
     }
+
+{{%notice note%}}
+
+After making the edits to the policy file above, the changed policy will need to be applied to the system by issuing the `ifreload -a` command.
+NCLU may also apply the policy if an `ifreload -a` is issued as part of the next commit operation.
+
+{{%/notice%}}
 
 {{%notice note%}}
 
@@ -441,7 +448,7 @@ For the **SFP28 DAC**, run the following command:
 The values at location 0x0024 are:
 
 - 0x0b : CA-L (long cable - RS FEC required)
-- 0x0c : CA-S (short cable - BaseR or better FEC required)
+- 0x0c : CA-S (short cable - Base-Ror better FEC required)
 - 0x0d : CA-N (no FEC required)
 
 For the **QSFP28 DAC**, run the following command:
@@ -452,7 +459,7 @@ For the **QSFP28 DAC**, run the following command:
 The values at 0x00c0 are:
 
 - 0x0b : CA-L (long cable - RS FEC required) or 100G CR4
-- 0x0c : CA-S (short cable - BaseR or better FEC required)
+- 0x0c : CA-S (short cable - Base-Ror better FEC required)
 - 0x0d : CA-N (no FEC required)
 
 In each example below, the *Compliance* field is derived using the
@@ -481,23 +488,23 @@ ASIC.
 
 When the link is between two switches with Spectrum ASICs:
 
-- For 25G optical modules, the Spectrum ASIC firmware chooses BaseR/FC-FEC.
+- For 25G optical modules, the Spectrum ASIC firmware chooses Base-R/FC-FEC.
 - For 25G DAC cables with attenuation less or equal to 16db, the firmware
-  chooses BaseR/FC-FEC.
+  chooses Base-R/FC-FEC.
 - For 25G DAC cables with attenuation higher than 16db, the firmware chooses
   RS-FEC.
 - For 100G cables/modules, the firmware chooses RS-FEC.
 
 | Cable Type                              | FEC Mode     |
 | --------------------------------------- | ------------ |
-| 25G optical cables                      | BaseR/FC-FEC |
-| 25G 1,2 meters: CA-N, loss <13db        | BaseR/FC-FEC |
-| 25G 2.5,3 meters: CA-S, loss <16db      | BaseR/FC-FEC |
+| 25G optical cables                      | Base-R/FC-FEC |
+| 25G 1,2 meters: CA-N, loss <13db        | Base-R/FC-FEC |
+| 25G 2.5,3 meters: CA-S, loss <16db      | Base-R/FC-FEC |
 | 25G 2.5,3,4,5 meters: CA-L, loss > 16db | RS-FEC       |
 | 100G DAC or optical                     | RS-FEC       |
 
 When linking to a non-Spectrum peer, the firmware lets the peer decide. The
-Spectrum ASIC supports RS-FEC (for both 100G and 25G), BaseR/FC-FEC (25G only),
+Spectrum ASIC supports RS-FEC (for both 100G and 25G), Base-R/FC-FEC (25G only),
 or no-FEC (for both 100G and 25G).
 
 | Cable Type                              | FEC Mode                          |
@@ -789,19 +796,19 @@ iface swp1
 <tr>
 <td><p>25GBASE-CR</p></td>
 <td><p>On</p></td>
-<td><p>auto-negotiated*</p></td>
+<td><p>auto-negotiated</p></td>
 <td><pre>$ net add interface swp1 link speed 25000
 $ net add interface swp1 link autoneg on</pre>
 <pre>auto swp1
 iface swp1
   link-autoneg on
   link-speed 25000</pre></td>
-<td><p> </p></td>
+<td><p>Tomahawk predates 802.3by. It does not support RS FEC or auto-negotiation of RS FEC on a 25G port or subport. It does support Base-R FEC.</p></td>
 </tr>
 <tr>
 <td><p>25GBASE-SR</p></td>
 <td><p>Off</p></td>
-<td><p>RS*</p></td>
+<td><p>RS</p></td>
 <td><pre>$ net add interface swp1 link speed 25000
 $ net add interface swp1 link autoneg off
 $ net add interface swp1 link fec baser</pre>
@@ -811,7 +818,7 @@ iface swp1
   link-speed 25000
   link-fec baser</pre></td>
 <td><ul>
-<li><p>Tomahawk cannot do RS on a single channel, only BASE-R/FC/FireCode/Type74, which violates the 802.3by specification for 25G.</p></li>
+<li><p>Tomahawk predates 802.3by. It does not support RS FEC on a 25G port or subport. It does support Base-R FEC.</p></li>
 </ul></td>
 </tr>
 <tr>
@@ -931,7 +938,7 @@ accordingly. The following example shows a file called `address.json.`
             }
         },
         "address": {
-            "defaults": { "mtu": "9000" }
+            "defaults": { "mtu": "9000" },
             "iface_defaults": {
                 "eth0": {"mtu": "1500"}
             }
@@ -1244,7 +1251,8 @@ and FEC on swp1, run:
 
 To view the FEC setting on an interface, run:
 
-    cumulus@switch:~$ sudo ethtool --show-fec swp1FEC parameters for swp1:
+    cumulus@switch:~$ sudo ethtool --show-fec swp1
+    FEC parameters for swp1:
     Auto-negotiation: off
     FEC encodings : RS
 

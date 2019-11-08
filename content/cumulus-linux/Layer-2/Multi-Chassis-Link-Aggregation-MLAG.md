@@ -3,8 +3,8 @@ title: Multi-Chassis Link Aggregation - MLAG
 author: Cumulus Networks
 weight: 123
 aliases:
- - /display/DOCS/Multi+Chassis+Link+Aggregation+MLAG
- - /display/DOCS/Multi+Chassis+Link+Aggregation+-+MLAG
+ - /display/DOCS/Multi-Chassis+Link+Aggregation+MLAG
+ - /display/DOCS/Multi-Chassis+Link+Aggregation+-+MLAG
  - /pages/viewpage.action?pageId=8362677
 pageID: 8362677
 product: Cumulus Linux
@@ -25,7 +25,7 @@ greater redundancy and greater system throughput.
 by other vendors as CLAG, MC-LAG or VPC. You will even see references to
 CLAG in Cumulus Linux, including the management daemon, named `clagd`, and
 other options in the code, such as `clag-id`, which exist for historical
-purposes. The Cumulus Linux implementation is truly a multi-chassis link 
+purposes. The Cumulus Linux implementation is truly a multi-chassis link
 aggregation protocol, so we call it MLAG.
 
 {{%/notice%}}
@@ -77,7 +77,7 @@ MLAG has these requirements:
 If for some reason you cannot use LACP, you can also use
 [balance-xor mode](../Bonding-Link-Aggregation#enable-balance-xor-mode)
 to dual-connect host-facing bonds in an MLAG environment. If you do,
-you must still configure the same `clag_id` parameter on the MLAG
+you must still configure the same `clag-id` parameter on the MLAG
 bonds, and it must be the same on both MLAG switches. Otherwise, the
 MLAG switch pair treats the bonds as if they are single-connected.
 
@@ -121,11 +121,11 @@ However, if for some reason you cannot use LACP in your environment, you
 can configure the bonds in [balance-xor
 mode](../Bonding-Link-Aggregation/#enable-balance-xor-mode).
 When using balance-xor mode to dual-connect host-facing bonds in an MLAG
-environment, you must configure the `clag_id` parameter on the MLAG
+environment, you must configure the `clag-id` parameter on the MLAG
 bonds, which must be the same on both MLAG switches. Otherwise, the
 bonds are treated by the MLAG switch pair as if they are
 single-connected. In short, dual-connectedness is solely determined by
-matching `clag_id` and any misconnection will **not** be detected.
+matching `clag-id` and any misconnection will **not** be detected.
 
 On each of the peer switches, you must place the links that are
 connected to the dual-connected host or switch in the bond. This is true
@@ -168,7 +168,7 @@ configuration on the other peer switch. This applies to all
 configuration changes, including:
 
 - Port configuration; for example, VLAN membership,
-  [MTU](../Multi-Chassis-Link-Aggregation-MLAG/#mtu-in-an-mlag-configuration), 
+  [MTU](../Multi-Chassis-Link-Aggregation-MLAG/#mtu-in-an-mlag-configuration),
   and bonding parameters.
 - Bridge configuration; for example, spanning tree parameters or
   bridge properties.
@@ -176,7 +176,7 @@ configuration changes, including:
   IGMP entries.
 - QoS configuration; for example, ACL entries.
 
-You can verify the configuration of VLAN membership with the 
+You can verify the configuration of VLAN membership with the
 `net show clag verify-vlans verbose` command.
 
 <details>
@@ -212,7 +212,7 @@ uplink                  104   uplink
 ### Reserved MAC Address Range
 
 To prevent MAC address conflicts with other interfaces in the same
-bridged network, Cumulus Networks has 
+bridged network, Cumulus Networks has
 [reserved a range of MAC addresses](https://support.cumulusnetworks.com/hc/en-us/articles/203837076)
 specifically to use with MLAG. This range of MAC addresses is
 44:38:39:ff:00:00 to 44:38:39:ff:ff:ff.
@@ -284,6 +284,7 @@ For example, if *peerlink* is the inter-chassis bond, and VLAN 4094 is
 the peer link VLAN, configure *peerlink.4094* as follows:
 
 <details>
+
 <summary>Cumulus Linux 3.7.6 and earlier</summary>
 
 ```
@@ -302,7 +303,7 @@ The above commands save the configuration in the `/etc/network/interfaces` file.
 auto peerlink
 iface peerlink
     bond-slaves swp49 swp50
-     
+
 auto peerlink.4094
 iface peerlink.4094  
     address 169.254.1.1/30  
@@ -310,9 +311,11 @@ iface peerlink.4094
     clagd-backup-ip 192.0.2.50  
     clagd-sys-mac 44:38:39:FF:40:94
 ```
+
 </details>
 
 <details>
+
 <summary>Cumulus Linux 3.7.7 and later</summary>
 
 In Cumulus Linux 3.7.7 and later, you can use MLAG unnumbered:
@@ -325,6 +328,7 @@ cumulus@leaf01:~$ net add interface peerlink.4094 clag sys-mac 44:38:39:FF:40:94
 cumulus@leaf01:~$ net pending
 cumulus@leaf01:~$ net commit
 ```
+
 The above commands save the configuration in the `/etc/network/interfaces` file.
 
 ```
@@ -338,6 +342,7 @@ iface peerlink.4094
   clagd-peer-ip linklocal
   clagd-sys-mac 44:38:39:FF:40:94
 ```
+
 </details>
 
 {{%notice info%}}
@@ -495,7 +500,7 @@ neighSync = True
 permanentMacSync = True
 cmdLine = /usr/sbin/clagd --daemon 169.254.1.2 peerlink.4094 44:38:39:FF:00:01 --priority 1000 --backupIp 192.168.0.12 --peerTimeout 900
 peerlinkLearnEnable = False
-cumulus@leaf01:~$ 
+cumulus@leaf01:~$
 ```
 
 ## Example MLAG Configuration
@@ -513,7 +518,7 @@ example clag l2-with-server-vlan-trunks`.
 
 {{%/notice%}}
 
-{{< figure src="/cumulus-linux/Images/exampleMLAGconfig.png">}}
+{{< figure src="/images/cumulus-linux/exampleMLAGconfig.png">}}
 
 You configure these interfaces using
 [NCLU](../../System-Configuration/Network-Command-Line-Utility-NCLU),
@@ -568,20 +573,20 @@ net add interface eth0 ip address dhcp</code></pre>
 auto lo
 iface lo inet loopback
     address 10.0.0.21/32
- 
+
 auto eth0
 iface eth0 inet dhcp
- 
+
 #downlinks
 auto swp1
 iface swp1
- 
+
 auto swp2
 iface swp2
- 
+
 auto swp3
 iface swp3
- 
+
 auto swp4
 iface swp4</code></pre></td>
 <td><p><strong>spine02</strong></p>
@@ -697,7 +702,7 @@ iface peerlink
 auto peerlink.4094
 iface peerlink.4094
     clagd-backup-ip 192.168.1.12
-    clagd-peer-ip 169.254.1.2
+    clagd-peer-ip linklocal
     clagd-priority 1000
     clagd-sys-mac 44:38:39:FF:00:01
 
@@ -791,7 +796,7 @@ iface peerlink
 auto peerlink.4094
 iface peerlink.4094
     clagd-backup-ip 192.168.1.11
-    clagd-peer-ip 169.254.1.1
+    clagd-peer-ip linklocal
     clagd-sys-mac 44:38:39:FF:00:01
 
 auto server1
@@ -885,7 +890,7 @@ iface peerlink
 auto peerlink.4094
 iface peerlink.4094
     clagd-backup-ip 192.168.1.14
-    clagd-peer-ip 169.254.1.2
+    clagd-peer-ip linklocal
     clagd-priority 1000
     clagd-sys-mac 44:38:39:FF:00:02
 
@@ -978,7 +983,7 @@ iface peerlink
 auto peerlink.4094
 iface peerlink.4094
     clagd-backup-ip 192.168.1.13
-    clagd-peer-ip 169.254.1.1
+    clagd-peer-ip linklocal
     clagd-sys-mac 44:38:39:FF:00:02
 
 auto server3
@@ -1036,7 +1041,7 @@ cumulus@leaf01:~$ net show clag
 The peer is alive
     Peer Priority, ID, and Role: 4096 44:38:39:FF:00:01 primary
      Our Priority, ID, and Role: 8192 44:38:39:FF:00:02 secondary
-          Peer Interface and IP: peerlink.4094 169.254.1.1  
+          Peer Interface and IP: peerlink.4094 linklocal  
                       Backup IP: 192.168.1.12 (inactive)
                      System MAC: 44:38:39:FF:00:01
 
@@ -1062,7 +1067,7 @@ displayed by `clagctl`:
 The peer is alive
     Peer Priority, ID, and Role: 4096 44:38:39:FF:00:01 primary
      Our Priority, ID, and Role: 8192 44:38:39:FF:00:02 secondary
-          Peer Interface and IP: peerlink.4094 169.254.1.1  
+          Peer Interface and IP: peerlink.4094 linklocal  
                       Backup IP: 192.168.1.12 (inactive)
                      System MAC: 44:38:39:FF:00:01
 CLAG Interfaces
@@ -1192,7 +1197,7 @@ cumulus@spine01:~$ net show clag
 The peer is alive
      Our Priority, ID, and Role: 32768 44:38:39:00:00:41 primary
     Peer Priority, ID, and Role: 32768 44:38:39:00:00:42 secondary
-          Peer Interface and IP: peerlink.4094 169.254.1.1
+          Peer Interface and IP: peerlink.4094 linklocal
                       Backup IP: 192.168.0.22 (active)
                      System MAC: 44:38:39:FF:40:90
 
@@ -1249,7 +1254,7 @@ iface green
 auto peer5.4000
 iface peer5.4000
     address 192.0.2.15/24
-    clagd-peer-ip 192.0.2.16
+    clagd-peer-ip linklocal
     clagd-backup-ip 192.0.2.2 vrf green
     clagd-sys-mac 44:38:39:01:01:01
 ...
@@ -1262,7 +1267,7 @@ cumulus@leaf01:~$ net show clag status verbose
 The peer is alive
     Peer Priority, ID, and Role: 32768 00:02:00:00:00:13 primary
      Our Priority, ID, and Role: 32768 c4:54:44:f6:44:5a secondary
-          Peer Interface and IP: peer5.4000 192.0.2.2
+          Peer Interface and IP: peer5.4000 linklocal
                       Backup IP: 192.0.2.2 vrf green (active)
                      System MAC: 44:38:39:01:01:01
 
@@ -1357,7 +1362,7 @@ layer 3 uplink interfaces. In the event of a peer link failure, MLAG
 does not remove static routes or bring down a BGP or OSPF adjacency
 unless a separate link state daemon such as `ifplugd` is used.
 
-**MLAG and Peer Link Peering**
+### MLAG and Peer Link Peering
 
 When using MLAG with VRR, Cumulus Networks recommends you set up a
 routed adjacency across the peerlink.4094 interface. If a routed

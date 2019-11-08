@@ -44,12 +44,12 @@ characteristics:
   using `cmsg`. By default, applications on the switch run against the
   default VRF. Services started by `systemd` run in the default VRF
   unless the VRF instance is used. 
-  If [management VRF](/cumulus-linux/Layer-3/Management-VRF) is enabled, 
+  If [management VRF](../Management-VRF) is enabled, 
   logins to the switch default to the management VRF. This is a convenience for
   users to not have to specify management VRF for each command.
 - Listen sockets used by services are VRF-global by default unless the
   application is configured to use a more limited scope — for example,
-  read about [services in the management VRF](/cumulus-linux/Layer-3/Management-VRF/#run-services-within-the-management-vrf).
+  read about [services in the management VRF](../Management-VRF/#run-services-within-the-management-vrf).
   Connected sockets (like TCP) are then bound to the VRF domain in
   which the connection originates. The kernel provides a sysctl that
   allows a single instance to accept connections over all VRFs. For
@@ -75,7 +75,7 @@ or OSPFv2 — for each routing table.
 
 Each routing table is called a *VRF table*, and has its own table ID.
 You configure VRF using
-[NCLU](/cumulus-linux/System-Configuration/Network-Command-Line-Utility-NCLU),
+[NCLU](../../System-Configuration/Network-Command-Line-Utility-NCLU),
 then place the layer 3 interface in the VRF. You can have a maximum of
 255 VRFs on a switch.
 
@@ -88,7 +88,7 @@ interfaces. Keep in mind the following for a VRF table:
   when the kernel forwards the packet.
 - Names for VRF tables can be up to 15 characters. However, you
   **cannot** use the name *mgmt*, as this name can **only** be used
-  for [management VRF](/cumulus-linux/Layer-3/Management-VRF).
+  for [management VRF](../Management-VRF).
 
 To configure a VRF, run:
 
@@ -214,7 +214,7 @@ running in the default VRF owns the port across all VRFs — that is, it
 is VRF global. `systemd`-based services are stopped when the VRF is
 deleted and started when the VRF is created. For example, when you
 restart networking or run an `ifdown`/`ifup` sequence — as mentioned above. The
-[management VRF chapter](/cumulus-linux/Layer-3/Management-VRF/#run-services-within-the-management-vrf)
+[management VRF chapter](../Management-VRF/#run-services-within-the-management-vrf)
 details how to do this.
 
 In Cumulus Linux, the following services work with VRF instances:
@@ -265,6 +265,7 @@ Cumulus Linux provides two options for route leaking across VRFs:
 - Do not mix static and dynamic route leaking in a fabric.
 - VRF route leaking is not supported between the tenant VRF and the
   default VRF with onlink next hops (BGP unnumbered).
+- The NCLU command to configure route leaking fails if the VRF is named `red` (lowercase letters only). This is not a problem if the VRF is named `RED` (uppercase letters) or has a name other than red.<br />To work around this issue, rename the VRF or run the `vtysh` command instead.<br />This is a known limitation in `network-docopt`.
 
 {{%/notice%}}
 
@@ -401,11 +402,13 @@ between a pair of VRFs.
   even if their next hops become unreachable. Therefore, route leaking
   for BGP-learned routes is recommended only when they are learned
   through single-hop eBGP.
+- You cannot configure VRF instances of BGP in multiple autonomous systems
+  (AS) or an AS that is not the same as the global AS.
 - Cumulus Networks recommends that you do not use the default VRF as a
   shared service VRF. Create another VRF for shared services.
 - Broadcom switches have certain limitations when leaking routes
   between the default VRF and non-default VRFs.
-- On switches with [Spectrum ASICs](https://cumulusnetworks.com/products/hardware-compatibility-list/?ASIC=Mellanox%20Spectrum&ASIC=Mellanox%20Spectrum_A1), only leak the specific routes you need from the default VRF; do not include the VTEP routes or filter out the VTEP routes with a route filter.
+- On switches with [Spectrum ASICs](https://cumulusnetworks.com/products/hardware-compatibility-list/?asic%5B0%5D=Mellanox%20Spectrum&asic%5B1%5D=Mellanox%20Spectrum_A1), only leak the specific routes you need from the default VRF; do not include the VTEP routes or filter out the VTEP routes with a route filter.
 
 {{%/notice%}}
 
@@ -434,7 +437,7 @@ _false_, as that is used only for [static route leaking](#configure-static-route
     dynamically leaked into VRF `turtle`.
 
         cumulus@switch:~$ net add bgp vrf rocket autonomous-system 65001
-        cumulus@switch:~$ net add bgp vrf turtle autonomous-system 65002
+        cumulus@switch:~$ net add bgp vrf turtle autonomous-system 65001
         cumulus@switch:~$ net add bgp vrf turtle ipv4 unicast import vrf rocket
         cumulus@switch:~$ net pending
         cumulus@switch:~$ net commit
@@ -444,17 +447,29 @@ file. For example:
 
     cumulus@leaf01:~$ sudo cat /etc/frr/frr.conf
     ...
+    
+    hostname leaf01
+    log syslog informational
+    service integrated-vtysh-config
+    !
     router bgp 65001 vrf rocket
-    !
-    router bgp 65002 vrf turtle
      !
-      address-family ipv4 unicast
-       import vrf rocket
-      exit-address-family
-     !
-    router bgp 65002
+     address-family l2vpn evpn
+     exit-address-family
     !
-    ...
+    router bgp 65001 vrf turtle
+     !
+     address-family ipv4 unicast
+      import vrf rocket
+     exit-address-family
+     !
+     address-family l2vpn evpn
+     exit-address-family
+    !
+    router bgp 65001
+    !
+    line vty
+    !
 
 #### Exclude Certain Prefixes
 
@@ -1122,7 +1137,7 @@ output.
 
 ## BGP Unnumbered Interfaces with VRF
 
-[BGP unnumbered interface configurations](/cumulus-linux/Layer-3/Border-Gateway-Protocol-BGP)
+[BGP unnumbered interface configurations](../Border-Gateway-Protocol-BGP)
 are supported with VRF. In BGP unnumbered, there are no addresses on any
 interface. However, debugging tools like `traceroute` need at least a
 single IP address per node as the node's source IP address. Typically,
@@ -1467,8 +1482,8 @@ To run `traceroute` on a VRF from the default VRF, run the
   under the BGP instance using `bgp router-id`. If both are specified,
   the one under the BGP instance overrides the one provided outside BGP.
 - You cannot configure
-  [EVPN address families](/cumulus-linux/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN)
+  [EVPN address families](../../Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN)
   within a VRF.
-- When [EVPN](/cumulus-linux/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN)
+- When [EVPN](../../Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN)
   is configured, FRRouting supports only a single autonomous system number (ASN) for
   all VRFs configured with BGP on the system.
