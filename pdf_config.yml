@@ -9,17 +9,17 @@ documents:
     title-page: cumulus-netq/Cumulus-NetQ-CLI-User-Guide/title/
     # Paths to index files to include
     folders:
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/NetQ-Command-Line-Overview
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Overall-Network-Health
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Switch-Hardware-and-Software
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Physical-Layer-Components
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Data-Link-Layer-Devices-and-Protocols
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Network-Layer-Protocols
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Virtual-Network-Overlays
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Linux-Hosts
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Container-Environments
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Manage-NetQ-Agents
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/NetQ-Command-Line-Overview
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Overall-Network-Health
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Switch-Hardware-and-Software
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Physical-Layer-Components
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Data-Link-Layer-Devices-and-Protocols
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Network-Layer-Protocols
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Virtual-Network-Overlays
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Linux-Hosts
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Monitor-Container-Environments
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Manage-NetQ-Agents
       - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Investigate-NetQ-Issues
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Resolve-MLAG-Issues
-			- cumulus-netq/Cumulus-NetQ-CLI-User-Guide/CLI-Early-Access-Features
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/Resolve-MLAG-Issues
+		  - cumulus-netq/Cumulus-NetQ-CLI-User-Guide/CLI-Early-Access-Features
