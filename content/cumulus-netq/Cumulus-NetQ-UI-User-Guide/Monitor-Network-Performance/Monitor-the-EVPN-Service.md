@@ -714,7 +714,7 @@ The large EVPN Session card contains two tabs.
 
 The *Session Summary* tab displays:
 
-{{<figure src="/images/netq/ntwk-svcs-single-evpn-large-summary-tab-230.png" width="500">}}
+{{<figure src="/images/netq/ntwk-svcs-single-evpn-large-summary-tab-231.png" width="500">}}
 
 <table>
 <colgroup>
@@ -792,7 +792,7 @@ The *Configuration File Evolution* tab displays:
 <td><p>(Network Services | EVPN Session) Configuration File Evolution</p></td>
 </tr>
 <tr class="even">
-<td><p><img src="/images/netq/ntwk-svcs-single-evpn-vtep-count-icon-230.png", width="24", height="24"/></p></td>
+<td><p>{{<img src="/images/netq/ntwk-svcs-single-evpn-vtep-count-icon-230.png" width="24" height="24">}}</p></td>
 <td><p>VTEP count (currently)</p></td>
 </tr>
 <tr class="odd">

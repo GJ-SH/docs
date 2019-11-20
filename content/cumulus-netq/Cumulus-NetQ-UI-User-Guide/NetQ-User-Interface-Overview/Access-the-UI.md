@@ -17,8 +17,8 @@ To log in to the UI:
 
 1.  Open a new Internet browser window or tab.
 2.  Enter the following URL into the Address bar for the on-site NetQ Platform/NetQ Appliance or the NetQ Cloud Appliance:  
-    - On-site: *http://\<netq-platform/appliance-ipaddress\>:32666*  
-    - In-cloud: *http//netq.cumulusnetworks.com*
+    - On-premises: *https://\<netq-platform/appliance-ipaddress\>:32666*  
+    - Cloud: *https://netq.cumulusnetworks.com*
 
     {{< figure src="/images/netq/access-ui-login-screen-230.png" width="700" >}}
 
@@ -31,7 +31,7 @@ To log in to the UI:
     - NetQ Appliance: *cumulus, CumulusLinux\!* by default  
     - NetQ Cloud Appliance: Use credentials provided by Cumulus via email titled *Welcome to Cumulus NetQ\!* and accept the terms of use.
 
-    {{< figure src="/images/netq/access-ui-cumulus-wb-230.png" width="700" >}}
+    {{< figure src="/images/netq/access-ui-cumulus-wb-231.png" width="700" >}}
 
     On your first login, the default Cumulus Workbench opens, with your username shown in the upper right corner of the application. The NetQ Cloud UI has a **Premises** list in the application header, but is otherwise the same. On future logins, the last workbench that you were viewing is displayed.
 

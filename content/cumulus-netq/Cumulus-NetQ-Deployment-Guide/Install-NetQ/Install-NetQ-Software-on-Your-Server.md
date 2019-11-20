@@ -36,12 +36,42 @@ and have it run properly.
 
 The NetQ software requires a server with the following:
 
-| Hardware Component | Minimum On-site Requirement | Minimum Cloud Requirement |
-| ---- | ---- | ---- |
-| Processor | Eight (8) virtual CPUs | Four (4) virtual CPUs |
-| Memory  | 64 GB RAM  | 8 GB RAM |
-| Local disk storage | 256 GB SSD (**Note**: This *must* be an SSD; use of other storage options can lead to system instability and are not supported.) | 32 GB (SSD not required) |
-| Network interface speed | 1 Gb NIC | 1 Gb NIC |
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Hardware Component</th>
+<th>Minimum Cloud Requirement</th>
+<th>Minimum On-premises Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processor</td>
+<td>Four (4) virtual CPUs</td>
+<td>Eight (8) virtual CPUs</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>8 GB RAM</td>
+<td>64 GB RAM</td>
+</tr>
+<tr>
+<td>Local disk storage</td>
+<td>32 GB <br>(SSD not required)</td>
+<td>256 GB SSD <br>(<strong>Note</strong>: <em>This must be an SSD</em>; use of other storage options can lead to system instability and are not supported.)</td>
+</tr>
+<tr>
+<td>Network interface speed</td>
+<td>1 Gb NIC</td>
+<td>1 Gb NIC</td>
+</tr>
+</tbody>
+</table>
 
 You must also open the following ports on your hardware to use the NetQ
 software:
@@ -77,6 +107,10 @@ systems:
 
 The NetQ CLI, UI, and RESTful API are supported on NetQ 2.1.0 and later.
 NetQ 1.4 and earlier applications are not supported in NetQ 2.x.
+
+{{%notice note%}}
+The UI is supported on Google Chrome. Other popular browsers may be used, but have not been tested and may have some presentation issues.
+{{%/notice%}}
 
 ### Install Workflow
 
@@ -119,6 +153,7 @@ Requirements](#hardware-requirements) for specifics.
 {{%/notice%}}
 
 ## Install Cumulus NetQ for an On-premises Deployment
+
 Follow the instructions in this section to install Cumulus NetQ software onto a server that is to be deployed and managed on your premises. For cloud deployments, refer to [Install Cumulus NetQ for a Cloud Deployment](#install-cumulus-netq-for-a-cloud-deployment).
 
 ### On-Premises Install Workflow
@@ -543,29 +578,12 @@ If you have changed the IP address or hostname of the NetQ server, you need to
 re-register this address with the Kubernetes containers before you can
 continue.
 
-1.  Reset all Kubernetes administrative settings. Run the command twice
-    to make sure all directories and files have been reset.
-    ```
-    cumulus@netq-platform:~$ sudo kubeadm reset -f
-    ```  
-2.  Remove the Kubernetes configuration.
-
-    ```
-    cumulus@netq-platform:~$ sudo rm /home/cumulus/.kube/config
-    ```
-
-3.  Reset the NetQ Platform install daemon.  
-
-    ```
-    cumulus@netq-platform:~$ sudo systemctl reset-failed
-    ```  
-
-4.  Reset the Kubernetes service.  
-
-    ```
-    cumulus@netq-platform:~$ sudo systemctl restart cts-kubectl-config
-    ```  
-    **Note**: Allow 15 minutes for the prompt to return.
+| Step | Description | Command |
+| :----: | -------------- | ------------- |
+| 1 | Reset all Kubernetes administrative settings | `sudo kubeadm reset -f`|
+| 2 | Remove the Kubernetes configuration | `sudo rm /home/cumulus/.kube/config` |
+| 3 | Reset the NetQ Platform install daemon | `sudo systemctl reset-failed` |
+| 4 | Reset the Kubernetes service |  `sudo systemctl restart cts-kubectl-config`<p>**Note**: Allow 15 minutes for the prompt to return.</p> | 
 
 {{%/notice%}}
 
@@ -580,6 +598,18 @@ The `config-key` was provided to you by Cumulus Networks via an email titled *A 
 ```
 cumulus@netq-platform:~$ netq install opta interface eth0 tarball download config-key "CNKaDBIjZ3buZhV2Mi5uZXRxZGV2LmN1bXVsdXNuZXw3b3Jrcy5jb20YuwM="
 ```
+
+**Note**: If you connect to your NetQ Cloud Server via proxy, you must identify the proxy with the `proxy-host` option, as follows:
+
+```
+cumulus@netq-platform:~$ netq install opta interface eth0 tarball download config-key "CNKaDBIjZ3buZhV2Mi5uZXRxZGV2LmN1bXVsdXNuZXw3b3Jrcy5jb20YuwM=" proxy-host netqcloudproxy proxy-port 8000
+```
+
+{{%notice info%}}
+It is strongly recommended that you do not use environment variables in the `etc/environment` file (such as  http_proxy, https_proxy, HTTP_PROXY, or HTTPS_PROXY) to define your proxy as this can cause the installation to fail.
+
+If you must use environment variables, comment out these variables just before running the `netq install` command, and then uncomment them when you are finished with installation.
+{{%/notice%}}
 
 {{%notice info%}}
 
